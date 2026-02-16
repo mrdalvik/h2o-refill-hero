@@ -18,6 +18,9 @@
           <div class="bottle-popup-title">{{ $t('bottles.popupTitle') }}</div>
           <div class="bottle-popup-ml">{{ popupBottle.ml }} {{ $t('unit.ml') }}</div>
           <div class="bottle-popup-time">{{ formatTime(popupBottle.addedAt) }}</div>
+          <button class="bottle-popup-remove" @click="removeBottle(popupBottle)">
+            {{ $t('bottles.remove') }}
+          </button>
           <button class="bottle-popup-close" @click="popupBottle = null">&#x2715;</button>
         </div>
       </div>
@@ -28,10 +31,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useWaterStore } from '@/stores/water'
 import type { Cell, Bottle } from '@/types'
 import BottleSprite from './BottleSprite.vue'
 
 const { locale } = useI18n()
+const waterStore = useWaterStore()
 
 defineProps<{
   cell: Cell
@@ -41,6 +46,11 @@ const popupBottle = ref<Bottle | null>(null)
 
 function showBottlePopup(bottle: Bottle) {
   popupBottle.value = bottle
+}
+
+function removeBottle(bottle: Bottle) {
+  waterStore.removeBottle(bottle.id)
+  popupBottle.value = null
 }
 
 function formatTime(timestamp: number): string {
@@ -143,6 +153,24 @@ function formatTime(timestamp: number): string {
   font-family: 'Fusion Pixel', monospace;
   font-size: 14px;
   color: #9ca3af;
+}
+
+.bottle-popup-remove {
+  width: 100%;
+  margin-top: 12px;
+  background: #4a3535;
+  border: 2px solid #6a4a4a;
+  color: #f87171;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.bottle-popup-remove:hover {
+  background: #5a4545;
 }
 
 .bottle-popup-close {

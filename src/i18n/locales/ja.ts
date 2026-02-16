@@ -21,6 +21,7 @@ export default {
     large: '1000 ml',
     tooltip: '{ml} ml',
     popupTitle: '追加',
+    remove: '削除',
   },
   animation: {
     customersText: 'お客さんが水を買っています...',

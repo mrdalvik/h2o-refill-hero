@@ -21,6 +21,7 @@ export default {
     large: '1000 ml',
     tooltip: '{ml} ml',
     popupTitle: 'Adicionado',
+    remove: 'Remover',
   },
   animation: {
     customersText: 'Clientes estão comprando água...',

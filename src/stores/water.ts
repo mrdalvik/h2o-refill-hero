@@ -117,6 +117,24 @@ export const useWaterStore = defineStore('water', () => {
     persist()
   }
 
+  function removeBottle(bottleId: string) {
+    const bottle = bottles.value.find((b) => b.id === bottleId)
+    if (!bottle) return
+
+    for (const row of cells.value) {
+      for (const cell of row) {
+        const idx = cell.bottles.findIndex((b) => b.id === bottleId)
+        if (idx >= 0) {
+          cell.bottles.splice(idx, 1)
+          totalMl.value -= bottle.ml
+          bottles.value = bottles.value.filter((b) => b.id !== bottleId)
+          persist()
+          return
+        }
+      }
+    }
+  }
+
   function resetDay() {
     const historyStore = useHistoryStore()
     if (totalMl.value > 0) {
@@ -152,6 +170,7 @@ export const useWaterStore = defineStore('water', () => {
     goalReached,
     percentage,
     addWater,
+    removeBottle,
     resetDay,
     checkAndHandleNewDay,
     persist,

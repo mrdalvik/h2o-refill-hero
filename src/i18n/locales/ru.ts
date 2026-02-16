@@ -21,6 +21,7 @@ export default {
     large: '1000 мл',
     tooltip: '{ml} мл',
     popupTitle: 'Добавлено',
+    remove: 'Удалить',
   },
   animation: {
     customersText: 'Покупатели забирают воду...',

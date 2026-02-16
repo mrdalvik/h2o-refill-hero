@@ -1,5 +1,6 @@
 <template>
   <div class="customer-animation">
+    <div class="animation-text">{{ $t('animation.customersText') }}</div>
     <div class="animation-scene">
       <div
         v-for="(customer, i) in customers"
@@ -18,7 +19,7 @@
       </div>
       <div class="vending-silhouette"></div>
     </div>
-    <div class="animation-text">{{ $t('animation.customersText') }}</div>
+    <div class="animation-ground"></div>
   </div>
 </template>
 
@@ -48,8 +49,21 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  min-height: 300px;
-  padding: 20px;
+  width: 100%;
+  padding: 20px 20px 0;
+}
+
+.animation-ground {
+  height: 120px;
+  min-height: 120px;
+  flex-shrink: 0;
+  width: 100%;
+  background: #4a4a4a;
+  background-image:
+    linear-gradient(90deg, transparent 0, transparent 11px, #3a3a3a 11px, #3a3a3a 12px),
+    linear-gradient(0deg, transparent 0, transparent 11px, #3a3a3a 11px, #3a3a3a 12px);
+  background-size: 24px 24px;
+  image-rendering: pixelated;
 }
 
 .animation-scene {
@@ -145,7 +159,7 @@ onMounted(() => {
 .customer-3 .leg { animation: walk 0.45s steps(2) infinite; animation-delay: 0.2s; }
 
 .animation-text {
-  margin-top: 24px;
+  margin-bottom: 16px;
   font-family: 'Fusion Pixel', monospace;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);

@@ -21,6 +21,7 @@ export default {
     large: '1000 毫升',
     tooltip: '{ml} 毫升',
     popupTitle: '添加',
+    remove: '删除',
   },
   animation: {
     customersText: '顾客正在购买水...',
