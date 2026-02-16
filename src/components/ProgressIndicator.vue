@@ -7,9 +7,6 @@
         :style="{ width: waterStore.percentage + '%' }"
       ></div>
     </div>
-    <div class="progress-label">
-      <span>{{ waterStore.percentage }}%</span>
-    </div>
   </div>
 </template>
 
@@ -57,18 +54,5 @@ const waterStore = useWaterStore()
 
 .progress-bar-fill.goal-done {
   background: linear-gradient(90deg, #22c55e, #4ade80);
-}
-
-.progress-label {
-  font-family: 'Fusion Pixel', 'Courier New', monospace;
-  font-size: 12px;
-  color: #9ca3af;
-  min-width: 36px;
-  text-align: right;
-}
-
-.goal-done + .progress-label,
-.progress-indicator:has(.goal-done) .progress-label {
-  color: #22c55e;
 }
 </style>

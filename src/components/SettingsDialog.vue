@@ -124,11 +124,27 @@ defineEmits<{
 const { locale } = useI18n()
 const waterStore = useWaterStore()
 
+const CALC_STORAGE_KEY = 'h2o-calc-prefs'
+
+function loadCalcPrefs() {
+  try {
+    const raw = localStorage.getItem(CALC_STORAGE_KEY)
+    if (raw) {
+      const { weight, activity } = JSON.parse(raw)
+      if (typeof weight === 'number' && weight >= 30 && weight <= 200) {
+        return { weight, activity: ['low', 'medium', 'high'].includes(activity) ? activity : 'medium' }
+      }
+    }
+  } catch { /* ignore */ }
+  return { weight: 70, activity: 'medium' as const }
+}
+
 const GOAL_PRESETS = [1500, 2000, 2500, 3000]
 const goalInput = ref(waterStore.dailyGoal)
 const showCalcPopup = ref(false)
-const calcWeight = ref(70)
-const calcActivity = ref<'low' | 'medium' | 'high'>('medium')
+const prefs = loadCalcPrefs()
+const calcWeight = ref(prefs.weight)
+const calcActivity = ref<'low' | 'medium' | 'high'>(prefs.activity)
 
 const ACTIVITY_OPTIONS = [
   { value: 'low' as const, label: 'settings.activityLow' },
@@ -142,8 +158,9 @@ watch(() => props.visible, (visible) => {
 
 watch(showCalcPopup, (open) => {
   if (open) {
-    calcWeight.value = 70
-    calcActivity.value = 'medium'
+    const { weight, activity } = loadCalcPrefs()
+    calcWeight.value = weight
+    calcActivity.value = activity
   }
 })
 
@@ -177,6 +194,7 @@ function applyCalculatedGoal() {
   waterStore.dailyGoal = clamped
   goalInput.value = clamped
   waterStore.persist()
+  localStorage.setItem(CALC_STORAGE_KEY, JSON.stringify({ weight: w, activity: calcActivity.value }))
   showCalcPopup.value = false
 }
 
