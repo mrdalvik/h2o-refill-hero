@@ -25,11 +25,14 @@ document.addEventListener(
   { passive: false }
 )
 
-// Prevent double-tap zoom: block second touch within 300ms
+// Prevent double-tap zoom: block second touch within 300ms (except on numpad)
 let lastTouchEnd = 0
 document.addEventListener(
   'touchstart',
   (e) => {
+    if (e.target instanceof Element && (e.target.closest('.numpad-overlay') || e.target.closest('.settings-overlay'))) {
+      return
+    }
     if (Date.now() - lastTouchEnd < 300) {
       e.preventDefault()
     }
