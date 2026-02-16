@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: 'Settings',
+    timeOfDay: 'Time of day',
+    timeAuto: 'Auto',
+    timeMorning: 'Morning',
+    timeDay: 'Day',
+    timeEvening: 'Evening',
+    timeNight: 'Night',
     dailyGoal: 'Daily goal',
     calculate: 'Calculate',
     calcTitle: 'Calculate daily goal',

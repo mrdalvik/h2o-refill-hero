@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: 'Configurações',
+    timeOfDay: 'Horário do dia',
+    timeAuto: 'Auto',
+    timeMorning: 'Manhã',
+    timeDay: 'Dia',
+    timeEvening: 'Tarde',
+    timeNight: 'Noite',
     dailyGoal: 'Meta diária',
     calculate: 'Calcular',
     calcTitle: 'Calcular meta diária',

@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: 'सेटिंग्स',
+    timeOfDay: 'दिन का समय',
+    timeAuto: 'ऑटो',
+    timeMorning: 'सुबह',
+    timeDay: 'दिन',
+    timeEvening: 'शाम',
+    timeNight: 'रात',
     dailyGoal: 'दैनिक लक्ष्य',
     calculate: 'गणना करें',
     calcTitle: 'दैनिक लक्ष्य गणना',

@@ -123,7 +123,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 }
 
 /* Ground - pixel asphalt */
@@ -132,7 +132,7 @@ onUnmounted(() => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 100px;
   z-index: 5;
   image-rendering: pixelated;
   background-repeat: repeat-x;
@@ -178,54 +178,54 @@ onUnmounted(() => {
 /* Tree */
 .tree {
   position: absolute;
-  left: 5%;
-  bottom: 60px;
+  left: 3%;
+  bottom: 100px;
   z-index: 3;
   image-rendering: pixelated;
 }
 
 .tree-trunk {
-  width: 16px;
-  height: 48px;
+  width: 28px;
+  height: 88px;
   background: #5c4033;
-  border: 2px solid #4a3328;
-  margin-left: 8px;
-  border-radius: 2px;
+  border: 3px solid #4a3328;
+  margin-left: 14px;
+  border-radius: 3px;
 }
 
 .tree-foliage {
   position: absolute;
-  bottom: 40px;
+  bottom: 72px;
   left: 0;
-  width: 48px;
-  height: 40px;
-  border-radius: 4px;
+  width: 88px;
+  height: 72px;
+  border-radius: 6px;
   animation: rustle 3s ease-in-out infinite;
 }
 
 .foliage-1 {
   background: #228b22;
-  box-shadow: 8px 0 0 #2d9d2d, 16px 4px 0 #1a6b1a;
+  box-shadow: 14px 0 0 #2d9d2d, 28px 8px 0 #1a6b1a;
   animation-delay: 0s;
 }
 
 .foliage-2 {
-  left: 12px;
-  bottom: 52px;
-  width: 40px;
-  height: 36px;
+  left: 22px;
+  bottom: 96px;
+  width: 72px;
+  height: 64px;
   background: #2d9d2d;
-  box-shadow: 6px 0 0 #228b22, 12px 2px 0 #1a6b1a;
+  box-shadow: 12px 0 0 #228b22, 24px 4px 0 #1a6b1a;
   animation-delay: 0.5s;
 }
 
 .foliage-3 {
-  left: 4px;
-  bottom: 64px;
-  width: 36px;
-  height: 32px;
+  left: 8px;
+  bottom: 120px;
+  width: 64px;
+  height: 56px;
   background: #1a6b1a;
-  box-shadow: 6px 0 0 #228b22;
+  box-shadow: 12px 0 0 #228b22;
   animation-delay: 1s;
 }
 

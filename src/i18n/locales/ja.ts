@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: '設定',
+    timeOfDay: '時間帯',
+    timeAuto: '自動',
+    timeMorning: '朝',
+    timeDay: '昼',
+    timeEvening: '夕方',
+    timeNight: '夜',
     dailyGoal: '1日の目標',
     calculate: '計算',
     calcTitle: '1日の目標を計算',

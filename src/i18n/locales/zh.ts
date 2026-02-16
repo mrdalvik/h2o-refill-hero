@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: '设置',
+    timeOfDay: '时间',
+    timeAuto: '自动',
+    timeMorning: '早晨',
+    timeDay: '白天',
+    timeEvening: '傍晚',
+    timeNight: '夜晚',
     dailyGoal: '每日目标',
     calculate: '计算',
     calcTitle: '计算每日目标',

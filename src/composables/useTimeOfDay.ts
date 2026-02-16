@@ -1,5 +1,19 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import type { TimeOfDay } from '@/types'
+
+export type TimeOfDayPreference = 'auto' | TimeOfDay
+
+const STORAGE_KEY = 'h2o-time-of-day'
+
+function loadPreference(): TimeOfDayPreference {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY)
+    if (s === 'auto' || s === 'morning' || s === 'day' || s === 'evening' || s === 'night') {
+      return s
+    }
+  } catch { /* ignore */ }
+  return 'auto'
+}
 
 function getTimeOfDay(): TimeOfDay {
   const hour = new Date().getHours()
@@ -9,13 +23,19 @@ function getTimeOfDay(): TimeOfDay {
   return 'night'
 }
 
+const preference = ref<TimeOfDayPreference>(loadPreference())
+const actualTime = ref<TimeOfDay>(getTimeOfDay())
+
 export function useTimeOfDay() {
-  const timeOfDay = ref<TimeOfDay>(getTimeOfDay())
+  const timeOfDay = computed(() =>
+    preference.value === 'auto' ? actualTime.value : preference.value
+  )
+
   let interval: ReturnType<typeof setInterval> | null = null
 
   onMounted(() => {
     interval = setInterval(() => {
-      timeOfDay.value = getTimeOfDay()
+      actualTime.value = getTimeOfDay()
     }, 60_000)
   })
 
@@ -24,4 +44,14 @@ export function useTimeOfDay() {
   })
 
   return timeOfDay
+}
+
+export function useTimeOfDaySetting() {
+  return {
+    preference,
+    setPreference(p: TimeOfDayPreference) {
+      preference.value = p
+      localStorage.setItem(STORAGE_KEY, p)
+    },
+  }
 }

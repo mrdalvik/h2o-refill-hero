@@ -30,6 +30,12 @@ export default {
   },
   settings: {
     title: 'Настройки',
+    timeOfDay: 'Время суток',
+    timeAuto: 'Авто',
+    timeMorning: 'Утро',
+    timeDay: 'День',
+    timeEvening: 'Вечер',
+    timeNight: 'Ночь',
     dailyGoal: 'Дневная цель',
     calculate: 'Рассчитать',
     calcTitle: 'Расчёт дневной цели',

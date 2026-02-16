@@ -40,6 +40,21 @@
         </div>
 
         <div class="settings-section">
+          <div class="settings-label">{{ $t('settings.timeOfDay') }}</div>
+          <div class="time-options">
+            <button
+              v-for="opt in TIME_OPTIONS"
+              :key="opt.value"
+              class="time-btn"
+              :class="{ 'time-btn-active': timePreference === opt.value }"
+              @click="setTimePreference(opt.value)"
+            >
+              {{ $t(opt.label) }}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
           <div class="settings-label">{{ $t('settings.language') }}</div>
           <div class="language-grid">
             <button
@@ -111,6 +126,7 @@
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
+import { useTimeOfDaySetting, type TimeOfDayPreference } from '@/composables/useTimeOfDay'
 import { SUPPORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
 
 const props = defineProps<{
@@ -123,6 +139,15 @@ defineEmits<{
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
+const { preference: timePreference, setPreference: setTimePreference } = useTimeOfDaySetting()
+
+const TIME_OPTIONS: { value: TimeOfDayPreference; label: string }[] = [
+  { value: 'auto', label: 'settings.timeAuto' },
+  { value: 'morning', label: 'settings.timeMorning' },
+  { value: 'day', label: 'settings.timeDay' },
+  { value: 'evening', label: 'settings.timeEvening' },
+  { value: 'night', label: 'settings.timeNight' },
+]
 
 const CALC_STORAGE_KEY = 'h2o-calc-prefs'
 
@@ -368,6 +393,35 @@ function changeLocale(code: SupportedLocale) {
 }
 
 .goal-preset-btn.goal-preset-active {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.time-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.time-btn {
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 11px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.time-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.time-btn.time-btn-active {
   background: #1d4ed8;
   border-color: #3b82f6;
   color: #fff;
