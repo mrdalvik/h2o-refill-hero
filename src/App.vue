@@ -55,6 +55,8 @@ body {
 #app {
   min-height: 100vh;
   min-height: 100dvh;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
 }
 </style>
 
@@ -67,5 +69,6 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   padding: 16px;
+  touch-action: manipulation;
 }
 </style>

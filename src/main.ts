@@ -8,6 +8,23 @@ import '@pixelium/web-vue/dist/normalize.css'
 import App from './App.vue'
 import i18n from './i18n'
 
+// Prevent pinch/double-tap zoom
+function preventZoom(e: Event) {
+  e.preventDefault()
+}
+document.addEventListener('gesturestart', preventZoom, { passive: false })
+document.addEventListener('gesturechange', preventZoom, { passive: false })
+document.addEventListener('gestureend', preventZoom, { passive: false })
+
+// Prevent pinch zoom on Android (2+ fingers)
+document.addEventListener(
+  'touchmove',
+  (e) => {
+    if (e.touches.length > 1) e.preventDefault()
+  },
+  { passive: false }
+)
+
 const pinia = createPinia()
 
 const router = createRouter({
