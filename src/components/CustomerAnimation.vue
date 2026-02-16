@@ -18,7 +18,7 @@
       </div>
       <div class="vending-silhouette"></div>
     </div>
-    <div class="animation-text">Покупатели забирают воду...</div>
+    <div class="animation-text">{{ $t('animation.customersText') }}</div>
   </div>
 </template>
 

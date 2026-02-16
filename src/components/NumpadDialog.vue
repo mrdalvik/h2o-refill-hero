@@ -3,13 +3,13 @@
     <div v-if="visible" class="numpad-overlay" @click.self="close">
       <div class="numpad-dialog">
         <div class="numpad-header">
-          <span class="numpad-title">ВВОД ОБЪЁМА</span>
+          <span class="numpad-title">{{ $t('numpad.title') }}</span>
           <button class="numpad-close" @click="close">&#x2715;</button>
         </div>
 
         <div class="numpad-screen">
           <span class="numpad-value">{{ inputValue || '0' }}</span>
-          <span class="numpad-unit">мл</span>
+          <span class="numpad-unit">{{ $t('unit.ml') }}</span>
         </div>
 
         <div class="numpad-keys">
@@ -32,7 +32,7 @@
           :disabled="!canSubmit"
           @click="submit"
         >
-          ПОСТАВИТЬ НА ПОЛКУ
+          {{ $t('numpad.submit') }}
         </button>
       </div>
     </div>

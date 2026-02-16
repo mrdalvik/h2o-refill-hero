@@ -1,12 +1,10 @@
 <template>
   <div class="water-counter" :class="{ 'goal-reached': waterStore.goalReached }">
     <div class="counter-display">
-      <span class="counter-current">{{ waterStore.totalMl }}</span>
-      <span class="counter-separator">/</span>
-      <span class="counter-goal">{{ waterStore.dailyGoal }} мл</span>
+      {{ $t('vending.waterCounter', { current: waterStore.totalMl, goal: waterStore.dailyGoal }) }}
     </div>
     <div v-if="waterStore.goalReached" class="counter-badge">
-      Цель достигнута!
+      {{ $t('vending.goalReached') }}
     </div>
   </div>
 </template>

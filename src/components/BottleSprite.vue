@@ -1,5 +1,5 @@
 <template>
-  <div class="bottle-sprite" :class="`bottle-${size}`" :title="`${ml} мл`">
+  <div class="bottle-sprite" :class="`bottle-${size}`" :title="$t('bottles.tooltip', { ml })">
     <div class="bottle-cap"></div>
     <div class="bottle-neck"></div>
     <div class="bottle-body">

@@ -3,14 +3,16 @@
     <div class="display-screen">
       <span class="display-text">{{ displayText }}</span>
     </div>
-    <div class="display-hint">&#9654; нажми для ввода</div>
+    <div class="display-hint">&#9654; {{ $t('vending.hintPress') }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 
+const { t } = useI18n()
 const waterStore = useWaterStore()
 
 defineEmits<{
@@ -24,9 +26,9 @@ const lastBottle = computed(() => {
 
 const displayText = computed(() => {
   if (lastBottle.value) {
-    return `${lastBottle.value.ml} мл`
+    return `${lastBottle.value.ml} ${t('unit.ml')}`
   }
-  return '--- мл'
+  return t('vending.emptyDisplay')
 })
 </script>
 

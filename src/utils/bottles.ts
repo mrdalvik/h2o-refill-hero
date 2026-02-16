@@ -45,10 +45,10 @@ export function mlToBottles(ml: number): Bottle[] {
   return bottles
 }
 
-export function bottleSizeLabel(size: BottleSize): string {
+export function bottleSizeLabelKey(size: BottleSize): string {
   switch (size) {
-    case 'small': return '200 мл'
-    case 'medium': return '500 мл'
-    case 'large': return '1000 мл'
+    case 'small': return 'bottles.small'
+    case 'medium': return 'bottles.medium'
+    case 'large': return 'bottles.large'
   }
 }

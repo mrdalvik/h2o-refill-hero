@@ -2,7 +2,8 @@
   <div class="vending-machine">
     <div class="machine-body">
       <div class="machine-header">
-        <h1 class="machine-title">H2O: Refill Hero</h1>
+        <h1 class="machine-title">{{ $t('app.title') }}</h1>
+        <button class="settings-btn" @click="showSettings = true" :title="$t('settings.title')">&#9881;</button>
       </div>
 
       <WaterCounter />
@@ -27,11 +28,16 @@
         <div v-if="showCelebration" class="celebration-overlay" @click="showCelebration = false">
           <div class="celebration-content">
             <div class="celebration-icon">&#127881;</div>
-            <div class="celebration-text">ЦЕЛЬ ДОСТИГНУТА!</div>
-            <div class="celebration-sub">{{ waterStore.totalMl }} / {{ waterStore.dailyGoal }} мл</div>
+            <div class="celebration-text">{{ $t('celebration.title') }}</div>
+            <div class="celebration-sub">{{ $t('celebration.subtitle', { current: waterStore.totalMl, goal: waterStore.dailyGoal }) }}</div>
           </div>
         </div>
       </Transition>
+
+      <SettingsDialog
+        :visible="showSettings"
+        @close="showSettings = false"
+      />
     </div>
   </div>
 </template>
@@ -44,6 +50,7 @@ import VendingGrid from './VendingGrid.vue'
 import DisplayPanel from './DisplayPanel.vue'
 import NumpadDialog from './NumpadDialog.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
+import SettingsDialog from './SettingsDialog.vue'
 
 const emit = defineEmits<{
   'force-reset': []
@@ -51,6 +58,7 @@ const emit = defineEmits<{
 
 const waterStore = useWaterStore()
 const showNumpad = ref(false)
+const showSettings = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
 
@@ -112,6 +120,29 @@ function onForceReset() {
 .machine-header {
   text-align: center;
   padding: 4px 0;
+  position: relative;
+}
+
+.settings-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 2px solid #4a4a6a;
+  color: #9ca3af;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.settings-btn:hover {
+  background: #2a2a4e;
+  color: #e5e7eb;
+  border-color: #6a6a9a;
 }
 
 .machine-title {
