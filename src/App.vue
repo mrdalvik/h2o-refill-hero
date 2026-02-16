@@ -43,6 +43,8 @@ html, body {
   -moz-osx-font-smoothing: unset;
   image-rendering: pixelated;
   overflow-x: hidden;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
 }
 
 body {
