@@ -33,7 +33,7 @@ export default {
   },
   settings: {
     title: '设置',
-    timeOfDay: '时间',
+    appearance: '外观',
     timeAuto: '自动',
     timeMorning: '早晨',
     timeDay: '白天',

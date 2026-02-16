@@ -33,7 +33,7 @@ export default {
   },
   settings: {
     title: '設定',
-    timeOfDay: '時間帯',
+    appearance: '表示',
     timeAuto: '自動',
     timeMorning: '朝',
     timeDay: '昼',

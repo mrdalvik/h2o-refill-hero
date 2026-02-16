@@ -40,21 +40,6 @@
         </div>
 
         <div class="settings-section">
-          <div class="settings-label">{{ $t('settings.timeOfDay') }}</div>
-          <div class="time-options">
-            <button
-              v-for="opt in TIME_OPTIONS"
-              :key="opt.value"
-              class="time-btn"
-              :class="{ 'time-btn-active': timePreference === opt.value }"
-              @click="setTimePreference(opt.value)"
-            >
-              {{ $t(opt.label) }}
-            </button>
-          </div>
-        </div>
-
-        <div class="settings-section">
           <div class="settings-label">{{ $t('settings.reminder') }}</div>
           <div class="reminder-options">
             <button
@@ -63,6 +48,21 @@
               class="reminder-btn"
               :class="{ 'reminder-btn-active': reminderFrequency === opt.value }"
               @click="setReminderFrequency(opt.value)"
+            >
+              {{ $t(opt.label) }}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-label">{{ $t('settings.appearance') }}</div>
+          <div class="time-options">
+            <button
+              v-for="opt in TIME_OPTIONS"
+              :key="opt.value"
+              class="time-btn"
+              :class="{ 'time-btn-active': timePreference === opt.value }"
+              @click="setTimePreference(opt.value)"
             >
               {{ $t(opt.label) }}
             </button>

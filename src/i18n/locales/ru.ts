@@ -33,7 +33,7 @@ export default {
   },
   settings: {
     title: 'Настройки',
-    timeOfDay: 'Время суток',
+    appearance: 'Оформление',
     timeAuto: 'Авто',
     timeMorning: 'Утро',
     timeDay: 'День',

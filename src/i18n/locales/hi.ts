@@ -33,7 +33,7 @@ export default {
   },
   settings: {
     title: 'सेटिंग्स',
-    timeOfDay: 'दिन का समय',
+    appearance: 'दिखावट',
     timeAuto: 'ऑटो',
     timeMorning: 'सुबह',
     timeDay: 'दिन',

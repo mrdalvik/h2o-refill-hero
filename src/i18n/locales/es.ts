@@ -33,7 +33,7 @@ export default {
   },
   settings: {
     title: 'Ajustes',
-    timeOfDay: 'Hora del día',
+    appearance: 'Apariencia',
     timeAuto: 'Auto',
     timeMorning: 'Mañana',
     timeDay: 'Día',
