@@ -43,7 +43,7 @@
 import { ref, computed } from 'vue'
 import { useWaterStore } from '@/stores/water'
 
-const props = defineProps<{
+defineProps<{
   visible: boolean
 }>()
 
