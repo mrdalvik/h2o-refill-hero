@@ -28,6 +28,9 @@ export default {
     title: 'ZIEL ERREICHT!',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: 'Vergiss nicht, Wasser zu trinken 😉',
+  },
   settings: {
     title: 'Einstellungen',
     timeOfDay: 'Tageszeit',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'Tag',
     timeEvening: 'Abend',
     timeNight: 'Nacht',
+    reminder: 'Erinnerungen',
+    reminderNever: 'Nie',
+    reminder3: '3× täglich',
+    reminder5: '5× täglich',
     dailyGoal: 'Tagesziel',
     calculate: 'Berechnen',
     calcTitle: 'Tagesziel berechnen',

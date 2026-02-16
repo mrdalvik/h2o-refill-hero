@@ -28,6 +28,9 @@ export default {
     title: 'OBJECTIF ATTEINT !',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: "N'oublie pas de boire de l'eau 😉",
+  },
   settings: {
     title: 'Paramètres',
     timeOfDay: 'Moment de la journée',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'Jour',
     timeEvening: 'Soir',
     timeNight: 'Nuit',
+    reminder: 'Rappels',
+    reminderNever: 'Jamais',
+    reminder3: '3 fois par jour',
+    reminder5: '5 fois par jour',
     dailyGoal: 'Objectif quotidien',
     calculate: 'Calculer',
     calcTitle: 'Calculer l\'objectif quotidien',

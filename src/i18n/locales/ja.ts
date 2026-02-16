@@ -28,6 +28,9 @@ export default {
     title: '目標達成！',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: 'お水を飲むのを忘れないでね 😉',
+  },
   settings: {
     title: '設定',
     timeOfDay: '時間帯',
@@ -36,6 +39,10 @@ export default {
     timeDay: '昼',
     timeEvening: '夕方',
     timeNight: '夜',
+    reminder: 'リマインダー',
+    reminderNever: 'なし',
+    reminder3: '1日3回',
+    reminder5: '1日5回',
     dailyGoal: '1日の目標',
     calculate: '計算',
     calcTitle: '1日の目標を計算',

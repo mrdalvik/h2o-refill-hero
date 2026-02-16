@@ -18,8 +18,10 @@ import DayBackground from './components/DayBackground.vue'
 import CustomerAnimation from './components/CustomerAnimation.vue'
 import VendingMachine from './components/VendingMachine.vue'
 import { useDayReset } from './composables/useDayReset'
+import { useWaterReminder } from './composables/useWaterReminder'
 
 const { showAnimation, forceReset } = useDayReset()
+useWaterReminder()
 
 function onAnimationDone() {
   showAnimation.value = false

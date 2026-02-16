@@ -55,6 +55,21 @@
         </div>
 
         <div class="settings-section">
+          <div class="settings-label">{{ $t('settings.reminder') }}</div>
+          <div class="reminder-options">
+            <button
+              v-for="opt in REMINDER_OPTIONS"
+              :key="opt.value"
+              class="reminder-btn"
+              :class="{ 'reminder-btn-active': reminderFrequency === opt.value }"
+              @click="setReminderFrequency(opt.value)"
+            >
+              {{ $t(opt.label) }}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
           <div class="settings-label">{{ $t('settings.language') }}</div>
           <div class="language-grid">
             <button
@@ -127,6 +142,7 @@ import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useTimeOfDaySetting, type TimeOfDayPreference } from '@/composables/useTimeOfDay'
+import { useWaterReminder, type ReminderFrequency } from '@/composables/useWaterReminder'
 import { SUPPORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
 
 const props = defineProps<{
@@ -140,6 +156,13 @@ defineEmits<{
 const { locale } = useI18n()
 const waterStore = useWaterStore()
 const { preference: timePreference, setPreference: setTimePreference } = useTimeOfDaySetting()
+const { frequency: reminderFrequency, setFrequency: setReminderFrequency } = useWaterReminder({ setupInterval: false })
+
+const REMINDER_OPTIONS: { value: ReminderFrequency; label: string }[] = [
+  { value: 'never', label: 'settings.reminderNever' },
+  { value: '3', label: 'settings.reminder3' },
+  { value: '5', label: 'settings.reminder5' },
+]
 
 const TIME_OPTIONS: { value: TimeOfDayPreference; label: string }[] = [
   { value: 'auto', label: 'settings.timeAuto' },
@@ -422,6 +445,35 @@ function changeLocale(code: SupportedLocale) {
 }
 
 .time-btn.time-btn-active {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.reminder-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.reminder-btn {
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 11px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.reminder-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.reminder-btn.reminder-btn-active {
   background: #1d4ed8;
   border-color: #3b82f6;
   color: #fff;

@@ -28,6 +28,9 @@ export default {
     title: '¡META ALCANZADA!',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: 'No olvides beber agua 😉',
+  },
   settings: {
     title: 'Ajustes',
     timeOfDay: 'Hora del día',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'Día',
     timeEvening: 'Tarde',
     timeNight: 'Noche',
+    reminder: 'Recordatorios',
+    reminderNever: 'Nunca',
+    reminder3: '3 veces al día',
+    reminder5: '5 veces al día',
     dailyGoal: 'Objetivo diario',
     calculate: 'Calcular',
     calcTitle: 'Calcular objetivo diario',

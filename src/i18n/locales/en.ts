@@ -28,6 +28,9 @@ export default {
     title: 'GOAL REACHED!',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: "Don't forget to drink water 😉",
+  },
   settings: {
     title: 'Settings',
     timeOfDay: 'Time of day',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'Day',
     timeEvening: 'Evening',
     timeNight: 'Night',
+    reminder: 'Reminders',
+    reminderNever: 'Never',
+    reminder3: '3 times a day',
+    reminder5: '5 times a day',
     dailyGoal: 'Daily goal',
     calculate: 'Calculate',
     calcTitle: 'Calculate daily goal',

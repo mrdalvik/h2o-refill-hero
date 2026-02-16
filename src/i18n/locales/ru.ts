@@ -28,6 +28,9 @@ export default {
     title: 'ЦЕЛЬ ДОСТИГНУТА!',
     subtitle: '{current} / {goal} мл',
   },
+  reminder: {
+    message: 'Не забудь попить воды 😉',
+  },
   settings: {
     title: 'Настройки',
     timeOfDay: 'Время суток',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'День',
     timeEvening: 'Вечер',
     timeNight: 'Ночь',
+    reminder: 'Напоминания',
+    reminderNever: 'Никогда',
+    reminder3: '3 раза в день',
+    reminder5: '5 раз в день',
     dailyGoal: 'Дневная цель',
     calculate: 'Рассчитать',
     calcTitle: 'Расчёт дневной цели',

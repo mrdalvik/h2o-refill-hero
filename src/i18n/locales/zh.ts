@@ -28,6 +28,9 @@ export default {
     title: '目标已达成！',
     subtitle: '{current} / {goal} 毫升',
   },
+  reminder: {
+    message: '别忘了喝水哦 😉',
+  },
   settings: {
     title: '设置',
     timeOfDay: '时间',
@@ -36,6 +39,10 @@ export default {
     timeDay: '白天',
     timeEvening: '傍晚',
     timeNight: '夜晚',
+    reminder: '提醒',
+    reminderNever: '从不',
+    reminder3: '每天3次',
+    reminder5: '每天5次',
     dailyGoal: '每日目标',
     calculate: '计算',
     calcTitle: '计算每日目标',

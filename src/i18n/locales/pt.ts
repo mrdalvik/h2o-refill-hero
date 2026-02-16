@@ -28,6 +28,9 @@ export default {
     title: 'META ATINGIDA!',
     subtitle: '{current} / {goal} ml',
   },
+  reminder: {
+    message: 'Não esqueça de beber água 😉',
+  },
   settings: {
     title: 'Configurações',
     timeOfDay: 'Horário do dia',
@@ -36,6 +39,10 @@ export default {
     timeDay: 'Dia',
     timeEvening: 'Tarde',
     timeNight: 'Noite',
+    reminder: 'Lembretes',
+    reminderNever: 'Nunca',
+    reminder3: '3 vezes ao dia',
+    reminder5: '5 vezes ao dia',
     dailyGoal: 'Meta diária',
     calculate: 'Calcular',
     calcTitle: 'Calcular meta diária',
