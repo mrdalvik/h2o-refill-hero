@@ -42,6 +42,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useWaterStore } from '@/stores/water'
+import i18n from '@/i18n'
 
 defineProps<{
   visible: boolean
@@ -79,6 +80,21 @@ function submit() {
 
   if (inputValue.value === '0000') {
     emit('force-reset')
+    inputValue.value = ''
+    close()
+    return
+  }
+
+  if (inputValue.value === '0001') {
+    if ('Notification' in window) {
+      Notification.requestPermission().then(() => {
+        if (Notification.permission === 'granted') {
+          new Notification('H2O: Refill Hero', {
+            body: i18n.global.t('reminder.message'),
+          })
+        }
+      })
+    }
     inputValue.value = ''
     close()
     return
