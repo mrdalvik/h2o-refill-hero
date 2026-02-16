@@ -65,10 +65,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 16px;
+  padding: 16px 16px 120px;
   touch-action: manipulation;
 }
 </style>

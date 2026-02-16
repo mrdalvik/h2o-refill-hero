@@ -123,7 +123,6 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 100px;
 }
 
 /* Ground - pixel asphalt */
@@ -132,7 +131,7 @@ onUnmounted(() => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
+  height: 120px;
   z-index: 5;
   image-rendering: pixelated;
   background-repeat: repeat-x;
@@ -179,7 +178,7 @@ onUnmounted(() => {
 .tree {
   position: absolute;
   left: 3%;
-  bottom: 100px;
+  bottom: 120px;
   z-index: 3;
   image-rendering: pixelated;
 }
