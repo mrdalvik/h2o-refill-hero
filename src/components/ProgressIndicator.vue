@@ -26,10 +26,10 @@ const waterStore = useWaterStore()
 
 .progress-bar-track {
   flex: 1;
-  height: 12px;
-  background: #1a1a2e;
+  height: 10px;
+  background: #2a2a4e;
   border: 2px solid #4a4a6a;
-  border-radius: 2px;
+  border-radius: 4px;
   overflow: hidden;
   image-rendering: pixelated;
 }

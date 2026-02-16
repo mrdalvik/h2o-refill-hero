@@ -19,9 +19,9 @@ const waterStore = useWaterStore()
 .water-counter {
   text-align: center;
   padding: 8px 12px;
-  background: #1a1a2e;
+  background: #2a2a4e;
   border: 2px solid #4a4a6a;
-  border-radius: 4px;
+  border-radius: 6px;
   image-rendering: pixelated;
 }
 

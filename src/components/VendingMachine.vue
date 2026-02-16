@@ -1,29 +1,29 @@
 <template>
   <div class="vending-machine">
     <div class="machine-body">
-      <div class="machine-header">
+      <div class="machine-awning">
         <h1 class="machine-title">{{ $t('app.title') }}</h1>
       </div>
 
-      <WaterCounter />
+      <div class="machine-main">
+        <div class="machine-left">
+          <WaterCounter />
+          <div class="machine-window">
+            <VendingGrid />
+          </div>
+          <div class="machine-footer">
+            <ProgressIndicator />
+          </div>
+        </div>
 
-      <div class="machine-window">
-        <VendingGrid />
+        <div class="machine-right">
+          <ControlPanel
+            @open-settings="showSettings = true"
+            @submitted="onWaterAdded"
+            @force-reset="onForceReset"
+          />
+        </div>
       </div>
-
-      <div class="progress-row">
-        <ProgressIndicator />
-        <button class="settings-btn" @click="showSettings = true" :title="$t('settings.title')">&#9881;</button>
-      </div>
-
-      <DisplayPanel @open-numpad="showNumpad = true" />
-
-      <NumpadDialog
-        :visible="showNumpad"
-        @close="showNumpad = false"
-        @submitted="onWaterAdded"
-        @force-reset="onForceReset"
-      />
 
       <!-- Celebration overlay -->
       <Transition name="celebration">
@@ -49,9 +49,8 @@ import { ref, watch } from 'vue'
 import { useWaterStore } from '@/stores/water'
 import WaterCounter from './WaterCounter.vue'
 import VendingGrid from './VendingGrid.vue'
-import DisplayPanel from './DisplayPanel.vue'
-import NumpadDialog from './NumpadDialog.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
+import ControlPanel from './ControlPanel.vue'
 import SettingsDialog from './SettingsDialog.vue'
 
 const emit = defineEmits<{
@@ -59,7 +58,6 @@ const emit = defineEmits<{
 }>()
 
 const waterStore = useWaterStore()
-const showNumpad = ref(false)
 const showSettings = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
@@ -87,83 +85,73 @@ function onForceReset() {
 <style scoped>
 .vending-machine {
   width: 100%;
-  max-width: 340px;
+  max-width: 480px;
   margin: 0 auto;
   padding: 12px;
 }
 
 .machine-body {
-  background: linear-gradient(180deg, #3a3a5e 0%, #2a2a4e 100%);
-  border: 4px solid #5a5a8a;
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: linear-gradient(180deg, #e8e8f0 0%, #d0d0dc 100%);
+  border: 4px solid #a0a0b0;
+  border-radius: 12px;
+  overflow: hidden;
   image-rendering: pixelated;
   box-shadow:
-    0 0 0 2px #1a1a3e,
-    6px 6px 0 0 rgba(0, 0, 0, 0.25);
+    0 0 0 2px #c0c0d0,
+    8px 8px 0 0 rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   position: relative;
 }
 
-.machine-body::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 60%;
-  bottom: 60%;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-.machine-header {
+.machine-awning {
+  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+  padding: 10px 16px;
   text-align: center;
-  padding: 4px 0;
-}
-
-.progress-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.settings-btn {
-  flex-shrink: 0;
-  background: none;
-  border: 2px solid #4a4a6a;
-  color: #9ca3af;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 3px;
-  line-height: 1;
-  transition: background 0.15s, color 0.15s;
-}
-
-.settings-btn:hover {
-  background: #2a2a4e;
-  color: #e5e7eb;
-  border-color: #6a6a9a;
+  border-bottom: 4px solid #991b1b;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .machine-title {
   font-family: 'Fusion Pixel', monospace;
-  font-size: 16px;
-  color: #e5e7eb;
+  font-size: 15px;
+  color: #fff;
   letter-spacing: 2px;
   margin: 0;
-  text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.machine-main {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 10px;
+}
+
+.machine-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.machine-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .machine-window {
-  background: rgba(0, 0, 0, 0.2);
-  border: 3px solid #4a4a6a;
-  border-radius: 4px;
-  padding: 6px;
-  min-height: 280px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 100%);
+  border: 3px solid #8a8a9a;
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 260px;
+  flex: 1;
+}
+
+.machine-footer {
+  padding: 2px 0;
 }
 
 /* Celebration */
@@ -221,16 +209,15 @@ function onForceReset() {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Mobile: fill width */
+/* Mobile */
 @media (max-width: 479px) {
   .vending-machine {
     max-width: 95vw;
     padding: 8px;
   }
 
-  .machine-body {
+  .machine-main {
     padding: 8px;
-    gap: 8px;
   }
 
   .machine-title {
@@ -238,33 +225,37 @@ function onForceReset() {
   }
 
   .machine-window {
-    min-height: 240px;
+    min-height: 200px;
   }
 }
 
 /* Tablet */
 @media (min-width: 480px) and (max-width: 768px) {
   .vending-machine {
-    max-width: 400px;
+    max-width: 520px;
+  }
+
+  .machine-window {
+    min-height: 280px;
   }
 }
 
 /* Desktop */
 @media (min-width: 769px) {
   .vending-machine {
-    max-width: 420px;
+    max-width: 540px;
   }
 
-  .machine-body {
-    padding: 16px;
+  .machine-main {
+    padding: 12px;
   }
 
   .machine-title {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .machine-window {
-    min-height: 320px;
+    min-height: 300px;
   }
 }
 </style>
