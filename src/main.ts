@@ -8,7 +8,7 @@ import '@pixelium/web-vue/dist/normalize.css'
 import App from './App.vue'
 import i18n from './i18n'
 
-// Prevent pinch/double-tap zoom
+// Prevent pinch zoom
 function preventZoom(e: Event) {
   e.preventDefault()
 }
@@ -24,6 +24,21 @@ document.addEventListener(
   },
   { passive: false }
 )
+
+// Prevent double-tap zoom: block second touch within 300ms
+let lastTouchEnd = 0
+document.addEventListener(
+  'touchstart',
+  (e) => {
+    if (Date.now() - lastTouchEnd < 300) {
+      e.preventDefault()
+    }
+  },
+  { passive: false }
+)
+document.addEventListener('touchend', () => {
+  lastTouchEnd = Date.now()
+}, { passive: true })
 
 const pinia = createPinia()
 
