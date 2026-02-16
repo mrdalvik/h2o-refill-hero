@@ -31,6 +31,8 @@ const waterStore = useWaterStore()
   color: #4ade80;
   text-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
   letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  min-width: 14ch;
 }
 
 .counter-separator {

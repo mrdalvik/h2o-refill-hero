@@ -19,11 +19,17 @@
         <div class="machine-right">
           <ControlPanel
             @open-settings="showSettings = true"
-            @submitted="onWaterAdded"
-            @force-reset="onForceReset"
+            @open-numpad="showNumpad = true"
           />
         </div>
       </div>
+
+      <NumpadDialog
+        :visible="showNumpad"
+        @close="showNumpad = false"
+        @submitted="onWaterAdded"
+        @force-reset="onForceReset"
+      />
 
       <!-- Celebration overlay -->
       <Transition name="celebration">
@@ -51,6 +57,7 @@ import WaterCounter from './WaterCounter.vue'
 import VendingGrid from './VendingGrid.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
 import ControlPanel from './ControlPanel.vue'
+import NumpadDialog from './NumpadDialog.vue'
 import SettingsDialog from './SettingsDialog.vue'
 
 const emit = defineEmits<{
@@ -59,6 +66,7 @@ const emit = defineEmits<{
 
 const waterStore = useWaterStore()
 const showSettings = ref(false)
+const showNumpad = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
 
@@ -85,12 +93,15 @@ function onForceReset() {
 <style scoped>
 .vending-machine {
   width: 100%;
+  min-width: 320px;
   max-width: 480px;
   margin: 0 auto;
   padding: 12px;
+  box-sizing: border-box;
 }
 
 .machine-body {
+  width: 100%;
   background: linear-gradient(180deg, #e8e8f0 0%, #d0d0dc 100%);
   border: 4px solid #a0a0b0;
   border-radius: 12px;
