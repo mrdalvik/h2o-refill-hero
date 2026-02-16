@@ -21,7 +21,7 @@
               'key-wide': key === '0',
               'key-action': key === '⌫' || key === 'C'
             }"
-            @click="handleKey(key)"
+            @pointerup="handleKey(key)"
           >
             {{ key }}
           </button>
@@ -30,7 +30,7 @@
         <button
           class="numpad-submit"
           :disabled="!canSubmit"
-          @click="submit"
+          @pointerup="submit"
         >
           {{ $t('numpad.submit') }}
         </button>
@@ -113,6 +113,7 @@ function close() {
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.2s ease-out;
+  touch-action: manipulation;
 }
 
 .numpad-dialog {
@@ -177,7 +178,7 @@ function close() {
   color: #4ade80;
   text-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
   letter-spacing: 4px;
-  min-width: 60px;
+  min-width: 100px;
   text-align: right;
 }
 
