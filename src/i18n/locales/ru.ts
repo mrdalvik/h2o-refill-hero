@@ -20,6 +20,7 @@ export default {
     medium: '500 мл',
     large: '1000 мл',
     tooltip: '{ml} мл',
+    popupTitle: 'Добавлено',
   },
   animation: {
     customersText: 'Покупатели забирают воду...',

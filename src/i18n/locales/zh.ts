@@ -20,6 +20,7 @@ export default {
     medium: '500 毫升',
     large: '1000 毫升',
     tooltip: '{ml} 毫升',
+    popupTitle: '添加',
   },
   animation: {
     customersText: '顾客正在购买水...',

@@ -20,6 +20,7 @@ export default {
     medium: '500 मिली',
     large: '1000 मिली',
     tooltip: '{ml} मिली',
+    popupTitle: 'जोड़ा गया',
   },
   animation: {
     customersText: 'ग्राहक पानी खरीद रहे हैं...',
