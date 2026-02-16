@@ -30,6 +30,7 @@ export default {
   },
   settings: {
     title: 'Настройки',
+    dailyGoal: 'Дневная цель',
     language: 'Язык',
     close: 'Закрыть',
   },

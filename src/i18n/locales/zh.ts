@@ -30,6 +30,7 @@ export default {
   },
   settings: {
     title: '设置',
+    dailyGoal: '每日目标',
     language: '语言',
     close: '关闭',
   },

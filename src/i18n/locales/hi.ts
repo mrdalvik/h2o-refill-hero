@@ -30,6 +30,7 @@ export default {
   },
   settings: {
     title: 'सेटिंग्स',
+    dailyGoal: 'दैनिक लक्ष्य',
     language: 'भाषा',
     close: 'बंद करें',
   },

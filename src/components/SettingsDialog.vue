@@ -8,6 +8,33 @@
         </div>
 
         <div class="settings-section">
+          <div class="settings-label">{{ $t('settings.dailyGoal') }}</div>
+          <div class="goal-input-row">
+            <input
+              v-model.number="goalInput"
+              type="number"
+              min="100"
+              max="10000"
+              step="100"
+              class="goal-input"
+              @change="onGoalChange"
+            />
+            <span class="goal-unit">{{ $t('unit.ml') }}</span>
+          </div>
+          <div class="goal-presets">
+            <button
+              v-for="preset in GOAL_PRESETS"
+              :key="preset"
+              class="goal-preset-btn"
+              :class="{ 'goal-preset-active': waterStore.dailyGoal === preset }"
+              @click="setGoal(preset)"
+            >
+              {{ preset }}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
           <div class="settings-label">{{ $t('settings.language') }}</div>
           <div class="language-grid">
             <button
@@ -32,11 +59,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useWaterStore } from '@/stores/water'
 import { SUPPORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
 
-defineProps<{
+const props = defineProps<{
   visible: boolean
 }>()
 
@@ -45,6 +73,31 @@ defineEmits<{
 }>()
 
 const { locale } = useI18n()
+const waterStore = useWaterStore()
+
+const GOAL_PRESETS = [1500, 2000, 2500, 3000]
+const goalInput = ref(waterStore.dailyGoal)
+
+watch(() => props.visible, (visible) => {
+  if (visible) goalInput.value = waterStore.dailyGoal
+})
+
+watch(() => waterStore.dailyGoal, (val) => {
+  goalInput.value = val
+})
+
+function setGoal(ml: number) {
+  waterStore.dailyGoal = ml
+  waterStore.persist()
+}
+
+function onGoalChange() {
+  const val = Math.round(Number(goalInput.value))
+  const clamped = Math.min(10000, Math.max(100, isNaN(val) ? 2000 : val))
+  waterStore.dailyGoal = clamped
+  goalInput.value = clamped
+  waterStore.persist()
+}
 
 const currentLocale = computed(() => locale.value)
 
@@ -139,6 +192,64 @@ function changeLocale(code: SupportedLocale) {
   letter-spacing: 1px;
   margin-bottom: 8px;
   text-transform: uppercase;
+}
+
+.goal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.goal-input {
+  width: 100px;
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #e5e7eb;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+
+.goal-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.goal-unit {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.goal-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.goal-preset-btn {
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.goal-preset-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.goal-preset-btn.goal-preset-active {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+  color: #fff;
 }
 
 .language-grid {

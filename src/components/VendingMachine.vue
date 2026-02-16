@@ -3,7 +3,6 @@
     <div class="machine-body">
       <div class="machine-header">
         <h1 class="machine-title">{{ $t('app.title') }}</h1>
-        <button class="settings-btn" @click="showSettings = true" :title="$t('settings.title')">&#9881;</button>
       </div>
 
       <WaterCounter />
@@ -12,7 +11,10 @@
         <VendingGrid />
       </div>
 
-      <ProgressIndicator />
+      <div class="progress-row">
+        <ProgressIndicator />
+        <button class="settings-btn" @click="showSettings = true" :title="$t('settings.title')">&#9881;</button>
+      </div>
 
       <DisplayPanel @open-numpad="showNumpad = true" />
 
@@ -120,14 +122,16 @@ function onForceReset() {
 .machine-header {
   text-align: center;
   padding: 4px 0;
-  position: relative;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .settings-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  flex-shrink: 0;
   background: none;
   border: 2px solid #4a4a6a;
   color: #9ca3af;
