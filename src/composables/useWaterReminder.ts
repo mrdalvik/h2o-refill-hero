@@ -1,13 +1,11 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import i18n from '@/i18n'
+import { shouldShowReminder, type ReminderFrequency } from '@/utils/reminder'
 
-export type ReminderFrequency = 'never' | '3' | '5'
+export type { ReminderFrequency }
 
 const STORAGE_KEY = 'h2o-reminder'
 const SHOWN_KEY = 'h2o-reminder-shown'
-
-const SLOTS_3 = [10, 14, 18]
-const SLOTS_5 = [9, 12, 15, 18, 21]
 
 function loadPreference(): ReminderFrequency {
   try {
@@ -61,23 +59,11 @@ export function useWaterReminder(options?: { setupInterval?: boolean }) {
   }
 
   function checkAndNotify() {
-    if (frequency.value === 'never') return
-
-    const now = new Date()
-    const hour = now.getHours()
-
-    if (hour < 8 || hour >= 22) return
-
-    const slots = frequency.value === '5' ? SLOTS_5 : SLOTS_3
+    const hour = new Date().getHours()
     const shown = getShownToday()
-
-    for (const slotHour of slots) {
-      if (hour === slotHour && !shown.includes(slotHour)) {
-        showNotification()
-        markShown(slotHour)
-        break
-      }
-    }
+    if (!shouldShowReminder(frequency.value, hour, shown)) return
+    showNotification()
+    markShown(hour)
   }
 
   if (setupInterval) {

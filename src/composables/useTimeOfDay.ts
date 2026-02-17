@@ -5,6 +5,13 @@ export type TimeOfDayPreference = 'auto' | TimeOfDay
 
 const STORAGE_KEY = 'h2o-time-of-day'
 
+export function getTimeOfDayFromHour(hour: number): TimeOfDay {
+  if (hour >= 6 && hour < 12) return 'morning'
+  if (hour >= 12 && hour < 17) return 'day'
+  if (hour >= 17 && hour < 21) return 'evening'
+  return 'night'
+}
+
 function loadPreference(): TimeOfDayPreference {
   try {
     const s = localStorage.getItem(STORAGE_KEY)
@@ -16,11 +23,7 @@ function loadPreference(): TimeOfDayPreference {
 }
 
 function getTimeOfDay(): TimeOfDay {
-  const hour = new Date().getHours()
-  if (hour >= 6 && hour < 12) return 'morning'
-  if (hour >= 12 && hour < 17) return 'day'
-  if (hour >= 17 && hour < 21) return 'evening'
-  return 'night'
+  return getTimeOfDayFromHour(new Date().getHours())
 }
 
 const preference = ref<TimeOfDayPreference>(loadPreference())
