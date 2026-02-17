@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import type { Cell, Bottle } from '@/types'
@@ -37,6 +37,7 @@ import BottleSprite from './BottleSprite.vue'
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
+const requestBottleRemoval = inject<(bottle: Bottle, closePopup: () => void) => void>('requestBottleRemoval')
 
 defineProps<{
   cell: Cell
@@ -49,8 +50,13 @@ function showBottlePopup(bottle: Bottle) {
 }
 
 function removeBottle(bottle: Bottle) {
-  waterStore.removeBottle(bottle.id)
-  popupBottle.value = null
+  const closePopup = () => { popupBottle.value = null }
+  if (requestBottleRemoval) {
+    requestBottleRemoval(bottle, closePopup)
+  } else {
+    waterStore.removeBottle(bottle.id)
+    closePopup()
+  }
 }
 
 function formatTime(timestamp: number): string {

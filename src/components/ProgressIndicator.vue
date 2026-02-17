@@ -1,11 +1,15 @@
 <template>
-  <div class="progress-indicator">
-    <div class="progress-bar-track">
-      <div
-        class="progress-bar-fill"
-        :class="{ 'goal-done': waterStore.goalReached }"
-        :style="{ width: waterStore.percentage + '%' }"
-      ></div>
+  <div class="delivery-window">
+    <div class="window-frame">
+      <div class="window-interior">
+        <div class="progress-bar-track">
+          <div
+            class="progress-bar-fill"
+            :class="{ 'goal-done': waterStore.goalReached }"
+            :style="{ width: waterStore.percentage + '%' }"
+          ></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,20 +21,34 @@ const waterStore = useWaterStore()
 </script>
 
 <style scoped>
-.progress-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
+.delivery-window {
+  width: 100%;
+}
+
+.window-frame {
+  background: #3a3a5e;
+  border: 4px solid #5a5a8a;
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.window-interior {
+  background: #0d0d1a;
+  border: 2px solid #2a2a4e;
+  border-radius: 2px;
+  min-height: 36px;
+  overflow: hidden;
+  position: relative;
 }
 
 .progress-bar-track {
-  flex: 1;
-  height: 10px;
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  border-radius: 4px;
-  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: #1a1a2e;
   image-rendering: pixelated;
 }
 

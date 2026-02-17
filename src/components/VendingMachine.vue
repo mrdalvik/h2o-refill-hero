@@ -46,16 +46,35 @@
         :visible="showSettings"
         @close="showSettings = false"
       />
+
+      <!-- Bottle removal animation -->
+      <Transition name="removal">
+        <div v-if="removingBottle" class="removal-overlay">
+          <div class="removal-bottle" :class="`bottle-${removingBottle.size}`">
+            <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
+          </div>
+          <div class="removal-hand">
+            <div class="hand-palm"></div>
+            <div class="hand-fingers">
+              <div class="finger"></div>
+              <div class="finger"></div>
+              <div class="finger"></div>
+              <div class="finger"></div>
+            </div>
+          </div>
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, provide } from 'vue'
 import { useWaterStore } from '@/stores/water'
 import WaterCounter from './WaterCounter.vue'
 import VendingGrid from './VendingGrid.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
+import BottleSprite from './BottleSprite.vue'
 import ControlPanel from './ControlPanel.vue'
 import NumpadDialog from './NumpadDialog.vue'
 import SettingsDialog from './SettingsDialog.vue'
@@ -69,6 +88,16 @@ const showSettings = ref(false)
 const showNumpad = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
+const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large' } | null>(null)
+
+provide('requestBottleRemoval', (bottle: { id: string; ml: number; size: 'small' | 'medium' | 'large' }, closePopup: () => void) => {
+  closePopup()
+  waterStore.removeBottle(bottle.id)
+  removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size }
+  setTimeout(() => {
+    removingBottle.value = null
+  }, 1600)
+})
 
 watch(() => waterStore.goalReached, (reached) => {
   if (reached && !hasShownCelebration.value) {
@@ -218,6 +247,97 @@ function onForceReset() {
   0% { transform: scale(0.5); opacity: 0; }
   60% { transform: scale(1.1); }
   100% { transform: scale(1); opacity: 1; }
+}
+
+/* Bottle removal animation */
+.removal-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.removal-bottle {
+  position: absolute;
+  top: 80px;
+  animation: bottleFall 1.2s ease-in forwards;
+}
+
+.removal-hand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: handGrab 1.6s ease-out 0.4s forwards;
+  transform-origin: bottom center;
+}
+
+.hand-palm {
+  width: 16px;
+  height: 12px;
+  background: #fcd9b6;
+  border: 2px solid #d4a574;
+  border-radius: 2px;
+  image-rendering: pixelated;
+}
+
+.hand-fingers {
+  display: flex;
+  gap: 2px;
+  margin-top: 1px;
+}
+
+.hand-fingers .finger {
+  width: 4px;
+  height: 8px;
+  background: #fcd9b6;
+  border: 1px solid #d4a574;
+  border-radius: 1px;
+  image-rendering: pixelated;
+}
+
+@keyframes bottleFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(120px) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(140px) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes handGrab {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-30px) scale(0.8);
+  }
+}
+
+.removal-enter-active,
+.removal-leave-active {
+  transition: opacity 0.2s;
+}
+.removal-enter-from,
+.removal-leave-to {
+  opacity: 0;
 }
 
 /* Mobile */
