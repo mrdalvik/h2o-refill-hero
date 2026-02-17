@@ -81,7 +81,7 @@
               :key="code"
               :value="code"
             >
-              {{ flags[code] }} {{ label }}
+              {{ label }}
             </option>
           </select>
         </div>
@@ -253,30 +253,6 @@ function applyCalculatedGoal() {
 }
 
 const currentLocale = computed(() => locale.value)
-
-const flags: Record<SupportedLocale, string> = {
-  ru: '🇷🇺',
-  uk: '🇺🇦',
-  be: '🇧🇾',
-  kk: '🇰🇿',
-  uz: '🇺🇿',
-  az: '🇦🇿',
-  hy: '🇦🇲',
-  ka: '🇬🇪',
-  ky: '🇰🇬',
-  tg: '🇹🇯',
-  tk: '🇹🇲',
-  ro: '🇷🇴',
-  en: '🇬🇧',
-  zh: '🇨🇳',
-  es: '🇪🇸',
-  hi: '🇮🇳',
-  pt: '🇧🇷',
-  ja: '🇯🇵',
-  de: '🇩🇪',
-  fr: '🇫🇷',
-  it: '🇮🇹',
-}
 
 function changeLocale(code: SupportedLocale) {
   locale.value = code
