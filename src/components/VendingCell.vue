@@ -1,5 +1,6 @@
 <template>
   <div class="vending-cell" :class="{ 'cell-empty': cell.bottles.length === 0 }">
+    <SpiralCoil :is-rotating="isSpiralRotating" />
     <div v-if="cell.bottles.length > 0" class="cell-bottles">
       <div
         v-for="(bottle, index) in cell.bottles"
@@ -29,22 +30,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref, inject, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import type { Cell, Bottle, BottleRemovalFn } from '@/types'
 import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
 import BottleSprite from './BottleSprite.vue'
+import SpiralCoil from './SpiralCoil.vue'
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
 const requestBottleRemoval = inject<BottleRemovalFn>(BOTTLE_REMOVAL_KEY)
 
-defineProps<{
+const props = defineProps<{
   cell: Cell
 }>()
 
 const popupBottle = ref<Bottle | null>(null)
+const isSpiralRotating = ref(false)
+
+watch(() => props.cell.bottles.length, (newLen, oldLen) => {
+  if (oldLen !== undefined && newLen < oldLen) {
+    isSpiralRotating.value = true
+    setTimeout(() => { isSpiralRotating.value = false }, 650)
+  }
+})
 
 function showBottlePopup(bottle: Bottle) {
   popupBottle.value = bottle
