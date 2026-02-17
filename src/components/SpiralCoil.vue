@@ -41,6 +41,7 @@ defineProps<{
   opacity: 0.9;
   image-rendering: pixelated;
   z-index: 2;
+  pointer-events: none;
 }
 
 .spiral-svg {

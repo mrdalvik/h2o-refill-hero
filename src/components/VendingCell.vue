@@ -106,6 +106,12 @@ function formatTime(timestamp: number): string {
 .cell-bottle-wrapper {
   animation: bottleAppear 0.3s ease-out;
   cursor: pointer;
+  /* iOS: минимум 44pt для надёжного тапа (Apple HIG) */
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell-bottle-wrapper:hover {
