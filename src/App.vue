@@ -14,14 +14,31 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
 import DayBackground from './components/DayBackground.vue'
 import CustomerAnimation from './components/CustomerAnimation.vue'
 import VendingMachine from './components/VendingMachine.vue'
 import { useDayReset } from './composables/useDayReset'
 import { useWaterReminder } from './composables/useWaterReminder'
+import { useTimeOfDay } from './composables/useTimeOfDay'
 
 const { showAnimation, forceReset } = useDayReset()
 useWaterReminder()
+const timeOfDay = useTimeOfDay()
+
+const SKY_COLORS: Record<string, string> = {
+  morning: '#FFD4A0',
+  day: '#87CEEB',
+  evening: '#C77DBA',
+  night: '#0C1445',
+}
+
+watch(timeOfDay, (t) => {
+  const color = SKY_COLORS[t] ?? '#87CEEB'
+  document.documentElement.style.setProperty('--sky-top', color)
+  const meta = document.getElementById('theme-color') as HTMLMetaElement | null
+  if (meta) meta.content = color
+}, { immediate: true })
 
 function onAnimationDone() {
   showAnimation.value = false
@@ -75,6 +92,7 @@ html, body {
   overflow-x: hidden;
   touch-action: manipulation;
   -ms-touch-action: manipulation;
+  background: var(--sky-top, #87CEEB);
 }
 
 body {
