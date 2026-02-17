@@ -20,21 +20,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useWaterStore } from '@/stores/water'
 
 defineEmits<{
   'open-settings': []
   'open-numpad': []
 }>()
 
-const waterStore = useWaterStore()
-
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
-const displayValue = computed(() => {
-  const bottles = waterStore.bottles
-  return bottles.length > 0 ? String(bottles[bottles.length - 1].ml) : '---'
-})
+const displayValue = computed(() => '---')
 </script>
 
 <style scoped>
