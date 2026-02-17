@@ -12,6 +12,17 @@
           <span class="numpad-unit">{{ $t('unit.ml') }}</span>
         </div>
 
+        <div class="numpad-quick-buttons">
+          <button
+            v-for="amount in quickAmounts"
+            :key="amount"
+            class="numpad-quick-btn"
+            @pointerup="addQuick(amount)"
+          >
+            {{ amount }} {{ $t('unit.ml') }}
+          </button>
+        </div>
+
         <div class="numpad-keys">
           <button
             v-for="key in keys"
@@ -58,7 +69,13 @@ const emit = defineEmits<{
 const waterStore = useWaterStore()
 const inputValue = ref('')
 
+const quickAmounts = [100, 200, 300]
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
+
+function addQuick(ml: number) {
+  waterStore.addWater(ml)
+  emit('submitted')
+}
 
 const canSubmit = computed(() => {
   return inputValue.value.length > 0
@@ -205,6 +222,37 @@ function close() {
   color: #6b9b6b;
 }
 
+.numpad-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.numpad-quick-btn {
+  background: linear-gradient(180deg, #2d4a2d, #1a3a1a);
+  border: 3px solid #2a5a2a;
+  color: #4ade80;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 10px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s, transform 0.1s;
+  image-rendering: pixelated;
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.numpad-quick-btn:hover {
+  background: linear-gradient(180deg, #3d5a3d, #2a4a2a);
+}
+
+.numpad-quick-btn:active {
+  background: linear-gradient(180deg, #1a3a1a, #0a2a0a);
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
 .numpad-keys {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -306,6 +354,11 @@ function close() {
     border-bottom: none;
     padding: 16px 12px calc(env(safe-area-inset-bottom, 12px) + 12px);
     animation: slideUpMobile 0.25s ease-out;
+  }
+
+  .numpad-quick-btn {
+    padding: 12px 6px;
+    font-size: 13px;
   }
 
   .numpad-key {
