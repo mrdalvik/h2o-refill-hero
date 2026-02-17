@@ -77,11 +77,11 @@
             @change="changeLocale(($event.target as HTMLSelectElement).value as SupportedLocale)"
           >
             <option
-              v-for="(label, code) in SUPPORTED_LOCALES"
+              v-for="[code, label] in SORTED_LOCALES"
               :key="code"
               :value="code"
             >
-              {{ flags[code as SupportedLocale] }} {{ label }}
+              {{ flags[code] }} {{ label }}
             </option>
           </select>
         </div>
@@ -155,7 +155,7 @@ import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useTimeOfDaySetting, type TimeOfDayPreference } from '@/composables/useTimeOfDay'
 import { useWaterReminder, type ReminderFrequency } from '@/composables/useWaterReminder'
-import { SUPPORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
+import { SORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
 import { calculateDailyGoal } from '@/utils/waterGoal'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
 import { GOAL_PRESETS } from '@/constants/timing'

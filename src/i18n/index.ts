@@ -48,6 +48,33 @@ export const SUPPORTED_LOCALES = {
 
 export type SupportedLocale = keyof typeof SUPPORTED_LOCALES
 
+const LOCALE_ENGLISH_NAMES: Record<SupportedLocale, string> = {
+  ru: 'Russian',
+  uk: 'Ukrainian',
+  be: 'Belarusian',
+  kk: 'Kazakh',
+  uz: 'Uzbek',
+  az: 'Azerbaijani',
+  hy: 'Armenian',
+  ka: 'Georgian',
+  ky: 'Kyrgyz',
+  tg: 'Tajik',
+  tk: 'Turkmen',
+  ro: 'Romanian',
+  en: 'English',
+  zh: 'Chinese',
+  es: 'Spanish',
+  hi: 'Hindi',
+  pt: 'Portuguese',
+  ja: 'Japanese',
+  de: 'German',
+  fr: 'French',
+  it: 'Italian',
+}
+
+export const SORTED_LOCALES = (Object.entries(SUPPORTED_LOCALES) as [SupportedLocale, string][])
+  .sort(([a], [b]) => LOCALE_ENGLISH_NAMES[a].localeCompare(LOCALE_ENGLISH_NAMES[b]))
+
 function detectLocale(): SupportedLocale {
   const saved = localStorage.getItem(STORAGE_KEYS.LOCALE)
   if (saved && saved in SUPPORTED_LOCALES) {
