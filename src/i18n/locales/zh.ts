@@ -61,6 +61,11 @@ export default {
     author: '作者',
     version: '版本',
     refresh: '刷新',
+    reset: '重置',
+    resetConfirmTitle: '重置数据',
+    resetConfirmMessage: '所有保存的数据将被删除。继续？',
+    resetCancel: '取消',
+    resetConfirm: '重置',
     close: '关闭',
   },
 }

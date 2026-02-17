@@ -61,6 +61,11 @@ export default {
     author: 'Autore',
     version: 'Versione',
     refresh: 'Aggiorna',
+    reset: 'Reimposta',
+    resetConfirmTitle: 'Reimposta dati',
+    resetConfirmMessage: 'Tutti i dati salvati verranno eliminati. Continuare?',
+    resetCancel: 'Annulla',
+    resetConfirm: 'Reimposta',
     close: 'Chiudi',
   },
 }

@@ -61,6 +61,11 @@ export default {
     author: 'Auteur',
     version: 'Version',
     refresh: 'Actualiser',
+    reset: 'Réinitialiser',
+    resetConfirmTitle: 'Réinitialiser les données',
+    resetConfirmMessage: 'Toutes les données enregistrées seront supprimées. Continuer?',
+    resetCancel: 'Annuler',
+    resetConfirm: 'Réinitialiser',
     close: 'Fermer',
   },
 }

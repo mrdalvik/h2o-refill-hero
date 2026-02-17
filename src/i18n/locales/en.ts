@@ -61,6 +61,11 @@ export default {
     author: 'Author',
     version: 'Version',
     refresh: 'Refresh',
+    reset: 'Reset',
+    resetConfirmTitle: 'Reset data',
+    resetConfirmMessage: 'All saved data will be deleted. Continue?',
+    resetCancel: 'Cancel',
+    resetConfirm: 'Reset',
     close: 'Close',
   },
 }

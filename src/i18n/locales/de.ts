@@ -61,6 +61,11 @@ export default {
     author: 'Autor',
     version: 'Version',
     refresh: 'Aktualisieren',
+    reset: 'Zurücksetzen',
+    resetConfirmTitle: 'Daten zurücksetzen',
+    resetConfirmMessage: 'Alle gespeicherten Daten werden gelöscht. Fortfahren?',
+    resetCancel: 'Abbrechen',
+    resetConfirm: 'Zurücksetzen',
     close: 'Schließen',
   },
 }

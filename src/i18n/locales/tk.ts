@@ -61,6 +61,11 @@ export default {
     author: 'Awtor',
     version: 'Wersiýa',
     refresh: 'Täzelemek',
+    reset: 'Arassalamak',
+    resetConfirmTitle: 'Maglumatlary arassalamak',
+    resetConfirmMessage: 'Ähli saklanan maglumatlar aýrylar. Dowam etmeli?',
+    resetCancel: 'Ýatyrmak',
+    resetConfirm: 'Arassalamak',
     close: 'Ýapmak',
   },
 }

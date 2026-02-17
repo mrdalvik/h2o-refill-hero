@@ -61,6 +61,11 @@ export default {
     author: 'Autor',
     version: 'Versión',
     refresh: 'Actualizar',
+    reset: 'Restablecer',
+    resetConfirmTitle: 'Restablecer datos',
+    resetConfirmMessage: 'Todos los datos guardados serán eliminados. ¿Continuar?',
+    resetCancel: 'Cancelar',
+    resetConfirm: 'Restablecer',
     close: 'Cerrar',
   },
 }

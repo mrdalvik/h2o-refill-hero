@@ -61,6 +61,11 @@ export default {
     author: 'Autor',
     version: 'Versão',
     refresh: 'Atualizar',
+    reset: 'Redefinir',
+    resetConfirmTitle: 'Redefinir dados',
+    resetConfirmMessage: 'Todos os dados salvos serão excluídos. Continuar?',
+    resetCancel: 'Cancelar',
+    resetConfirm: 'Redefinir',
     close: 'Fechar',
   },
 }

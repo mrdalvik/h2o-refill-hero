@@ -61,6 +61,11 @@ export default {
     author: 'ავტორი',
     version: 'ვერსია',
     refresh: 'განახლება',
+    reset: 'გასუფთავება',
+    resetConfirmTitle: 'მონაცემების გასუფთავება',
+    resetConfirmMessage: 'ყველა შენახული მონაცემი წაიშლება. გავაგრძელოთ?',
+    resetCancel: 'გაუქმება',
+    resetConfirm: 'გასუფთავება',
     close: 'დახურვა',
   },
 }

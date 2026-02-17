@@ -61,6 +61,11 @@ export default {
     author: '作者',
     version: 'バージョン',
     refresh: '更新',
+    reset: 'リセット',
+    resetConfirmTitle: 'データをリセット',
+    resetConfirmMessage: '保存されたすべてのデータが削除されます。続行しますか？',
+    resetCancel: 'キャンセル',
+    resetConfirm: 'リセット',
     close: '閉じる',
   },
 }

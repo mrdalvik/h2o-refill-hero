@@ -99,6 +99,9 @@
               <button class="refresh-btn" :disabled="isRefreshing" @click="refreshApp" :title="$t('settings.refresh')">
                 {{ isRefreshing ? '...' : $t('settings.refresh') }}
               </button>
+              <button class="reset-btn" @click="showResetConfirm = true" :title="$t('settings.reset')">
+                {{ $t('settings.reset') }}
+              </button>
             </div>
           </div>
         </div>
@@ -106,6 +109,25 @@
         <button class="settings-done" @click="$emit('close')">
           {{ $t('settings.close') }}
         </button>
+      </div>
+
+      <!-- Reset confirmation popup -->
+      <div v-if="showResetConfirm" class="calc-overlay" @click.self="showResetConfirm = false">
+        <div class="calc-popup reset-popup">
+          <div class="calc-header">
+            <span class="calc-title">{{ $t('settings.resetConfirmTitle') }}</span>
+            <button class="calc-close" @click="showResetConfirm = false">&#x2715;</button>
+          </div>
+          <p class="reset-message">{{ $t('settings.resetConfirmMessage') }}</p>
+          <div class="reset-actions">
+            <button class="reset-cancel-btn" @click="showResetConfirm = false">
+              {{ $t('settings.resetCancel') }}
+            </button>
+            <button class="reset-confirm-btn" @click="confirmReset">
+              {{ $t('settings.resetConfirm') }}
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Calculator popup -->
@@ -208,6 +230,7 @@ function loadCalcPrefs() {
 
 const goalInput = ref(waterStore.dailyGoal)
 const showCalcPopup = ref(false)
+const showResetConfirm = ref(false)
 const prefs = loadCalcPrefs()
 const calcWeight = ref(prefs.weight)
 const calcActivity = ref<'low' | 'medium' | 'high'>(prefs.activity)
@@ -266,6 +289,7 @@ async function refreshApp() {
   if (isRefreshing.value) return
   isRefreshing.value = true
   try {
+    // Очищаем только Cache API (кеш приложения), localStorage не трогаем
     if ('caches' in window) {
       const names = await caches.keys()
       await Promise.all(names.map((n) => caches.delete(n)))
@@ -276,6 +300,12 @@ async function refreshApp() {
   } catch {
     window.location.reload()
   }
+}
+
+function confirmReset() {
+  Object.values(STORAGE_KEYS).forEach((key) => localStorage.removeItem(key))
+  showResetConfirm.value = false
+  window.location.reload()
 }
 
 function changeLocale(code: SupportedLocale) {
@@ -568,6 +598,70 @@ function changeLocale(code: SupportedLocale) {
 .refresh-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.reset-btn {
+  background: #4a1a1a;
+  border: 2px solid #7a2a2a;
+  color: #fca5a5;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.reset-btn:hover {
+  background: #5a2a2a;
+  border-color: #9a3a3a;
+  color: #fecaca;
+}
+
+.reset-message {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  color: #d1d5db;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.reset-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.reset-cancel-btn {
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.reset-cancel-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.reset-confirm-btn {
+  background: #7f1d1d;
+  border: 2px solid #991b1b;
+  color: #fecaca;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.reset-confirm-btn:hover {
+  background: #991b1b;
+  border-color: #b91c1c;
 }
 
 .author-links {

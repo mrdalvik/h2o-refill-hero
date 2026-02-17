@@ -61,6 +61,11 @@ export default {
     author: 'Հեղինակ',
     version: 'Տարբերակ',
     refresh: 'Թարմացնել',
+    reset: 'Վերակայել',
+    resetConfirmTitle: 'Վերակայել տվյալները',
+    resetConfirmMessage: 'Բոլոր պահպանված տվյալները կջնջվեն: Շարունակել?',
+    resetCancel: 'Չեղարկել',
+    resetConfirm: 'Վերակայել',
     close: 'Փակել',
   },
 }

@@ -61,6 +61,11 @@ export default {
     author: 'Autor',
     version: 'Versiune',
     refresh: 'Actualizare',
+    reset: 'Reseta',
+    resetConfirmTitle: 'Reseta date',
+    resetConfirmMessage: 'Toate datele salvate vor fi șterse. Continuați?',
+    resetCancel: 'Anulare',
+    resetConfirm: 'Reseta',
     close: 'Închide',
   },
 }

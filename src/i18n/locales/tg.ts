@@ -61,6 +61,11 @@ export default {
     author: 'Муаллиф',
     version: 'Версия',
     refresh: 'Навсозӣ',
+    reset: 'Барқарор кардан',
+    resetConfirmTitle: 'Додаҳоро барқарор кардан',
+    resetConfirmMessage: 'Ҳамаи додаҳои захирашуда нест карда мешаванд. Идома диҳед?',
+    resetCancel: 'Бекор кардан',
+    resetConfirm: 'Барқарор кардан',
     close: 'Пӯшидан',
   },
 }

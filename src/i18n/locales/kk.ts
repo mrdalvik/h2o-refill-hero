@@ -61,6 +61,11 @@ export default {
     author: 'Автор',
     version: 'Нұсқа',
     refresh: 'Жаңарту',
+    reset: 'Қалпына келтіру',
+    resetConfirmTitle: 'Деректерді қалпына келтіру',
+    resetConfirmMessage: 'Барлық сақталған деректер өшіріледі. Жалғастыру керек пе?',
+    resetCancel: 'Болдырмау',
+    resetConfirm: 'Қалпына келтіру',
     close: 'Жабу',
   },
 }

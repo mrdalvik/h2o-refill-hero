@@ -61,6 +61,11 @@ export default {
     author: 'Автор',
     version: 'Версия',
     refresh: 'Жаңыртуу',
+    reset: 'Сброс',
+    resetConfirmTitle: 'Маалыматтарды сброс кылуу',
+    resetConfirmMessage: 'Бардык сакталган маалыматтар өчүрүлөт. Улантуу керекпи?',
+    resetCancel: 'Жокко чыгаруу',
+    resetConfirm: 'Сброс',
     close: 'Жабуу',
   },
 }

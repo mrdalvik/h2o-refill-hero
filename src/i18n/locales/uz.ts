@@ -61,6 +61,11 @@ export default {
     author: 'Muallif',
     version: 'Versiya',
     refresh: 'Yangilash',
+    reset: 'Tozalash',
+    resetConfirmTitle: 'Ma\'lumotlarni tozalash',
+    resetConfirmMessage: 'Barcha saqlangan ma\'lumotlar o\'chiriladi. Davom etish?',
+    resetCancel: 'Bekor qilish',
+    resetConfirm: 'Tozalash',
     close: 'Yopish',
   },
 }

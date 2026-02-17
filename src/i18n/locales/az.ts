@@ -61,6 +61,11 @@ export default {
     author: 'Müəllif',
     version: 'Versiya',
     refresh: 'Yenilə',
+    reset: 'Sıfırla',
+    resetConfirmTitle: 'Məlumatları sıfırla',
+    resetConfirmMessage: 'Bütün saxlanılmış məlumatlar silinəcək. Davam etmək?',
+    resetCancel: 'Ləğv et',
+    resetConfirm: 'Sıfırla',
     close: 'Bağla',
   },
 }

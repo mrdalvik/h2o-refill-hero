@@ -61,6 +61,11 @@ export default {
     author: 'Автор',
     version: 'Версія',
     refresh: 'Оновити',
+    reset: 'Скинути',
+    resetConfirmTitle: 'Скидання даних',
+    resetConfirmMessage: 'Усі збережені дані будуть видалені. Продовжити?',
+    resetCancel: 'Скасувати',
+    resetConfirm: 'Скинути',
     close: 'Закрити',
   },
 }

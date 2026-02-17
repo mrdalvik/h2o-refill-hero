@@ -61,6 +61,11 @@ export default {
     author: 'Аўтар',
     version: 'Версія',
     refresh: 'Абнавіць',
+    reset: 'Скінуць',
+    resetConfirmTitle: 'Скінуць даныя',
+    resetConfirmMessage: 'Усе захаваныя даныя будуць выдалены. Працягнуць?',
+    resetCancel: 'Адмена',
+    resetConfirm: 'Скінуць',
     close: 'Закрыць',
   },
 }

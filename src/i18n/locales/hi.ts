@@ -61,6 +61,11 @@ export default {
     author: 'लेखक',
     version: 'संस्करण',
     refresh: 'रीफ्रेश',
+    reset: 'रीसेट',
+    resetConfirmTitle: 'डेटा रीसेट करें',
+    resetConfirmMessage: 'सभी सहेजे गए डेटा हटा दिए जाएंगे। जारी रखें?',
+    resetCancel: 'रद्द करें',
+    resetConfirm: 'रीसेट',
     close: 'बंद करें',
   },
 }

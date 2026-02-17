@@ -61,6 +61,11 @@ export default {
     author: 'Автор',
     version: 'Версия',
     refresh: 'Обновить',
+    reset: 'Сбросить',
+    resetConfirmTitle: 'Сброс данных',
+    resetConfirmMessage: 'Все сохранённые данные будут удалены. Продолжить?',
+    resetCancel: 'Отмена',
+    resetConfirm: 'Сбросить',
     close: 'Закрыть',
   },
 }
