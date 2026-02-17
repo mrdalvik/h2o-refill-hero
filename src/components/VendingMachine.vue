@@ -50,7 +50,11 @@
       <!-- Bottle removal animation -->
       <Transition name="removal">
         <div v-if="removingBottle" class="removal-overlay">
-          <div class="removal-bottle" :class="`bottle-${removingBottle.size}`">
+          <div
+            class="removal-bottle"
+            :class="`bottle-${removingBottle.size}`"
+            :style="{ '--start-top': shelfTop(removingBottle.row), '--start-left': shelfLeft(removingBottle.col) }"
+          >
             <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
           </div>
           <div class="removal-hand">
@@ -88,12 +92,22 @@ const showSettings = ref(false)
 const showNumpad = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
-const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large' } | null>(null)
+const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large'; row: number; col: number } | null>(null)
 
-provide('requestBottleRemoval', (bottle: { id: string; ml: number; size: 'small' | 'medium' | 'large' }, closePopup: () => void) => {
+function shelfTop(row: number): string {
+  const tops = ['28%', '45%', '62%', '79%']
+  return tops[row] ?? '45%'
+}
+
+function shelfLeft(col: number): string {
+  const lefts = ['12.5%', '37.5%', '62.5%', '87.5%']
+  return lefts[col] ?? '50%'
+}
+
+provide('requestBottleRemoval', (bottle: { id: string; ml: number; size: 'small' | 'medium' | 'large' }, position: { row: number; col: number }, closePopup: () => void) => {
   closePopup()
   waterStore.removeBottle(bottle.id)
-  removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size }
+  removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size, row: position.row, col: position.col }
   setTimeout(() => {
     removingBottle.value = null
   }, 1600)
@@ -264,8 +278,10 @@ function onForceReset() {
 
 .removal-bottle {
   position: absolute;
-  top: 80px;
-  animation: bottleFall 1.2s ease-in forwards;
+  top: var(--start-top, 45%);
+  left: var(--start-left, 50%);
+  transform: translate(-50%, 0);
+  animation: bottleFallToWindow 1.2s ease-in forwards;
 }
 
 .removal-hand {
@@ -301,17 +317,20 @@ function onForceReset() {
   image-rendering: pixelated;
 }
 
-@keyframes bottleFall {
+@keyframes bottleFallToWindow {
   0% {
-    transform: translateY(0) rotate(0deg);
+    top: var(--start-top, 45%);
+    transform: translate(-50%, 0) rotate(0deg);
     opacity: 1;
   }
   70% {
-    transform: translateY(120px) rotate(15deg);
+    top: 88%;
+    transform: translate(-50%, 0) rotate(15deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(140px) rotate(20deg);
+    top: 90%;
+    transform: translate(-50%, 0) rotate(20deg);
     opacity: 0;
   }
 }

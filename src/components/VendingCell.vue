@@ -18,7 +18,7 @@
           <div class="bottle-popup-title">{{ $t('bottles.popupTitle') }}</div>
           <div class="bottle-popup-ml">{{ popupBottle.ml }} {{ $t('unit.ml') }}</div>
           <div class="bottle-popup-time">{{ formatTime(popupBottle.addedAt) }}</div>
-          <button class="bottle-popup-remove" @click="removeBottle(popupBottle)">
+          <button class="bottle-popup-remove" @click="removeBottle(popupBottle, cell.position)">
             {{ $t('bottles.remove') }}
           </button>
           <button class="bottle-popup-close" @click="popupBottle = null">&#x2715;</button>
@@ -37,7 +37,7 @@ import BottleSprite from './BottleSprite.vue'
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
-const requestBottleRemoval = inject<(bottle: Bottle, closePopup: () => void) => void>('requestBottleRemoval')
+const requestBottleRemoval = inject<(bottle: Bottle, position: { row: number; col: number }, closePopup: () => void) => void>('requestBottleRemoval')
 
 defineProps<{
   cell: Cell
@@ -49,10 +49,10 @@ function showBottlePopup(bottle: Bottle) {
   popupBottle.value = bottle
 }
 
-function removeBottle(bottle: Bottle) {
+function removeBottle(bottle: Bottle, position: { row: number; col: number }) {
   const closePopup = () => { popupBottle.value = null }
   if (requestBottleRemoval) {
-    requestBottleRemoval(bottle, closePopup)
+    requestBottleRemoval(bottle, position, closePopup)
   } else {
     waterStore.removeBottle(bottle.id)
     closePopup()
