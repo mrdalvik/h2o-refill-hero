@@ -1,11 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useHistoryStore } from './history'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
 describe('history store', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
-    localStorage.removeItem('h2o-history-store')
+    localStorage.removeItem(STORAGE_KEYS.HISTORY_STORE)
   })
 
   it('addRecord adds to records', () => {
@@ -24,6 +25,6 @@ describe('history store', () => {
     const store = useHistoryStore()
     store.addRecord({ date: '2025-02-15', totalMl: 1500, bottleCount: 3, bottles: [] })
     store.addRecord({ date: '2025-02-16', totalMl: 2000, bottleCount: 4, bottles: [] })
-    expect(store.totalAllTime()).toBe(3500)
+    expect(store.totalAllTime).toBe(3500)
   })
 })

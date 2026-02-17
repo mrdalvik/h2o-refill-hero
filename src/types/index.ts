@@ -26,6 +26,12 @@ export interface DayRecord {
 
 export type TimeOfDay = 'morning' | 'day' | 'evening' | 'night'
 
+export type BottleRemovalFn = (
+  bottle: Bottle,
+  position: CellPosition,
+  closePopup: () => void,
+) => void
+
 export const GRID_ROWS = 4
 export const GRID_COLS = 4
 export const DEFAULT_DAILY_GOAL = 2000

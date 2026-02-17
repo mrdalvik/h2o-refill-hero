@@ -1,4 +1,5 @@
 import { createI18n } from 'vue-i18n'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 import ru from './locales/ru'
 import en from './locales/en'
 import zh from './locales/zh'
@@ -23,10 +24,8 @@ export const SUPPORTED_LOCALES = {
 
 export type SupportedLocale = keyof typeof SUPPORTED_LOCALES
 
-const STORAGE_KEY = 'h2o-locale'
-
 function detectLocale(): SupportedLocale {
-  const saved = localStorage.getItem(STORAGE_KEY)
+  const saved = localStorage.getItem(STORAGE_KEYS.LOCALE)
   if (saved && saved in SUPPORTED_LOCALES) {
     return saved as SupportedLocale
   }
@@ -40,7 +39,7 @@ function detectLocale(): SupportedLocale {
 }
 
 export function saveLocale(locale: SupportedLocale) {
-  localStorage.setItem(STORAGE_KEY, locale)
+  localStorage.setItem(STORAGE_KEYS.LOCALE, locale)
 }
 
 const i18n = createI18n({

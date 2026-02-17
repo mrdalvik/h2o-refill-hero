@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { DayRecord } from '@/types'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
-const STORAGE_KEY = 'h2o-history-store'
+const STORAGE_KEY = STORAGE_KEYS.HISTORY_STORE
 
 function loadFromStorage(): DayRecord[] {
   try {
@@ -26,12 +27,9 @@ export const useHistoryStore = defineStore('history', () => {
     saveToStorage(records.value)
   }
 
-  function getRecords(): DayRecord[] {
-    return records.value
-  }
+  const totalAllTime = computed(() =>
+    records.value.reduce((sum, r) => sum + r.totalMl, 0),
+  )
 
-  const totalAllTime = () =>
-    records.value.reduce((sum, r) => sum + r.totalMl, 0)
-
-  return { records, addRecord, getRecords, totalAllTime }
+  return { records, addRecord, totalAllTime }
 })

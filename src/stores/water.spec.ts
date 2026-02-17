@@ -2,14 +2,13 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useWaterStore } from './water'
 import { useHistoryStore } from './history'
-
-const STORAGE_KEY = 'h2o-water-store'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
 describe('water store', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
-    localStorage.removeItem(STORAGE_KEY)
-    localStorage.removeItem('h2o-history-store')
+    localStorage.removeItem(STORAGE_KEYS.WATER_STORE)
+    localStorage.removeItem(STORAGE_KEYS.HISTORY_STORE)
   })
 
   describe('addWater', () => {

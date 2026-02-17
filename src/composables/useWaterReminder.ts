@@ -1,11 +1,13 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import i18n from '@/i18n'
 import { shouldShowReminder, type ReminderFrequency } from '@/utils/reminder'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import { REMINDER_CHECK_INTERVAL_MS } from '@/constants/timing'
 
 export type { ReminderFrequency }
 
-const STORAGE_KEY = 'h2o-reminder'
-const SHOWN_KEY = 'h2o-reminder-shown'
+const STORAGE_KEY = STORAGE_KEYS.REMINDER
+const SHOWN_KEY = STORAGE_KEYS.REMINDER_SHOWN
 
 function loadPreference(): ReminderFrequency {
   try {
@@ -73,7 +75,7 @@ export function useWaterReminder(options?: { setupInterval?: boolean }) {
       }
       checkAndNotify()
       if (!interval) {
-        interval = setInterval(checkAndNotify, 60_000)
+        interval = setInterval(checkAndNotify, REMINDER_CHECK_INTERVAL_MS)
       }
     })
 

@@ -4,8 +4,9 @@ import type { Cell, Bottle } from '@/types'
 import { GRID_ROWS, GRID_COLS, DEFAULT_DAILY_GOAL } from '@/types'
 import { mlToBottles } from '@/utils/bottles'
 import { useHistoryStore } from './history'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
-const STORAGE_KEY = 'h2o-water-store'
+const STORAGE_KEY = STORAGE_KEYS.WATER_STORE
 
 function createEmptyGrid(): Cell[][] {
   const grid: Cell[][] = []
@@ -80,7 +81,7 @@ export const useWaterStore = defineStore('water', () => {
     return null
   }
 
-  function findCellForSecondRow(): Cell | null {
+  function findCellWithOneBottle(): Cell | null {
     for (let row = 0; row < GRID_ROWS; row++) {
       for (let col = 0; col < GRID_COLS; col++) {
         if (cells.value[row][col].bottles.length === 1) {
@@ -97,7 +98,7 @@ export const useWaterStore = defineStore('water', () => {
       freeCell.bottles.push(bottle)
       return true
     }
-    const secondRowCell = findCellForSecondRow()
+    const secondRowCell = findCellWithOneBottle()
     if (secondRowCell) {
       secondRowCell.bottles.push(bottle)
       return true
@@ -153,12 +154,8 @@ export const useWaterStore = defineStore('water', () => {
     persist()
   }
 
-  function checkAndHandleNewDay(): boolean {
-    const today = getTodayDate()
-    if (currentDate.value !== today) {
-      return true
-    }
-    return false
+  function isNewDay(): boolean {
+    return currentDate.value !== getTodayDate()
   }
 
   return {
@@ -172,7 +169,7 @@ export const useWaterStore = defineStore('water', () => {
     addWater,
     removeBottle,
     resetDay,
-    checkAndHandleNewDay,
+    isNewDay,
     persist,
   }
 })

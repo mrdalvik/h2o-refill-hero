@@ -144,6 +144,9 @@ import { useWaterStore } from '@/stores/water'
 import { useTimeOfDaySetting, type TimeOfDayPreference } from '@/composables/useTimeOfDay'
 import { useWaterReminder, type ReminderFrequency } from '@/composables/useWaterReminder'
 import { SUPPORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
+import { calculateDailyGoal } from '@/utils/waterGoal'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import { GOAL_PRESETS } from '@/constants/timing'
 
 const props = defineProps<{
   visible: boolean
@@ -172,11 +175,9 @@ const TIME_OPTIONS: { value: TimeOfDayPreference; label: string }[] = [
   { value: 'night', label: 'settings.timeNight' },
 ]
 
-const CALC_STORAGE_KEY = 'h2o-calc-prefs'
-
 function loadCalcPrefs() {
   try {
-    const raw = localStorage.getItem(CALC_STORAGE_KEY)
+    const raw = localStorage.getItem(STORAGE_KEYS.CALC_PREFS)
     if (raw) {
       const { weight, activity } = JSON.parse(raw)
       if (typeof weight === 'number' && weight >= 30 && weight <= 200) {
@@ -187,7 +188,6 @@ function loadCalcPrefs() {
   return { weight: 70, activity: 'medium' as const }
 }
 
-const GOAL_PRESETS = [1500, 2000, 2500, 3000]
 const goalInput = ref(waterStore.dailyGoal)
 const showCalcPopup = ref(false)
 const prefs = loadCalcPrefs()
@@ -229,12 +229,6 @@ function onGoalChange() {
   waterStore.persist()
 }
 
-function calculateDailyGoal(weightKg: number, activity: 'low' | 'medium' | 'high'): number {
-  const baseMlPerKg = 30
-  const multipliers = { low: 1.0, medium: 1.2, high: 1.5 }
-  return Math.round(weightKg * baseMlPerKg * multipliers[activity] / 100) * 100
-}
-
 function applyCalculatedGoal() {
   const w = Math.min(200, Math.max(30, Number(calcWeight.value) || 70))
   const goal = calculateDailyGoal(w, calcActivity.value)
@@ -242,7 +236,7 @@ function applyCalculatedGoal() {
   waterStore.dailyGoal = clamped
   goalInput.value = clamped
   waterStore.persist()
-  localStorage.setItem(CALC_STORAGE_KEY, JSON.stringify({ weight: w, activity: calcActivity.value }))
+  localStorage.setItem(STORAGE_KEYS.CALC_PREFS, JSON.stringify({ weight: w, activity: calcActivity.value }))
   showCalcPopup.value = false
 }
 

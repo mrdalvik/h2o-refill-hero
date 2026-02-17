@@ -1,9 +1,11 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import type { TimeOfDay } from '@/types'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import { TIME_CHECK_INTERVAL_MS } from '@/constants/timing'
 
 export type TimeOfDayPreference = 'auto' | TimeOfDay
 
-const STORAGE_KEY = 'h2o-time-of-day'
+const STORAGE_KEY = STORAGE_KEYS.TIME_OF_DAY
 
 export function getTimeOfDayFromHour(hour: number): TimeOfDay {
   if (hour >= 6 && hour < 12) return 'morning'
@@ -39,7 +41,7 @@ export function useTimeOfDay() {
   onMounted(() => {
     interval = setInterval(() => {
       actualTime.value = getTimeOfDay()
-    }, 60_000)
+    }, TIME_CHECK_INTERVAL_MS)
   })
 
   onUnmounted(() => {

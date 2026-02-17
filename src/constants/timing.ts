@@ -1,0 +1,7 @@
+export const DAY_RESET_ANIMATION_MS = 5000
+export const CELEBRATION_DISPLAY_MS = 3000
+export const BOTTLE_REMOVAL_ANIMATION_MS = 1600
+export const TIME_CHECK_INTERVAL_MS = 60_000
+export const REMINDER_CHECK_INTERVAL_MS = 60_000
+export const NUMPAD_MAX_DIGITS = 4
+export const GOAL_PRESETS = [1500, 2000, 2500, 3000] as const

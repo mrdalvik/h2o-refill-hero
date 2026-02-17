@@ -32,12 +32,13 @@
 import { ref, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
-import type { Cell, Bottle } from '@/types'
+import type { Cell, Bottle, BottleRemovalFn } from '@/types'
+import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
 import BottleSprite from './BottleSprite.vue'
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
-const requestBottleRemoval = inject<(bottle: Bottle, position: { row: number; col: number }, closePopup: () => void) => void>('requestBottleRemoval')
+const requestBottleRemoval = inject<BottleRemovalFn>(BOTTLE_REMOVAL_KEY)
 
 defineProps<{
   cell: Cell

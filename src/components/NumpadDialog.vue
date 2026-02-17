@@ -43,6 +43,7 @@
 import { ref, computed } from 'vue'
 import { useWaterStore } from '@/stores/water'
 import i18n from '@/i18n'
+import { NUMPAD_MAX_DIGITS } from '@/constants/timing'
 
 defineProps<{
   visible: boolean
@@ -69,7 +70,7 @@ function handleKey(key: string) {
   } else if (key === '⌫') {
     inputValue.value = inputValue.value.slice(0, -1)
   } else {
-    if (inputValue.value.length < 4) {
+    if (inputValue.value.length < NUMPAD_MAX_DIGITS) {
       inputValue.value += key
     }
   }

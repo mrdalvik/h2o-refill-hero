@@ -27,7 +27,6 @@
       <NumpadDialog
         :visible="showNumpad"
         @close="showNumpad = false"
-        @submitted="onWaterAdded"
         @force-reset="onForceReset"
       />
 
@@ -66,6 +65,9 @@
 <script setup lang="ts">
 import { ref, watch, provide } from 'vue'
 import { useWaterStore } from '@/stores/water'
+import type { Bottle, CellPosition } from '@/types'
+import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
+import { CELEBRATION_DISPLAY_MS, BOTTLE_REMOVAL_ANIMATION_MS } from '@/constants/timing'
 import WaterCounter from './WaterCounter.vue'
 import VendingGrid from './VendingGrid.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
@@ -95,13 +97,13 @@ function shelfLeft(col: number): string {
   return lefts[col] ?? '50%'
 }
 
-provide('requestBottleRemoval', (bottle: { id: string; ml: number; size: 'small' | 'medium' | 'large' }, position: { row: number; col: number }, closePopup: () => void) => {
+provide(BOTTLE_REMOVAL_KEY, (bottle: Bottle, position: CellPosition, closePopup: () => void) => {
   closePopup()
   waterStore.removeBottle(bottle.id)
   removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size, row: position.row, col: position.col }
   setTimeout(() => {
     removingBottle.value = null
-  }, 1600)
+  }, BOTTLE_REMOVAL_ANIMATION_MS)
 })
 
 watch(() => waterStore.goalReached, (reached) => {
@@ -110,13 +112,9 @@ watch(() => waterStore.goalReached, (reached) => {
     hasShownCelebration.value = true
     setTimeout(() => {
       showCelebration.value = false
-    }, 3000)
+    }, CELEBRATION_DISPLAY_MS)
   }
 })
-
-function onWaterAdded() {
-  // Celebration is handled by the watcher
-}
 
 function onForceReset() {
   hasShownCelebration.value = false
