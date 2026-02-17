@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="dropHighlight" x1="20%" y1="20%" x2="80%" y2="80%">
+      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" fill="#87CEEB" rx="36"/>
+  <path d="M90 22.5 C56.25 78.75 33.75 123.75 33.75 146.25 C33.75 161.25 45 180 90 180 C135 180 146.25 161.25 146.25 146.25 C146.25 123.75 123.75 78.75 90 22.5 Z" fill="url(#dropGrad)"/>
+  <ellipse cx="73" cy="101" rx="22.5" ry="17" fill="url(#dropHighlight)"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="dropHighlight" x1="20%" y1="20%" x2="80%" y2="80%">
+      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 8 C20 28 12 44 12 52 C12 58 18 64 32 64 C46 64 52 58 52 52 C52 44 44 28 32 8 Z" fill="url(#dropGrad)"/>
+  <ellipse cx="26" cy="36" rx="8" ry="6" fill="url(#dropHighlight)"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "name": "H2O: Refill Hero",
+  "short_name": "H2O",
+  "description": "Water tracking vending machine",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#87CEEB",
+  "background_color": "#87CEEB",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
