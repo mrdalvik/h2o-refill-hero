@@ -73,7 +73,11 @@ const LOCALE_ENGLISH_NAMES: Record<SupportedLocale, string> = {
 }
 
 export const SORTED_LOCALES = (Object.entries(SUPPORTED_LOCALES) as [SupportedLocale, string][])
-  .sort(([a], [b]) => LOCALE_ENGLISH_NAMES[a].localeCompare(LOCALE_ENGLISH_NAMES[b]))
+  .sort(([a], [b]) => {
+    if (a === 'en') return -1
+    if (b === 'en') return 1
+    return LOCALE_ENGLISH_NAMES[a].localeCompare(LOCALE_ENGLISH_NAMES[b])
+  })
 
 function detectLocale(): SupportedLocale {
   const saved = localStorage.getItem(STORAGE_KEYS.LOCALE)
