@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: '概算値です。のどの渇きを目安にしてください。',
     calcApply: '適用',
     language: '言語',
+    author: '作者',
     close: '閉じる',
   },
 }

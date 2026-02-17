@@ -85,6 +85,17 @@
           </div>
         </div>
 
+        <div class="settings-section">
+          <div class="settings-label">{{ $t('settings.author') }}</div>
+          <div class="author-info">
+            <span class="author-name">Lev Tregubov</span>
+            <div class="author-links">
+              <a href="https://t.me/trlev" target="_blank" rel="noopener noreferrer" class="author-link">Telegram</a>
+              <a href="https://github.com/mrdalvik" target="_blank" rel="noopener noreferrer" class="author-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
         <button class="settings-done" @click="$emit('close')">
           {{ $t('settings.close') }}
         </button>
@@ -515,6 +526,35 @@ function changeLocale(code: SupportedLocale) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.author-name {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.author-links {
+  display: flex;
+  gap: 12px;
+}
+
+.author-link {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.author-link:hover {
+  color: #60a5fa;
 }
 
 .settings-done {

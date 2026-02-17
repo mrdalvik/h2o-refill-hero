@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'These are approximate values. Always rely on your sense of thirst.',
     calcApply: 'Apply',
     language: 'Language',
+    author: 'Author',
     close: 'Close',
   },
 }

@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'Valores aproximados. Siempre guíate por la sed.',
     calcApply: 'Aplicar',
     language: 'Idioma',
+    author: 'Autor',
     close: 'Cerrar',
   },
 }

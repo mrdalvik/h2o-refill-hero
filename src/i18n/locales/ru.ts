@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'Это примерные данные. Всегда ориентируйтесь на чувство жажды.',
     calcApply: 'Применить',
     language: 'Язык',
+    author: 'Автор',
     close: 'Закрыть',
   },
 }

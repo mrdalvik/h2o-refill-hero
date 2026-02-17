@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'ये अनुमानित मान हैं। हमेशा प्यास पर भरोसा करें।',
     calcApply: 'लागू करें',
     language: 'भाषा',
+    author: 'लेखक',
     close: 'बंद करें',
   },
 }

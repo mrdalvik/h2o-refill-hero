@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'Näherungswerte. Orientiere dich immer am Durstgefühl.',
     calcApply: 'Übernehmen',
     language: 'Sprache',
+    author: 'Autor',
     close: 'Schließen',
   },
 }

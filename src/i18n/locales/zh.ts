@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: '仅供参考。请根据口渴感调整饮水量。',
     calcApply: '应用',
     language: '语言',
+    author: '作者',
     close: '关闭',
   },
 }

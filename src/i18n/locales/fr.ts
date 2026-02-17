@@ -58,6 +58,7 @@ export default {
     calcDisclaimer: 'Valeurs approximatives. Fiez-vous toujours à votre soif.',
     calcApply: 'Appliquer',
     language: 'Langue',
+    author: 'Auteur',
     close: 'Fermer',
   },
 }
