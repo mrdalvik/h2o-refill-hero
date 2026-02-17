@@ -8,7 +8,7 @@
 
     <div class="panel-numpad panel-clickable" @click="$emit('open-numpad')">
       <div class="numpad-placeholder">
-        <span v-for="key in keys" :key="key" class="numpad-key-placeholder">{{ key }}</span>
+        <span class="numpad-placeholder-value">---</span>
       </div>
     </div>
 
@@ -28,8 +28,6 @@ defineEmits<{
 }>()
 
 const waterStore = useWaterStore()
-
-const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
 const displayValue = computed(() => {
   const bottles = waterStore.bottles
@@ -106,23 +104,17 @@ const displayValue = computed(() => {
 }
 
 .numpad-placeholder {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-}
-
-.numpad-key-placeholder {
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  color: #6b7280;
-  font-family: 'Fusion Pixel', 'Courier New', monospace;
-  font-size: 12px;
-  padding: 6px 2px;
-  border-radius: 3px;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 48px;
+}
+
+.numpad-placeholder-value {
+  font-family: 'Courier New', 'Fusion Pixel', monospace;
+  font-size: 14px;
+  color: #6b7280;
+  letter-spacing: 2px;
 }
 
 .panel-settings {
@@ -160,9 +152,8 @@ const displayValue = computed(() => {
     font-size: 14px;
   }
 
-  .numpad-key-placeholder {
-    padding: 4px 2px;
-    font-size: 10px;
+  .numpad-placeholder-value {
+    font-size: 12px;
   }
 
   .panel-settings {
