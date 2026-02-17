@@ -59,6 +59,7 @@ export default {
     calcApply: 'Aplică',
     language: 'Limbă',
     author: 'Autor',
+    version: 'Versiune',
     close: 'Închide',
   },
 }

@@ -59,6 +59,7 @@ export default {
     calcApply: 'लागू करें',
     language: 'भाषा',
     author: 'लेखक',
+    version: 'संस्करण',
     close: 'बंद करें',
   },
 }

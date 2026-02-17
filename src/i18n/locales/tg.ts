@@ -59,6 +59,7 @@ export default {
     calcApply: 'Татбиқ кардан',
     language: 'Забон',
     author: 'Муаллиф',
+    version: 'Версия',
     close: 'Пӯшидан',
   },
 }

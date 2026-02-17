@@ -59,6 +59,7 @@ export default {
     calcApply: 'Կիրառել',
     language: 'Լեզու',
     author: 'Հեղինակ',
+    version: 'Տարբերակ',
     close: 'Փակել',
   },
 }

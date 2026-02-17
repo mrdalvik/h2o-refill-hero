@@ -94,6 +94,7 @@
               <a href="https://t.me/trlev" target="_blank" rel="noopener noreferrer" class="author-link">Telegram</a>
               <a href="https://github.com/mrdalvik" target="_blank" rel="noopener noreferrer" class="author-link">GitHub</a>
             </div>
+            <span class="app-version">{{ $t('settings.version') }} {{ appVersion }}</span>
           </div>
         </div>
 
@@ -253,6 +254,7 @@ function applyCalculatedGoal() {
 }
 
 const currentLocale = computed(() => locale.value)
+const appVersion = __APP_VERSION__
 
 function changeLocale(code: SupportedLocale) {
   locale.value = code
@@ -509,6 +511,12 @@ function changeLocale(code: SupportedLocale) {
   font-family: 'Fusion Pixel', monospace;
   font-size: 13px;
   color: #e5e7eb;
+}
+
+.app-version {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 11px;
+  color: #6b7280;
 }
 
 .author-links {

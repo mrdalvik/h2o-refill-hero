@@ -59,6 +59,7 @@ export default {
     calcApply: 'Ужыць',
     language: 'Мова',
     author: 'Аўтар',
+    version: 'Версія',
     close: 'Закрыць',
   },
 }

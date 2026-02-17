@@ -59,6 +59,7 @@ export default {
     calcApply: 'Ulgamak',
     language: 'Dil',
     author: 'Awtor',
+    version: 'Wersiýa',
     close: 'Ýapmak',
   },
 }

@@ -59,6 +59,7 @@ export default {
     calcApply: '应用',
     language: '语言',
     author: '作者',
+    version: '版本',
     close: '关闭',
   },
 }

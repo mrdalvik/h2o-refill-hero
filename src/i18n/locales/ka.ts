@@ -59,6 +59,7 @@ export default {
     calcApply: 'გამოყენება',
     language: 'ენა',
     author: 'ავტორი',
+    version: 'ვერსია',
     close: 'დახურვა',
   },
 }

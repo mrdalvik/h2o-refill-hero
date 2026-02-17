@@ -59,6 +59,7 @@ export default {
     calcApply: '適用',
     language: '言語',
     author: '作者',
+    version: 'バージョン',
     close: '閉じる',
   },
 }

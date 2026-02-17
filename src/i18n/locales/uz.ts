@@ -59,6 +59,7 @@ export default {
     calcApply: 'Qo\'llash',
     language: 'Til',
     author: 'Muallif',
+    version: 'Versiya',
     close: 'Yopish',
   },
 }

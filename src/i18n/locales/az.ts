@@ -59,6 +59,7 @@ export default {
     calcApply: 'Tətbiq et',
     language: 'Dil',
     author: 'Müəllif',
+    version: 'Versiya',
     close: 'Bağla',
   },
 }

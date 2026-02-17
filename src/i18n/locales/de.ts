@@ -59,6 +59,7 @@ export default {
     calcApply: 'Übernehmen',
     language: 'Sprache',
     author: 'Autor',
+    version: 'Version',
     close: 'Schließen',
   },
 }

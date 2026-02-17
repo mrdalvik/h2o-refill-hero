@@ -59,6 +59,7 @@ export default {
     calcApply: 'Колдонуу',
     language: 'Тил',
     author: 'Автор',
+    version: 'Версия',
     close: 'Жабуу',
   },
 }

@@ -59,6 +59,7 @@ export default {
     calcApply: 'Қолдану',
     language: 'Тіл',
     author: 'Автор',
+    version: 'Нұсқа',
     close: 'Жабу',
   },
 }
