@@ -1,6 +1,17 @@
 import { createI18n } from 'vue-i18n'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
 import ru from './locales/ru'
+import uk from './locales/uk'
+import be from './locales/be'
+import kk from './locales/kk'
+import uz from './locales/uz'
+import az from './locales/az'
+import hy from './locales/hy'
+import ka from './locales/ka'
+import ky from './locales/ky'
+import tg from './locales/tg'
+import tk from './locales/tk'
+import ro from './locales/ro'
 import en from './locales/en'
 import zh from './locales/zh'
 import es from './locales/es'
@@ -9,9 +20,21 @@ import pt from './locales/pt'
 import ja from './locales/ja'
 import de from './locales/de'
 import fr from './locales/fr'
+import it from './locales/it'
 
 export const SUPPORTED_LOCALES = {
   ru: 'Русский',
+  uk: 'Українська',
+  be: 'Беларуская',
+  kk: 'Қазақша',
+  uz: 'O\'zbekcha',
+  az: 'Azərbaycan',
+  hy: 'Հայերեն',
+  ka: 'ქართული',
+  ky: 'Кыргызча',
+  tg: 'Тоҷикӣ',
+  tk: 'Türkmençe',
+  ro: 'Română',
   en: 'English',
   zh: '中文',
   es: 'Español',
@@ -20,6 +43,7 @@ export const SUPPORTED_LOCALES = {
   ja: '日本語',
   de: 'Deutsch',
   fr: 'Français',
+  it: 'Italiano',
 } as const
 
 export type SupportedLocale = keyof typeof SUPPORTED_LOCALES
@@ -46,7 +70,7 @@ const i18n = createI18n({
   legacy: false,
   locale: detectLocale(),
   fallbackLocale: 'en',
-  messages: { ru, en, zh, es, hi, pt, ja, de, fr },
+  messages: { ru, uk, be, kk, uz, az, hy, ka, ky, tg, tk, ro, en, zh, es, hi, pt, ja, de, fr, it },
 })
 
 export default i18n

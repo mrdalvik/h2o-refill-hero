@@ -256,6 +256,17 @@ const currentLocale = computed(() => locale.value)
 
 const flags: Record<SupportedLocale, string> = {
   ru: '🇷🇺',
+  uk: '🇺🇦',
+  be: '🇧🇾',
+  kk: '🇰🇿',
+  uz: '🇺🇿',
+  az: '🇦🇿',
+  hy: '🇦🇲',
+  ka: '🇬🇪',
+  ky: '🇰🇬',
+  tg: '🇹🇯',
+  tk: '🇹🇲',
+  ro: '🇷🇴',
   en: '🇬🇧',
   zh: '🇨🇳',
   es: '🇪🇸',
@@ -264,6 +275,7 @@ const flags: Record<SupportedLocale, string> = {
   ja: '🇯🇵',
   de: '🇩🇪',
   fr: '🇫🇷',
+  it: '🇮🇹',
 }
 
 function changeLocale(code: SupportedLocale) {
