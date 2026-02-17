@@ -75,6 +75,7 @@ const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 function addQuick(ml: number) {
   waterStore.addWater(ml)
   emit('submitted')
+  close()
 }
 
 const canSubmit = computed(() => {
