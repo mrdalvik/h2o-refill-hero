@@ -60,6 +60,10 @@ function onForceReset() {
 
 <style>
 :root {
+  /* Theme (updated by JS, fallbacks for initial load) */
+  --sky-top: #87CEEB;
+  --ground-color: #5a5a5a;
+
   /* Typography */
   --font-pixel: 'Fusion Pixel', monospace;
   --font-mono: 'Courier New', 'Fusion Pixel', monospace;
@@ -93,14 +97,9 @@ function onForceReset() {
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: var(--font-pixel), 'Courier New', monospace;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: unset;
-  image-rendering: pixelated;
-  overflow-x: hidden;
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
+html {
+  min-height: 100%;
+  min-height: 100dvh;
   background: linear-gradient(
     to bottom,
     var(--sky-top, #87CEEB) 0%,
@@ -108,11 +107,21 @@ html, body {
     var(--ground-color, #5a5a5a) calc(100% - 120px),
     var(--ground-color, #5a5a5a) 100%
   );
+  background-attachment: fixed;
+  background-color: var(--sky-top, #87CEEB);
 }
 
 body {
+  font-family: var(--font-pixel), 'Courier New', monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  image-rendering: pixelated;
+  overflow-x: hidden;
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
   min-height: 100vh;
   min-height: 100dvh;
+  background: transparent;
 }
 
 #app {
