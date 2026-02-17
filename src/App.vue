@@ -33,11 +33,20 @@ const SKY_COLORS: Record<string, string> = {
   night: '#0C1445',
 }
 
+const GROUND_COLORS: Record<string, string> = {
+  morning: '#4a4a4a',
+  day: '#5a5a5a',
+  evening: '#4a3a3a',
+  night: '#1a1a1a',
+}
+
 watch(timeOfDay, (t) => {
-  const color = SKY_COLORS[t] ?? '#87CEEB'
-  document.documentElement.style.setProperty('--sky-top', color)
+  const sky = SKY_COLORS[t] ?? '#87CEEB'
+  const ground = GROUND_COLORS[t] ?? '#5a5a5a'
+  document.documentElement.style.setProperty('--sky-top', sky)
+  document.documentElement.style.setProperty('--ground-color', ground)
   const meta = document.getElementById('theme-color') as HTMLMetaElement | null
-  if (meta) meta.content = color
+  if (meta) meta.content = sky
 }, { immediate: true })
 
 function onAnimationDone() {
@@ -92,7 +101,13 @@ html, body {
   overflow-x: hidden;
   touch-action: manipulation;
   -ms-touch-action: manipulation;
-  background: var(--sky-top, #87CEEB);
+  background: linear-gradient(
+    to bottom,
+    var(--sky-top, #87CEEB) 0%,
+    var(--sky-top, #87CEEB) calc(100% - 120px),
+    var(--ground-color, #5a5a5a) calc(100% - 120px),
+    var(--ground-color, #5a5a5a) 100%
+  );
 }
 
 body {
