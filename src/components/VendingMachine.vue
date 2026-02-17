@@ -57,15 +57,6 @@
           >
             <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
           </div>
-          <div class="removal-hand">
-            <div class="hand-palm"></div>
-            <div class="hand-fingers">
-              <div class="finger"></div>
-              <div class="finger"></div>
-              <div class="finger"></div>
-              <div class="finger"></div>
-            </div>
-          </div>
         </div>
       </Transition>
     </div>
@@ -284,39 +275,6 @@ function onForceReset() {
   animation: bottleFallToWindow 1.2s ease-in forwards;
 }
 
-.removal-hand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: handGrab 1.6s ease-out 0.4s forwards;
-  transform-origin: bottom center;
-}
-
-.hand-palm {
-  width: 16px;
-  height: 12px;
-  background: #fcd9b6;
-  border: 2px solid #d4a574;
-  border-radius: 2px;
-  image-rendering: pixelated;
-}
-
-.hand-fingers {
-  display: flex;
-  gap: 2px;
-  margin-top: 1px;
-}
-
-.hand-fingers .finger {
-  width: 4px;
-  height: 8px;
-  background: #fcd9b6;
-  border: 1px solid #d4a574;
-  border-radius: 1px;
-  image-rendering: pixelated;
-}
-
 @keyframes bottleFallToWindow {
   0% {
     top: var(--start-top, 45%);
@@ -332,21 +290,6 @@ function onForceReset() {
     top: 90%;
     transform: translate(-50%, 0) rotate(20deg);
     opacity: 0;
-  }
-}
-
-@keyframes handGrab {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.5);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(-30px) scale(0.8);
   }
 }
 
