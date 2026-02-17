@@ -60,6 +60,7 @@ export default {
     language: 'Забон',
     author: 'Муаллиф',
     version: 'Версия',
+    refresh: 'Навсозӣ',
     close: 'Пӯшидан',
   },
 }

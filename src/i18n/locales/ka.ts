@@ -60,6 +60,7 @@ export default {
     language: 'ენა',
     author: 'ავტორი',
     version: 'ვერსია',
+    refresh: 'განახლება',
     close: 'დახურვა',
   },
 }

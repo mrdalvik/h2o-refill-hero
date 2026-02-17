@@ -60,6 +60,7 @@ export default {
     language: 'Dil',
     author: 'Awtor',
     version: 'Wersiýa',
+    refresh: 'Täzelemek',
     close: 'Ýapmak',
   },
 }

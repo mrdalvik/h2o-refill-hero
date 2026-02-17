@@ -60,6 +60,7 @@ export default {
     language: 'Тил',
     author: 'Автор',
     version: 'Версия',
+    refresh: 'Жаңыртуу',
     close: 'Жабуу',
   },
 }

@@ -60,6 +60,7 @@ export default {
     language: 'Limbă',
     author: 'Autor',
     version: 'Versiune',
+    refresh: 'Actualizare',
     close: 'Închide',
   },
 }

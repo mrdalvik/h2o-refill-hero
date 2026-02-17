@@ -60,6 +60,7 @@ export default {
     language: 'Мова',
     author: 'Аўтар',
     version: 'Версія',
+    refresh: 'Абнавіць',
     close: 'Закрыць',
   },
 }

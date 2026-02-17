@@ -60,6 +60,7 @@ export default {
     language: '言語',
     author: '作者',
     version: 'バージョン',
+    refresh: '更新',
     close: '閉じる',
   },
 }

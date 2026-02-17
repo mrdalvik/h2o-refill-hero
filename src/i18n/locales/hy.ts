@@ -60,6 +60,7 @@ export default {
     language: 'Լեզու',
     author: 'Հեղինակ',
     version: 'Տարբերակ',
+    refresh: 'Թարմացնել',
     close: 'Փակել',
   },
 }

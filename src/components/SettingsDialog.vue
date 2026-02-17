@@ -94,7 +94,12 @@
               <a href="https://t.me/trlev" target="_blank" rel="noopener noreferrer" class="author-link">Telegram</a>
               <a href="https://github.com/mrdalvik" target="_blank" rel="noopener noreferrer" class="author-link">GitHub</a>
             </div>
-            <span class="app-version">{{ $t('settings.version') }} {{ appVersion }}</span>
+            <div class="version-row">
+              <span class="app-version">{{ $t('settings.version') }} {{ appVersion }}</span>
+              <button class="refresh-btn" :disabled="isRefreshing" @click="refreshApp" :title="$t('settings.refresh')">
+                {{ isRefreshing ? '...' : $t('settings.refresh') }}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -255,6 +260,23 @@ function applyCalculatedGoal() {
 
 const currentLocale = computed(() => locale.value)
 const appVersion = __APP_VERSION__
+const isRefreshing = ref(false)
+
+async function refreshApp() {
+  if (isRefreshing.value) return
+  isRefreshing.value = true
+  try {
+    if ('caches' in window) {
+      const names = await caches.keys()
+      await Promise.all(names.map((n) => caches.delete(n)))
+    }
+    const url = new URL(window.location.href)
+    url.searchParams.set('_refresh', String(Date.now()))
+    window.location.href = url.toString()
+  } catch {
+    window.location.reload()
+  }
+}
 
 function changeLocale(code: SupportedLocale) {
   locale.value = code
@@ -513,10 +535,39 @@ function changeLocale(code: SupportedLocale) {
   color: #e5e7eb;
 }
 
+.version-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .app-version {
   font-family: 'Fusion Pixel', monospace;
   font-size: 11px;
   color: #6b7280;
+}
+
+.refresh-btn {
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .author-links {

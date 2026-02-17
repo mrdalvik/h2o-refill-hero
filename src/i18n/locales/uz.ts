@@ -60,6 +60,7 @@ export default {
     language: 'Til',
     author: 'Muallif',
     version: 'Versiya',
+    refresh: 'Yangilash',
     close: 'Yopish',
   },
 }

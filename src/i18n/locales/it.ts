@@ -60,6 +60,7 @@ export default {
     language: 'Lingua',
     author: 'Autore',
     version: 'Versione',
+    refresh: 'Aggiorna',
     close: 'Chiudi',
   },
 }

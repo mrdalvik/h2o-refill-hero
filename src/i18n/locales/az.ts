@@ -60,6 +60,7 @@ export default {
     language: 'Dil',
     author: 'Müəllif',
     version: 'Versiya',
+    refresh: 'Yenilə',
     close: 'Bağla',
   },
 }

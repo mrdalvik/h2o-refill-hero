@@ -60,6 +60,7 @@ export default {
     language: 'भाषा',
     author: 'लेखक',
     version: 'संस्करण',
+    refresh: 'रीफ्रेश',
     close: 'बंद करें',
   },
 }
