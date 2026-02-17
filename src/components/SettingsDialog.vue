@@ -105,10 +105,6 @@
             </div>
           </div>
         </div>
-
-        <button class="settings-done" @click="$emit('close')">
-          {{ $t('settings.close') }}
-        </button>
       </div>
 
       <!-- Reset confirmation popup -->
@@ -679,31 +675,6 @@ function changeLocale(code: SupportedLocale) {
 
 .author-link:hover {
   color: #60a5fa;
-}
-
-.settings-done {
-  width: 100%;
-  background: linear-gradient(180deg, #3b82f6, #2563eb);
-  border: 3px solid #1d4ed8;
-  color: #fff;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 13px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  transition: background 0.1s, transform 0.1s;
-  image-rendering: pixelated;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
-}
-
-.settings-done:hover {
-  background: linear-gradient(180deg, #60a5fa, #3b82f6);
-}
-
-.settings-done:active {
-  transform: translateY(2px);
-  box-shadow: none;
 }
 
 @media (max-width: 479px) {
