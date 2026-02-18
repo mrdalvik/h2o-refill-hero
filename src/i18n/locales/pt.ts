@@ -40,11 +40,11 @@ export default {
     undo: 'Desfazer',
   },
   onboarding: {
-    step1: 'Olá! Esta máquina ajuda você a lembrar de beber água.',
-    step2: 'Toque no painel à direita, insira os ml e toque « Colocar na prateleira » — a água será adicionada.',
-    step3: 'Nas configurações você pode ativar lembretes, meta e mais.',
+    step1: 'Olá! Esta máquina ajuda você a lembrar de beber.',
+    step2: 'Digite quanto bebeu e a garrafa aparecerá na prateleira.',
+    step3: 'Aqui você pode configurar lembretes e meta diária.',
     next: 'Próximo',
-    gotIt: 'Entendi',
+    start: 'Começar',
   },
   devSettings: {
     title: 'Configurações do desenvolvedor',

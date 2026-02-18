@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Salam! Bu awtomat suw içmegi ýatdan çykarmaga kömek edýär.',
-    step2: 'Sagdaky panela basyň, ml giriziň we «Şelfe goýmak» basyň — suw goşular.',
-    step3: 'Sazlamalarda ýatlatmalary, maksady we başgalary açyp bilersiňiz.',
+    step2: 'Näçe içdigiňizi giriziň — çüýşe şelfde görüner.',
+    step3: 'Bu ýerde ýatlatmalary we gündelik maksady sazlap bilersiňiz.',
     next: 'Indiki',
-    gotIt: 'Düşündim',
+    start: 'Başla',
   },
   devSettings: {
     title: 'Önümçi sazlamalary',

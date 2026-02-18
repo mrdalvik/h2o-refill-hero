@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Salom! Bu avtomat suv ichishni unutmasligingizga yordam beradi.',
-    step2: 'O\'ng tomondagi panelni bosing, ml kiriting va «Javonga qo\'yish» bosing — suv qo\'shiladi.',
-    step3: 'Sozlamalarda eslatmalar, maqsad va boshqalarni yoqish mumkin.',
+    step2: 'Qancha ichganingizni kiriting — shisha javonda paydo bo\'ladi.',
+    step3: 'Bu yerda eslatmalar va kunlik maqsadni sozlashingiz mumkin.',
     next: 'Keyingi',
-    gotIt: 'Tushundim',
+    start: 'Boshlash',
   },
   devSettings: {
     title: 'Dasturchi sozlamalari',

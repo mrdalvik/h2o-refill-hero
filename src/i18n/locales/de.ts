@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Hallo! Dieser Automat hilft dir, ans Trinken zu denken.',
-    step2: 'Tippe auf die Leiste rechts, gib die ml ein und tippe «Ins Regal stellen» — Wasser wird hinzugefügt.',
-    step3: 'In den Einstellungen kannst du Erinnerungen, Ziel und mehr aktivieren.',
+    step2: 'Gib ein, wie viel du getrunken hast — die Flasche erscheint im Regal.',
+    step3: 'Hier kannst du Erinnerungen und Tagesziel anpassen.',
     next: 'Weiter',
-    gotIt: 'Verstanden',
+    start: 'Los geht\'s',
   },
   devSettings: {
     title: 'Entwicklereinstellungen',

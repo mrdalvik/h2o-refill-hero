@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Salam! Bu avtomat su içməyi unutmamağa kömək edir.',
-    step2: 'Sağdakı paneldə toxunun, ml daxil edin və «Rəfə qoyun» toxunun — su əlavə olunacaq.',
-    step3: 'Parametrlərdə xatırlatmalar, hədəf və s. aktivləşdirə bilərsiniz.',
+    step2: 'Nə qədər içdiyinizi daxil edin — şüşə rəfdə görünəcək.',
+    step3: 'Burada xatırlatmalar və gündəlik hədəfi tənzimləyə bilərsiniz.',
     next: 'Növbəti',
-    gotIt: 'Başa düşdüm',
+    start: 'Başla',
   },
   devSettings: {
     title: 'İnkişafçı parametrləri',

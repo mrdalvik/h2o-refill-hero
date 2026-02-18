@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Salut! Acest automat te ajută să nu uiți să bei apă.',
-    step2: 'Apasă pe panoul din dreapta, introdu ml și apasă « Puneți pe raft » — apa va fi adăugată.',
-    step3: 'În setări poți activa memento-uri, obiectiv și altele.',
+    step2: 'Introdu cât ai băut și sticla va apărea pe raft.',
+    step3: 'Aici poți configura memento-uri și obiectivul zilnic.',
     next: 'Următorul',
-    gotIt: 'Am înțeles',
+    start: 'Începe',
   },
   devSettings: {
     title: 'Setări dezvoltator',

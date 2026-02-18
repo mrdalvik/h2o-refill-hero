@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: 'Ciao! Questo distributore ti aiuta a ricordarti di bere.',
-    step2: 'Tocca il pannello a destra, inserisci i ml e tocca « Colocare sullo scaffale » — l\'acqua verrà aggiunta.',
-    step3: 'Nelle impostazioni puoi attivare promemoria, obiettivo e altro.',
+    step2: 'Inserisci quanto hai bevuto e la bottiglia apparirà sullo scaffale.',
+    step3: 'Qui puoi configurare promemoria e obiettivo giornaliero.',
     next: 'Avanti',
-    gotIt: 'Capito',
+    start: 'Inizia',
   },
   devSettings: {
     title: 'Impostazioni sviluppatore',

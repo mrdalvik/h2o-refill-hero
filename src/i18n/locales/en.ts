@@ -40,11 +40,11 @@ export default {
     undo: 'Undo',
   },
   onboarding: {
-    step1: 'Hi! This vending machine helps you remember to drink water.',
-    step2: 'Tap the panel on the right, enter the volume in ml and tap «Put on shelf» — water will be added.',
-    step3: 'In settings you can enable reminders, set your goal and more.',
+    step1: 'Hi! This vending machine helps you remember to drink.',
+    step2: 'Enter how much you drank and a bottle will appear on the shelf.',
+    step3: 'Here you can set up reminders and daily goal for yourself.',
     next: 'Next',
-    gotIt: 'Got it',
+    start: 'Start',
   },
   devSettings: {
     title: 'Developer settings',

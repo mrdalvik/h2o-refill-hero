@@ -5,6 +5,7 @@
       <template v-if="step === 1">
         <div class="onboarding-backdrop" @click.self="nextStep" />
         <div class="onboarding-card onboarding-card-float">
+          <p class="onboarding-progress">{{ step }} / 3</p>
           <p class="onboarding-text">{{ $t('onboarding.step1') }}</p>
           <button class="onboarding-btn" @click="nextStep">
             {{ $t('onboarding.next') }}
@@ -34,9 +35,10 @@
           class="onboarding-card onboarding-card-tooltip"
           :style="tooltipStyle"
         >
+          <p class="onboarding-progress">{{ step }} / 3</p>
           <p class="onboarding-text">{{ step === 2 ? $t('onboarding.step2') : $t('onboarding.step3') }}</p>
           <button class="onboarding-btn" @click="nextStep">
-            {{ step === 3 ? $t('onboarding.gotIt') : $t('onboarding.next') }}
+            {{ step === 3 ? $t('onboarding.start') : $t('onboarding.next') }}
           </button>
         </div>
       </template>
@@ -169,6 +171,13 @@ onUnmounted(() => {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 320px;
+}
+
+.onboarding-progress {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0 0 8px;
 }
 
 .onboarding-card-tooltip {

@@ -40,11 +40,11 @@ export default {
     undo: 'Deshacer',
   },
   onboarding: {
-    step1: '¡Hola! Esta máquina te ayuda a recordar beber agua.',
-    step2: 'Toca el panel de la derecha, introduce los ml y toca «Poner en el estante» — se añadirá el agua.',
-    step3: 'En ajustes puedes activar recordatorios, objetivo y más.',
+    step1: '¡Hola! Esta máquina te ayuda a recordar beber.',
+    step2: 'Introduce cuánto has bebido y la botella aparecerá en el estante.',
+    step3: 'Aquí puedes configurar recordatorios y objetivo diario.',
     next: 'Siguiente',
-    gotIt: 'Entendido',
+    start: 'Empezar',
   },
   devSettings: {
     title: 'Configuración de desarrollador',

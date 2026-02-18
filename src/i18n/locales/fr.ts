@@ -41,10 +41,10 @@ export default {
   },
   onboarding: {
     step1: "Salut ! Cet automate t'aide à penser à boire.",
-    step2: "Appuie sur le panneau à droite, entre les ml et appuie « Mettre en rayon » — l'eau sera ajoutée.",
-    step3: "Dans les paramètres tu peux activer les rappels, l'objectif et plus.",
+    step2: "Entre combien tu as bu et la bouteille apparaîtra sur l'étagère.",
+    step3: "Ici tu peux configurer les rappels et l'objectif quotidien.",
     next: 'Suivant',
-    gotIt: 'Compris',
+    start: 'Commencer',
   },
   devSettings: {
     title: 'Paramètres développeur',
