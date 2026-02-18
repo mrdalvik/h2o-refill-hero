@@ -40,7 +40,10 @@ export default {
     undo: 'Rückgängig',
   },
   onboarding: {
-    text: 'Hallo! Dieser Automat hilft dir, ans Trinken zu denken. Wenn du getrunken hast — tippe auf die Zahlenleiste rechts und füge Wasser hinzu. Am Ende des Tages holen Kunden es ab und alles beginnt von vorne. Schau in die Einstellungen, um Erinnerungen zu aktivieren.',
+    step1: 'Hallo! Dieser Automat hilft dir, ans Trinken zu denken.',
+    step2: 'Tippe auf die Leiste rechts, gib die ml ein und tippe «Ins Regal stellen» — Wasser wird hinzugefügt.',
+    step3: 'In den Einstellungen kannst du Erinnerungen, Ziel und mehr aktivieren.',
+    next: 'Weiter',
     gotIt: 'Verstanden',
   },
   devSettings: {

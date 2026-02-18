@@ -40,7 +40,10 @@ export default {
     undo: 'Deshacer',
   },
   onboarding: {
-    text: '¡Hola! Esta máquina te ayuda a recordar beber agua. Cuando bebas — toca el panel de números a la derecha y añade el agua. Al final del día los clientes la recogerán y todo empezará de nuevo. Revisa la configuración para activar los recordatorios.',
+    step1: '¡Hola! Esta máquina te ayuda a recordar beber agua.',
+    step2: 'Toca el panel de la derecha, introduce los ml y toca «Poner en el estante» — se añadirá el agua.',
+    step3: 'En ajustes puedes activar recordatorios, objetivo y más.',
+    next: 'Siguiente',
     gotIt: 'Entendido',
   },
   devSettings: {

@@ -40,7 +40,10 @@ export default {
     undo: 'Annulla',
   },
   onboarding: {
-    text: 'Ciao! Questo distributore ti aiuta a ricordarti di bere. Quando bevi — tocca il pannello numerico a destra e aggiungi l\'acqua. A fine giornata i clienti la ritirano e tutto ricomincia. Vai nelle impostazioni per attivare i promemoria.',
+    step1: 'Ciao! Questo distributore ti aiuta a ricordarti di bere.',
+    step2: 'Tocca il pannello a destra, inserisci i ml e tocca « Colocare sullo scaffale » — l\'acqua verrà aggiunta.',
+    step3: 'Nelle impostazioni puoi attivare promemoria, obiettivo e altro.',
+    next: 'Avanti',
     gotIt: 'Capito',
   },
   devSettings: {

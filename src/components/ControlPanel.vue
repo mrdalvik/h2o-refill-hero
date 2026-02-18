@@ -1,5 +1,5 @@
 <template>
-  <div class="control-panel">
+  <div class="control-panel" data-onboarding="numpad-panel">
     <div class="panel-display panel-clickable" @click="$emit('open-numpad')">
       <span class="panel-value">{{ displayValue }}</span>
       <span class="panel-unit">{{ $t('unit.ml') }}</span>
@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <button class="panel-settings" @click="$emit('open-settings')" :title="$t('settings.title')">
+    <button class="panel-settings" data-onboarding="settings-btn" @click="$emit('open-settings')" :title="$t('settings.title')">
       &#9881; {{ $t('settings.title') }}
     </button>
   </div>

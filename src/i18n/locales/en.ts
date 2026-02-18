@@ -40,7 +40,10 @@ export default {
     undo: 'Undo',
   },
   onboarding: {
-    text: "Hi! This vending machine helps you remember to drink water. When you drink — tap the number panel on the right and add your water. At the end of the day, customers will take it away and everything starts fresh. Check your settings to turn on reminders so you never forget.",
+    step1: 'Hi! This vending machine helps you remember to drink water.',
+    step2: 'Tap the panel on the right, enter the volume in ml and tap «Put on shelf» — water will be added.',
+    step3: 'In settings you can enable reminders, set your goal and more.',
+    next: 'Next',
     gotIt: 'Got it',
   },
   devSettings: {

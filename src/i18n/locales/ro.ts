@@ -40,7 +40,10 @@ export default {
     undo: 'Anulare',
   },
   onboarding: {
-    text: 'Salut! Acest automat te ajută să nu uiți să bei apă. Când bei — apasă pe panoul de numere din dreapta și adaugă apa. La sfârșitul zilei clienții o iau și totul reîncepe. Verifică setările pentru a activa memento-urile.',
+    step1: 'Salut! Acest automat te ajută să nu uiți să bei apă.',
+    step2: 'Apasă pe panoul din dreapta, introdu ml și apasă « Puneți pe raft » — apa va fi adăugată.',
+    step3: 'În setări poți activa memento-uri, obiectiv și altele.',
+    next: 'Următorul',
     gotIt: 'Am înțeles',
   },
   devSettings: {
