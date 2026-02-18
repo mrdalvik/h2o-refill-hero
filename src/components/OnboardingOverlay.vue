@@ -94,17 +94,18 @@ const tooltipStyle = computed(() => {
       maxWidth: '200px',
     }
   }
+  // Step 3: tooltip в левом верхнем углу — не перекрывает клавиатуру и выделение настроек
   return {
-    top: Math.max(padding, rect.top - 110) + 'px',
-    left: Math.max(padding, Math.min(rect.left, windowWidth.value - 220)) + 'px',
-    maxWidth: '200px',
+    top: padding + 'px',
+    left: padding + 'px',
+    maxWidth: 'min(200px, calc(100vw - 24px))',
   }
 })
 
 function nextStep() {
   if (step.value < 3) {
     step.value++
-    setTimeout(updateSpotlight, 100)
+    updateSpotlight()
   } else {
     emit('close')
   }
@@ -162,7 +163,6 @@ onUnmounted(() => {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  animation: slideUp 0.3s ease-out;
   pointer-events: auto;
 }
 
@@ -171,6 +171,12 @@ onUnmounted(() => {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 320px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.onboarding-card-tooltip {
+  z-index: 3001;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .onboarding-progress {
@@ -178,10 +184,6 @@ onUnmounted(() => {
   font-size: 12px;
   color: #9ca3af;
   margin: 0 0 8px;
-}
-
-.onboarding-card-tooltip {
-  z-index: 3001;
 }
 
 .onboarding-text {
@@ -264,16 +266,5 @@ onUnmounted(() => {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>
