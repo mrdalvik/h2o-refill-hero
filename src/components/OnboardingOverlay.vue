@@ -94,11 +94,11 @@ const tooltipStyle = computed(() => {
       maxWidth: '200px',
     }
   }
-  // Step 3: tooltip в левом верхнем углу — не перекрывает клавиатуру и выделение настроек
+  // Step 3: как шаг 2 — слева от элемента, по центру по вертикали
   return {
-    top: padding + 'px',
-    left: padding + 'px',
-    maxWidth: 'min(200px, calc(100vw - 24px))',
+    top: rect.top + rect.height / 2 - 70 + 'px',
+    left: Math.max(padding, rect.left - 210) + 'px',
+    maxWidth: '200px',
   }
 })
 
