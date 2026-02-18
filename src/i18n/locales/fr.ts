@@ -40,7 +40,10 @@ export default {
     undo: 'Annuler',
   },
   onboarding: {
-    text: "Salut ! Cet automate t'aide à penser à boire. Quand tu as bu — appuie sur le panneau de chiffres à droite et ajoute ton eau. À la fin de la journée, les clients la récupèrent et tout recommence. Va dans les paramètres pour activer les rappels.",
+    step1: "Salut ! Cet automate t'aide à penser à boire.",
+    step2: "Appuie sur le panneau à droite, entre les ml et appuie « Mettre en rayon » — l'eau sera ajoutée.",
+    step3: "Dans les paramètres tu peux activer les rappels, l'objectif et plus.",
+    next: 'Suivant',
     gotIt: 'Compris',
   },
   devSettings: {

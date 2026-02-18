@@ -40,7 +40,10 @@ export default {
     undo: 'Yza al',
   },
   onboarding: {
-    text: 'Salam! Bu awtomat suw içmegi ýatdan çykarmaga kömek edýär. Içende — sagdaky sanlar paneline basyň we suw goşuň. Günüň ahyrynda müşderiler alyp gider, hemme zat täzeden başlar. Ýatlatmalary açmak üçin sazlamalara giriň.',
+    step1: 'Salam! Bu awtomat suw içmegi ýatdan çykarmaga kömek edýär.',
+    step2: 'Sagdaky panela basyň, ml giriziň we «Şelfe goýmak» basyň — suw goşular.',
+    step3: 'Sazlamalarda ýatlatmalary, maksady we başgalary açyp bilersiňiz.',
+    next: 'Indiki',
     gotIt: 'Düşündim',
   },
   devSettings: {

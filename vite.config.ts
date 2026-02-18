@@ -25,7 +25,7 @@ function manifestVersionPlugin() {
 }
 
 export default defineConfig({
-  base: '/h2o-refill-hero/',
+  base: process.env.VITE_BASE ?? '/h2o-refill-hero/',
   plugins: [vue(), manifestVersionPlugin()],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),

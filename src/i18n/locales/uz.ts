@@ -40,7 +40,10 @@ export default {
     undo: 'Qaytarish',
   },
   onboarding: {
-    text: 'Salom! Bu avtomat suv ichishni unutmasligingizga yordam beradi. Ichganingizda — o\'ng tomondagi raqamlar panelini bosing va suv qo\'shing. Kun oxirida mijozlar olib ketadi va hammasi qayta boshlanadi. Eslatmalarni yoqish uchun sozlamalarga kiring.',
+    step1: 'Salom! Bu avtomat suv ichishni unutmasligingizga yordam beradi.',
+    step2: 'O\'ng tomondagi panelni bosing, ml kiriting va «Javonga qo\'yish» bosing — suv qo\'shiladi.',
+    step3: 'Sozlamalarda eslatmalar, maqsad va boshqalarni yoqish mumkin.',
+    next: 'Keyingi',
     gotIt: 'Tushundim',
   },
   devSettings: {

@@ -40,7 +40,10 @@ export default {
     undo: 'Geri al',
   },
   onboarding: {
-    text: 'Salam! Bu avtomat su içməyi unutmamağa kömək edir. İçəndə — sağdakı rəqəmlər panelinə toxun və su əlavə et. Günün sonunda müştərilər götürəcək və hər şey yenidən başlayacaq. Xatırlatmaları açmaq üçün parametrlərə bax.',
+    step1: 'Salam! Bu avtomat su içməyi unutmamağa kömək edir.',
+    step2: 'Sağdakı paneldə toxunun, ml daxil edin və «Rəfə qoyun» toxunun — su əlavə olunacaq.',
+    step3: 'Parametrlərdə xatırlatmalar, hədəf və s. aktivləşdirə bilərsiniz.',
+    next: 'Növbəti',
     gotIt: 'Başa düşdüm',
   },
   devSettings: {

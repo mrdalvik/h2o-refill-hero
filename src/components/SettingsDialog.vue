@@ -469,9 +469,9 @@ function changeLocale(code: SupportedLocale) {
 }
 
 .goal-presets {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  flex-wrap: wrap;
 }
 
 .goal-preset-btn {

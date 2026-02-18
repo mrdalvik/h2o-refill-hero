@@ -40,7 +40,10 @@ export default {
     undo: 'Desfazer',
   },
   onboarding: {
-    text: 'Olá! Esta máquina ajuda você a lembrar de beber água. Quando beber — toque no painel de números à direita e adicione a água. No fim do dia os clientes a levam e tudo recomeça. Confira as configurações para ativar os lembretes.',
+    step1: 'Olá! Esta máquina ajuda você a lembrar de beber água.',
+    step2: 'Toque no painel à direita, insira os ml e toque « Colocar na prateleira » — a água será adicionada.',
+    step3: 'Nas configurações você pode ativar lembretes, meta e mais.',
+    next: 'Próximo',
     gotIt: 'Entendi',
   },
   devSettings: {
