@@ -8,6 +8,12 @@
         </div>
 
         <div class="settings-section">
+          <button class="how-to-use-btn" @click="showHowToUse">
+            {{ $t('settings.howToUse') }}
+          </button>
+        </div>
+
+        <div class="settings-section">
           <div class="settings-label">{{ $t('settings.dailyGoal') }}</div>
           <div class="goal-input-row">
             <input
@@ -189,9 +195,15 @@ const props = defineProps<{
   visible: boolean
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   close: []
+  'show-onboarding': []
 }>()
+
+function showHowToUse() {
+  emit('close')
+  emit('show-onboarding')
+}
 
 const { locale } = useI18n()
 const waterStore = useWaterStore()
@@ -376,6 +388,25 @@ function changeLocale(code: SupportedLocale) {
 
 .settings-section {
   margin-bottom: 16px;
+}
+
+.how-to-use-btn {
+  width: 100%;
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #9ca3af;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 13px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.how-to-use-btn:hover {
+  background: #3a3a5e;
+  color: #e5e7eb;
+  border-color: #6a6a9a;
 }
 
 .settings-label {

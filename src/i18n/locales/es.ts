@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Los clientes compran agua...',
+    skip: 'Omitir',
   },
   celebration: {
     title: '¡META ALCANZADA!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'No olvides beber agua 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Botella eliminada',
+    undo: 'Deshacer',
+  },
+  onboarding: {
+    text: '¡Hola! Esta máquina te ayuda a recordar beber agua. Cuando bebas — toca el panel de números a la derecha y añade el agua. Al final del día los clientes la recogerán y todo empezará de nuevo. Revisa la configuración para activar los recordatorios.',
+    gotIt: 'Entendido',
+  },
+  devSettings: {
+    title: 'Configuración de desarrollador',
+    restartDay: 'Reiniciar día',
+    testReminder: 'Recordatorio de prueba',
   },
   settings: {
     title: 'Ajustes',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Día',
     timeEvening: 'Tarde',
     timeNight: 'Noche',
+    howToUse: '¿Cómo usar?',
     reminder: 'Recordatorios',
     reminderNever: 'Nunca',
     reminder3: '3 veces al día',

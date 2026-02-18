@@ -71,10 +71,10 @@ Open settings via the gear button below the numpad.
 
 ## Dev Codes
 
-Enter on the numpad and tap "Put on shelf":
+Enter **1998** on the numpad and tap "Put on shelf" to open developer settings:
 
-- **0000** — Reset the day (clear bottles, trigger customer animation)
-- **0001** — Send a test reminder notification
+- Restart day (clear bottles, trigger customer animation)
+- Send a test reminder notification
 
 ## Tech Stack
 

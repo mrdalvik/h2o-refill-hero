@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Les clients achètent de l\'eau...',
+    skip: 'Passer',
   },
   celebration: {
     title: 'OBJECTIF ATTEINT !',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: "N'oublie pas de boire de l'eau 😉",
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Bouteille supprimée',
+    undo: 'Annuler',
+  },
+  onboarding: {
+    text: "Salut ! Cet automate t'aide à penser à boire. Quand tu as bu — appuie sur le panneau de chiffres à droite et ajoute ton eau. À la fin de la journée, les clients la récupèrent et tout recommence. Va dans les paramètres pour activer les rappels.",
+    gotIt: 'Compris',
+  },
+  devSettings: {
+    title: 'Paramètres développeur',
+    restartDay: 'Redémarrer le jour',
+    testReminder: 'Rappel test',
   },
   settings: {
     title: 'Paramètres',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Jour',
     timeEvening: 'Soir',
     timeNight: 'Nuit',
+    howToUse: 'Comment utiliser ?',
     reminder: 'Rappels',
     reminderNever: 'Jamais',
     reminder3: '3 fois par jour',

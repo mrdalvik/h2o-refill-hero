@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Müştərilər su alır...',
+    skip: 'Keç',
   },
   celebration: {
     title: 'HƏDƏFƏ ÇATDIQ!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Su içməyi unutma 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Şüşə silindi',
+    undo: 'Geri al',
+  },
+  onboarding: {
+    text: 'Salam! Bu avtomat su içməyi unutmamağa kömək edir. İçəndə — sağdakı rəqəmlər panelinə toxun və su əlavə et. Günün sonunda müştərilər götürəcək və hər şey yenidən başlayacaq. Xatırlatmaları açmaq üçün parametrlərə bax.',
+    gotIt: 'Başa düşdüm',
+  },
+  devSettings: {
+    title: 'İnkişafçı parametrləri',
+    restartDay: 'Günü yenidən başlat',
+    testReminder: 'Test xatırlatması',
   },
   settings: {
     title: 'Parametrlər',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Gündüz',
     timeEvening: 'Axşam',
     timeNight: 'Gecə',
+    howToUse: 'Necə istifadə etmək?',
     reminder: 'Xatırlatmalar',
     reminderNever: 'Heç vaxt',
     reminder3: 'Gündə 3 dəfə',

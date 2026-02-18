@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Cell, Bottle } from '@/types'
+import type { Cell, Bottle, CellPosition } from '@/types'
 import { GRID_ROWS, GRID_COLS, DEFAULT_DAILY_GOAL } from '@/types'
 import { mlToBottles } from '@/utils/bottles'
 import { useHistoryStore } from './history'
@@ -136,6 +136,15 @@ export const useWaterStore = defineStore('water', () => {
     }
   }
 
+  function restoreBottle(bottle: Bottle, position: CellPosition) {
+    const cell = cells.value[position.row]?.[position.col]
+    if (!cell) return
+    cell.bottles.push(bottle)
+    bottles.value.push(bottle)
+    totalMl.value += bottle.ml
+    persist()
+  }
+
   function resetDay() {
     const historyStore = useHistoryStore()
     if (totalMl.value > 0) {
@@ -168,6 +177,7 @@ export const useWaterStore = defineStore('water', () => {
     percentage,
     addWater,
     removeBottle,
+    restoreBottle,
     resetDay,
     isNewDay,
     persist,

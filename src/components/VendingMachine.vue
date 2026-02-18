@@ -28,6 +28,13 @@
         :visible="showNumpad"
         @close="showNumpad = false"
         @force-reset="onForceReset"
+        @open-dev-settings="showDevSettings = true"
+      />
+
+      <DevSettingsPopup
+        :visible="showDevSettings"
+        @close="showDevSettings = false"
+        @force-reset="onForceReset"
       />
 
       <!-- Celebration overlay -->
@@ -44,6 +51,7 @@
       <SettingsDialog
         :visible="showSettings"
         @close="showSettings = false"
+        @show-onboarding="emit('show-onboarding')"
       />
 
       <!-- Bottle removal animation -->
@@ -64,7 +72,9 @@
 
 <script setup lang="ts">
 import { ref, watch, provide } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
+import { useToast } from '@/composables/useToast'
 import type { Bottle, CellPosition } from '@/types'
 import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
 import { CELEBRATION_DISPLAY_MS, BOTTLE_REMOVAL_ANIMATION_MS } from '@/constants/timing'
@@ -75,14 +85,19 @@ import BottleSprite from './BottleSprite.vue'
 import ControlPanel from './ControlPanel.vue'
 import NumpadDialog from './NumpadDialog.vue'
 import SettingsDialog from './SettingsDialog.vue'
+import DevSettingsPopup from './DevSettingsPopup.vue'
 
 const emit = defineEmits<{
   'force-reset': []
+  'show-onboarding': []
 }>()
 
+const { t } = useI18n()
 const waterStore = useWaterStore()
+const toast = useToast()
 const showSettings = ref(false)
 const showNumpad = ref(false)
+const showDevSettings = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
 const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large'; row: number; col: number } | null>(null)
@@ -104,6 +119,15 @@ provide(BOTTLE_REMOVAL_KEY, (bottle: Bottle, position: CellPosition, closePopup:
   setTimeout(() => {
     removingBottle.value = null
   }, BOTTLE_REMOVAL_ANIMATION_MS)
+  toast.showWithAction(
+    t('toast.bottleRemoved'),
+    t('toast.undo'),
+    () => {
+      removingBottle.value = null
+      waterStore.restoreBottle(bottle, position)
+    },
+    { duration: 3000 }
+  )
 })
 
 watch(() => waterStore.goalReached, (reached) => {

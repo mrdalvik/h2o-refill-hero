@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Kunden kaufen Wasser...',
+    skip: 'Überspringen',
   },
   celebration: {
     title: 'ZIEL ERREICHT!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Vergiss nicht, Wasser zu trinken 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Flasche entfernt',
+    undo: 'Rückgängig',
+  },
+  onboarding: {
+    text: 'Hallo! Dieser Automat hilft dir, ans Trinken zu denken. Wenn du getrunken hast — tippe auf die Zahlenleiste rechts und füge Wasser hinzu. Am Ende des Tages holen Kunden es ab und alles beginnt von vorne. Schau in die Einstellungen, um Erinnerungen zu aktivieren.',
+    gotIt: 'Verstanden',
+  },
+  devSettings: {
+    title: 'Entwicklereinstellungen',
+    restartDay: 'Tag neu starten',
+    testReminder: 'Test-Erinnerung',
   },
   settings: {
     title: 'Einstellungen',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Tag',
     timeEvening: 'Abend',
     timeNight: 'Nacht',
+    howToUse: 'Wie benutzen?',
     reminder: 'Erinnerungen',
     reminderNever: 'Nie',
     reminder3: '3× täglich',

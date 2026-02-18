@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Customers are buying water...',
+    skip: 'Skip',
   },
   celebration: {
     title: 'GOAL REACHED!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: "Don't forget to drink water 😉",
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Bottle removed',
+    undo: 'Undo',
+  },
+  onboarding: {
+    text: "Hi! This vending machine helps you remember to drink water. When you drink — tap the number panel on the right and add your water. At the end of the day, customers will take it away and everything starts fresh. Check your settings to turn on reminders so you never forget.",
+    gotIt: 'Got it',
+  },
+  devSettings: {
+    title: 'Developer settings',
+    restartDay: 'Restart day',
+    testReminder: 'Test reminder',
   },
   settings: {
     title: 'Settings',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Day',
     timeEvening: 'Evening',
     timeNight: 'Night',
+    howToUse: 'How to use?',
     reminder: 'Reminders',
     reminderNever: 'Never',
     reminder3: '3 times a day',

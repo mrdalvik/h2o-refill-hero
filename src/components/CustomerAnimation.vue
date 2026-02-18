@@ -1,6 +1,9 @@
 <template>
   <div class="customer-animation">
     <div class="animation-text">{{ $t('animation.customersText') }}</div>
+    <button class="animation-skip" @click="emit('done')">
+      {{ $t('animation.skip') }}
+    </button>
     <div class="animation-scene">
       <div
         v-for="(customer, i) in customers"
@@ -45,6 +48,7 @@ onMounted(() => {
 
 <style scoped>
 .customer-animation {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,6 +169,28 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 1px;
   animation: textPulse 1.5s ease-in-out infinite;
+}
+
+.animation-skip {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.animation-skip:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes customerWalk {

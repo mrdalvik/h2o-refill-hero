@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'I clienti prendono acqua...',
+    skip: 'Salta',
   },
   celebration: {
     title: 'OBIETTIVO RAGGIUNTO!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Non dimenticare di bere acqua 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Bottiglia rimossa',
+    undo: 'Annulla',
+  },
+  onboarding: {
+    text: 'Ciao! Questo distributore ti aiuta a ricordarti di bere. Quando bevi — tocca il pannello numerico a destra e aggiungi l\'acqua. A fine giornata i clienti la ritirano e tutto ricomincia. Vai nelle impostazioni per attivare i promemoria.',
+    gotIt: 'Capito',
+  },
+  devSettings: {
+    title: 'Impostazioni sviluppatore',
+    restartDay: 'Riavvia giorno',
+    testReminder: 'Promemoria di test',
   },
   settings: {
     title: 'Impostazioni',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Giorno',
     timeEvening: 'Sera',
     timeNight: 'Notte',
+    howToUse: 'Come usare?',
     reminder: 'Promemoria',
     reminderNever: 'Mai',
     reminder3: '3 volte al giorno',

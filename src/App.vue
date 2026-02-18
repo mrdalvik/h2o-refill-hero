@@ -1,4 +1,9 @@
 <template>
+  <ToastContainer />
+  <OnboardingOverlay
+    :visible="showOnboarding"
+    @close="closeOnboarding"
+  />
   <DayBackground>
     <div class="app-content">
       <CustomerAnimation
@@ -8,21 +13,38 @@
       <VendingMachine
         v-show="!showAnimation"
         @force-reset="onForceReset"
+        @show-onboarding="showOnboarding = true"
       />
     </div>
   </DayBackground>
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import ToastContainer from './components/ToastContainer.vue'
+import OnboardingOverlay from './components/OnboardingOverlay.vue'
 import DayBackground from './components/DayBackground.vue'
 import CustomerAnimation from './components/CustomerAnimation.vue'
 import VendingMachine from './components/VendingMachine.vue'
 import { useDayReset } from './composables/useDayReset'
 import { useWaterReminder } from './composables/useWaterReminder'
 import { useTimeOfDay } from './composables/useTimeOfDay'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
 const { showAnimation, forceReset } = useDayReset()
+const showOnboarding = ref(false)
+
+onMounted(() => {
+  const seen = localStorage.getItem(STORAGE_KEYS.ONBOARDING_SEEN)
+  if (!seen) {
+    showOnboarding.value = true
+  }
+})
+
+function closeOnboarding() {
+  showOnboarding.value = false
+  localStorage.setItem(STORAGE_KEYS.ONBOARDING_SEEN, '1')
+}
 useWaterReminder()
 const timeOfDay = useTimeOfDay()
 

@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Clienții iau apă...',
+    skip: 'Omite',
   },
   celebration: {
     title: 'OBIECTIV ATINS!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Nu uita să bei apă 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Sticla eliminată',
+    undo: 'Anulare',
+  },
+  onboarding: {
+    text: 'Salut! Acest automat te ajută să nu uiți să bei apă. Când bei — apasă pe panoul de numere din dreapta și adaugă apa. La sfârșitul zilei clienții o iau și totul reîncepe. Verifică setările pentru a activa memento-urile.',
+    gotIt: 'Am înțeles',
+  },
+  devSettings: {
+    title: 'Setări dezvoltator',
+    restartDay: 'Repornește ziua',
+    testReminder: 'Memento de test',
   },
   settings: {
     title: 'Setări',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Zi',
     timeEvening: 'Seară',
     timeNight: 'Noapte',
+    howToUse: 'Cum se folosește?',
     reminder: 'Memento-uri',
     reminderNever: 'Niciodată',
     reminder3: 'De 3 ori pe zi',

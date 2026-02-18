@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: '顾客正在购买水...',
+    skip: '跳过',
   },
   celebration: {
     title: '目标已达成！',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: '别忘了喝水哦 😉',
+  },
+  toast: {
+    added: '+{ml} 毫升',
+    bottleRemoved: '已删除瓶子',
+    undo: '撤销',
+  },
+  onboarding: {
+    text: '你好！这个售货机能帮你记得喝水。每次喝水后，点击右侧的数字面板添加水量。每天结束时，顾客会取走水，一切重新开始。去设置里开启提醒，就不会忘记喝水啦。',
+    gotIt: '知道了',
+  },
+  devSettings: {
+    title: '开发者设置',
+    restartDay: '重启当天',
+    testReminder: '测试提醒',
   },
   settings: {
     title: '设置',
@@ -41,6 +56,7 @@ export default {
     timeDay: '白天',
     timeEvening: '傍晚',
     timeNight: '夜晚',
+    howToUse: '如何使用？',
     reminder: '提醒',
     reminderNever: '从不',
     reminder3: '每天3次',

@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Satyň alýjylar suw alýarlar...',
+    skip: 'Geç',
   },
   celebration: {
     title: 'MAKSADA ÝETDIK!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Suw içmegi ýatdan çykarmaň 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Çüýşe aýryldy',
+    undo: 'Yza al',
+  },
+  onboarding: {
+    text: 'Salam! Bu awtomat suw içmegi ýatdan çykarmaga kömek edýär. Içende — sagdaky sanlar paneline basyň we suw goşuň. Günüň ahyrynda müşderiler alyp gider, hemme zat täzeden başlar. Ýatlatmalary açmak üçin sazlamalara giriň.',
+    gotIt: 'Düşündim',
+  },
+  devSettings: {
+    title: 'Önümçi sazlamalary',
+    restartDay: 'Güni täzeden başlat',
+    testReminder: 'Synag ýatlatmasy',
   },
   settings: {
     title: 'Sazlamalar',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Gündiz',
     timeEvening: 'Agşam',
     timeNight: 'Gije',
+    howToUse: 'Nädip ulanylmagy?',
     reminder: 'Ýatlatmalar',
     reminderNever: 'Hiç wagt',
     reminder3: 'Günde 3 gezek',

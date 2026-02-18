@@ -25,6 +25,7 @@ export default {
   },
   animation: {
     customersText: 'Xaridorlar suv olmoqda...',
+    skip: 'O\'tkazib yuborish',
   },
   celebration: {
     title: 'MAQSADGA ERISHILDI!',
@@ -32,6 +33,20 @@ export default {
   },
   reminder: {
     message: 'Suv ichishni unutmang 😉',
+  },
+  toast: {
+    added: '+{ml} ml',
+    bottleRemoved: 'Shisha o\'chirildi',
+    undo: 'Qaytarish',
+  },
+  onboarding: {
+    text: 'Salom! Bu avtomat suv ichishni unutmasligingizga yordam beradi. Ichganingizda — o\'ng tomondagi raqamlar panelini bosing va suv qo\'shing. Kun oxirida mijozlar olib ketadi va hammasi qayta boshlanadi. Eslatmalarni yoqish uchun sozlamalarga kiring.',
+    gotIt: 'Tushundim',
+  },
+  devSettings: {
+    title: 'Dasturchi sozlamalari',
+    restartDay: 'Kunni qayta boshlash',
+    testReminder: 'Test eslatmasi',
   },
   settings: {
     title: 'Sozlamalar',
@@ -41,6 +56,7 @@ export default {
     timeDay: 'Kunduzi',
     timeEvening: 'Kechqurun',
     timeNight: 'Tunda',
+    howToUse: 'Qanday foydalanish?',
     reminder: 'Eslatmalar',
     reminderNever: 'Hech qachon',
     reminder3: 'Kuniga 3 marta',

@@ -52,8 +52,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
-import i18n from '@/i18n'
+import { useToast } from '@/composables/useToast'
+import { triggerHaptic } from '@/utils/haptic'
 import { NUMPAD_MAX_DIGITS } from '@/constants/timing'
 
 defineProps<{
@@ -64,22 +66,32 @@ const emit = defineEmits<{
   close: []
   submitted: []
   'force-reset': []
+  'open-dev-settings': []
 }>()
 
+const { t } = useI18n()
 const waterStore = useWaterStore()
+const toast = useToast()
 const inputValue = ref('')
 
-const quickAmounts = [100, 200, 300]
+const quickAmounts = [200, 250, 500]
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
-function addQuick(ml: number) {
+function addWaterWithFeedback(ml: number) {
   waterStore.addWater(ml)
+  toast.show(t('toast.added', { ml }))
+  triggerHaptic(50)
   emit('submitted')
   close()
 }
 
+function addQuick(ml: number) {
+  addWaterWithFeedback(ml)
+}
+
 const canSubmit = computed(() => {
-  return inputValue.value.length > 0
+  if (inputValue.value.length === 0) return false
+  return parseInt(inputValue.value, 10) > 0
 })
 
 function handleKey(key: string) {
@@ -97,32 +109,16 @@ function handleKey(key: string) {
 function submit() {
   if (!canSubmit.value) return
 
-  if (inputValue.value === '0000') {
-    emit('force-reset')
+  if (inputValue.value === '1998') {
     inputValue.value = ''
     close()
-    return
-  }
-
-  if (inputValue.value === '0001') {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(() => {
-        if (Notification.permission === 'granted') {
-          new Notification('H2O: Refill Hero', {
-            body: i18n.global.t('reminder.message'),
-          })
-        }
-      })
-    }
-    inputValue.value = ''
-    close()
+    emit('open-dev-settings')
     return
   }
 
   const ml = parseInt(inputValue.value, 10)
   if (ml > 0) {
-    waterStore.addWater(ml)
-    emit('submitted')
+    addWaterWithFeedback(ml)
   }
 
   inputValue.value = ''
