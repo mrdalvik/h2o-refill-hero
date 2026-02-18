@@ -79,7 +79,7 @@ const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
 function addWaterWithFeedback(ml: number) {
   waterStore.addWater(ml)
-  toast.show(t('toast.added', { ml }))
+  toast.show(t('toast.added', { ml }), { duration: 1000 })
   triggerHaptic(50)
   emit('submitted')
   close()

@@ -10,6 +10,18 @@
           <WaterCounter />
           <div class="machine-window">
             <VendingGrid />
+            <!-- Bottle removal animation — внутри machine-window, чтобы проценты совпадали с сеткой -->
+            <Transition name="removal">
+              <div v-if="removingBottle" class="removal-overlay">
+                <div
+                  class="removal-bottle"
+                  :class="`bottle-${removingBottle.size}`"
+                  :style="{ '--start-top': shelfTop(removingBottle.row), '--start-left': shelfLeft(removingBottle.col) }"
+                >
+                  <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
+                </div>
+              </div>
+            </Transition>
           </div>
           <div class="machine-footer">
             <ProgressIndicator />
@@ -54,18 +66,6 @@
         @show-onboarding="emit('show-onboarding')"
       />
 
-      <!-- Bottle removal animation -->
-      <Transition name="removal">
-        <div v-if="removingBottle" class="removal-overlay">
-          <div
-            class="removal-bottle"
-            :class="`bottle-${removingBottle.size}`"
-            :style="{ '--start-top': shelfTop(removingBottle.row), '--start-left': shelfLeft(removingBottle.col) }"
-          >
-            <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
-          </div>
-        </div>
-      </Transition>
     </div>
   </div>
 </template>
@@ -209,6 +209,7 @@ function onForceReset() {
 }
 
 .machine-window {
+  position: relative;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 100%);
   border: 3px solid #8a8a9a;
   border-radius: 6px;
