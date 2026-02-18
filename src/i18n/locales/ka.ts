@@ -45,6 +45,7 @@ export default {
     reminderNever: 'არასოდეს',
     reminder3: 'დღეში 3-ჯერ',
     reminder5: 'დღეში 5-ჯერ',
+    reminderHint: 'შეხსენებები იგზავნება მხოლოდ 8:00–22:00 საათებში',
     dailyGoal: 'დღიური მიზანი',
     calculate: 'გამოთვლა',
     calcTitle: 'დღიური მიზანის გამოთვლა',

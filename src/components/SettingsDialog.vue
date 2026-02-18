@@ -52,6 +52,7 @@
               {{ $t(opt.label) }}
             </button>
           </div>
+          <div class="reminder-hint">{{ $t('settings.reminderHint') }}</div>
         </div>
 
         <div class="settings-section">
@@ -521,6 +522,13 @@ function changeLocale(code: SupportedLocale) {
   background: #1d4ed8;
   border-color: #3b82f6;
   color: #fff;
+}
+
+.reminder-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #9ca3af;
+  line-height: 1.3;
 }
 
 .language-select {

@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Эч качан',
     reminder3: 'Күнүнө 3 жолу',
     reminder5: 'Күнүнө 5 жолу',
+    reminderHint: 'Эскертүүлөр 8:00–22:00 аралыгында гана жөнөтүлөт',
     dailyGoal: 'Күндөлүк мақсат',
     calculate: 'Эсептөө',
     calcTitle: 'Күндөлүк мақсатты эсептөө',

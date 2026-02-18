@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Ҳеҷ гоҳ',
     reminder3: 'Рӯзе 3 маротиба',
     reminder5: 'Рӯзе 5 маротиба',
+    reminderHint: 'Ёддоштҳо фақат аз соати 8:00 то 22:00 фиристода мешаванд',
     dailyGoal: 'Мақсади рӯзона',
     calculate: 'Ҳисоб кардан',
     calcTitle: 'Ҳисоб кардани мақсади рӯзона',

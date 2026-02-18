@@ -45,6 +45,7 @@ export default {
     reminderNever: 'कभी नहीं',
     reminder3: 'दिन में 3 बार',
     reminder5: 'दिन में 5 बार',
+    reminderHint: 'अनुस्मारक केवल 8:00 से 22:00 के बीच भेजे जाते हैं',
     dailyGoal: 'दैनिक लक्ष्य',
     calculate: 'गणना करें',
     calcTitle: 'दैनिक लक्ष्य गणना',

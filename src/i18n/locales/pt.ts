@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Nunca',
     reminder3: '3 vezes ao dia',
     reminder5: '5 vezes ao dia',
+    reminderHint: 'Os lembretes são enviados apenas entre 8:00 e 22:00',
     dailyGoal: 'Meta diária',
     calculate: 'Calcular',
     calcTitle: 'Calcular meta diária',

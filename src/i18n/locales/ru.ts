@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Никогда',
     reminder3: '3 раза в день',
     reminder5: '5 раз в день',
+    reminderHint: 'Напоминания приходят только с 8:00 до 22:00',
     dailyGoal: 'Дневная цель',
     calculate: 'Рассчитать',
     calcTitle: 'Расчёт дневной цели',

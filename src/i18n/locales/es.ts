@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Nunca',
     reminder3: '3 veces al día',
     reminder5: '5 veces al día',
+    reminderHint: 'Los recordatorios se envían solo entre las 8:00 y las 22:00',
     dailyGoal: 'Objetivo diario',
     calculate: 'Calcular',
     calcTitle: 'Calcular objetivo diario',

@@ -45,6 +45,7 @@ export default {
     reminderNever: '从不',
     reminder3: '每天3次',
     reminder5: '每天5次',
+    reminderHint: '提醒仅在 8:00 至 22:00 发送',
     dailyGoal: '每日目标',
     calculate: '计算',
     calcTitle: '计算每日目标',

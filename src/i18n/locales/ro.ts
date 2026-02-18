@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Niciodată',
     reminder3: 'De 3 ori pe zi',
     reminder5: 'De 5 ori pe zi',
+    reminderHint: 'Memento-urile se trimit doar între 8:00 și 22:00',
     dailyGoal: 'Obiectiv zilnic',
     calculate: 'Calculează',
     calcTitle: 'Calculează obiectivul zilnic',

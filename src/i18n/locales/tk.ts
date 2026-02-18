@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Hiç wagt',
     reminder3: 'Günde 3 gezek',
     reminder5: 'Günde 5 gezek',
+    reminderHint: 'Ýatlatmalar diňe 8:00–22:00 aralygynda iberilýär',
     dailyGoal: 'Gündelik maksat',
     calculate: 'Hasaplamak',
     calcTitle: 'Gündelik maksady hasaplamak',

@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Ешқашан',
     reminder3: 'Күніне 3 рет',
     reminder5: 'Күніне 5 рет',
+    reminderHint: 'Еске салулар тек 8:00–22:00 аралығында жіберіледі',
     dailyGoal: 'Күнделікті мақсат',
     calculate: 'Есептеу',
     calcTitle: 'Күнделікті мақсатты есептеу',

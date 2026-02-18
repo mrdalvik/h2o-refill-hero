@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Ніколі',
     reminder3: '3 разы на дзень',
     reminder5: '5 разоў на дзень',
+    reminderHint: 'Напаміны адпраўляюцца толькі з 8:00 да 22:00',
     dailyGoal: 'Дзённая мэта',
     calculate: 'Разлічыць',
     calcTitle: 'Разлік дзённай мэты',

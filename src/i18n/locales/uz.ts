@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Hech qachon',
     reminder3: 'Kuniga 3 marta',
     reminder5: 'Kuniga 5 marta',
+    reminderHint: 'Eslatmalar faqat 8:00–22:00 orasida yuboriladi',
     dailyGoal: 'Kunlik maqsad',
     calculate: 'Hisoblash',
     calcTitle: 'Kunlik maqsadni hisoblash',

@@ -45,6 +45,7 @@ export default {
     reminderNever: 'なし',
     reminder3: '1日3回',
     reminder5: '1日5回',
+    reminderHint: 'リマインダーは8:00〜22:00の間のみ送信されます',
     dailyGoal: '1日の目標',
     calculate: '計算',
     calcTitle: '1日の目標を計算',

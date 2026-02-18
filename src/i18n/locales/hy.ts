@@ -45,6 +45,7 @@ export default {
     reminderNever: 'Երբեք',
     reminder3: 'Օրական 3 անգամ',
     reminder5: 'Օրական 5 անգամ',
+    reminderHint: 'Հիշեցումները ուղարկվում են միայն 8:00–22:00 ժամանակահատվածում',
     dailyGoal: 'Օրական նպատակ',
     calculate: 'Հաշվել',
     calcTitle: 'Օրական նպատակի հաշվարկ',
