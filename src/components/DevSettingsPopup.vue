@@ -4,7 +4,7 @@
       <div class="dev-popup">
         <div class="dev-header">
           <span class="dev-title">{{ $t('devSettings.title') }}</span>
-          <button class="dev-close" @click="$emit('close')">&#x2715;</button>
+          <button class="dev-close" aria-label="Close" @click="$emit('close')">&#x2715;</button>
         </div>
         <div class="dev-body">
           <button class="dev-btn" @click="restartDay">

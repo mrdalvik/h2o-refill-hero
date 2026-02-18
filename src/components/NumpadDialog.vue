@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
     <div v-if="visible" class="numpad-overlay" @click.self="close">
-      <div class="numpad-dialog">
+      <div class="numpad-dialog" role="dialog" aria-modal="true" aria-labelledby="numpad-title">
         <div class="numpad-header">
-          <span class="numpad-title">{{ $t('numpad.title') }}</span>
-          <button class="numpad-close" @click="close">&#x2715;</button>
+          <span id="numpad-title" class="numpad-title">{{ $t('numpad.title') }}</span>
+          <button class="numpad-close" aria-label="Close" @click="close">&#x2715;</button>
         </div>
 
         <div class="numpad-screen">
@@ -56,7 +56,7 @@ import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useToast } from '@/composables/useToast'
 import { triggerHaptic } from '@/utils/haptic'
-import { NUMPAD_MAX_DIGITS } from '@/constants/timing'
+import { NUMPAD_MAX_DIGITS, DEV_SETTINGS_CODE } from '@/constants/timing'
 
 defineProps<{
   visible: boolean
@@ -109,7 +109,7 @@ function handleKey(key: string) {
 function submit() {
   if (!canSubmit.value) return
 
-  if (inputValue.value === '1998') {
+  if (parseInt(inputValue.value, 10) === DEV_SETTINGS_CODE) {
     inputValue.value = ''
     close()
     emit('open-dev-settings')

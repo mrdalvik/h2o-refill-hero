@@ -70,22 +70,22 @@ export const useWaterStore = defineStore('water', () => {
     })
   }
 
-  function findNextFreeCell(): Cell | null {
+  function findNextFreeCellPosition(): { row: number; col: number } | null {
     for (let row = 0; row < GRID_ROWS; row++) {
       for (let col = 0; col < GRID_COLS; col++) {
         if (cells.value[row][col].bottles.length === 0) {
-          return cells.value[row][col]
+          return { row, col }
         }
       }
     }
     return null
   }
 
-  function findCellWithOneBottle(): Cell | null {
+  function findCellWithOneBottlePosition(): { row: number; col: number } | null {
     for (let row = 0; row < GRID_ROWS; row++) {
       for (let col = 0; col < GRID_COLS; col++) {
         if (cells.value[row][col].bottles.length === 1) {
-          return cells.value[row][col]
+          return { row, col }
         }
       }
     }
@@ -93,14 +93,26 @@ export const useWaterStore = defineStore('water', () => {
   }
 
   function placeBottle(bottle: Bottle): boolean {
-    const freeCell = findNextFreeCell()
-    if (freeCell) {
-      freeCell.bottles.push(bottle)
+    const pos = findNextFreeCellPosition()
+    if (pos) {
+      cells.value = cells.value.map((row, r) =>
+        row.map((cell, c) =>
+          r === pos.row && c === pos.col
+            ? { ...cell, bottles: [...cell.bottles, bottle] }
+            : cell
+        )
+      )
       return true
     }
-    const secondRowCell = findCellWithOneBottle()
-    if (secondRowCell) {
-      secondRowCell.bottles.push(bottle)
+    const secondPos = findCellWithOneBottlePosition()
+    if (secondPos) {
+      cells.value = cells.value.map((row, r) =>
+        row.map((cell, c) =>
+          r === secondPos.row && c === secondPos.col
+            ? { ...cell, bottles: [...cell.bottles, bottle] }
+            : cell
+        )
+      )
       return true
     }
     return false
@@ -122,11 +134,18 @@ export const useWaterStore = defineStore('water', () => {
     const bottle = bottles.value.find((b) => b.id === bottleId)
     if (!bottle) return
 
-    for (const row of cells.value) {
-      for (const cell of row) {
+    for (let row = 0; row < GRID_ROWS; row++) {
+      for (let col = 0; col < GRID_COLS; col++) {
+        const cell = cells.value[row][col]
         const idx = cell.bottles.findIndex((b) => b.id === bottleId)
         if (idx >= 0) {
-          cell.bottles.splice(idx, 1)
+          cells.value = cells.value.map((r, ri) =>
+            r.map((c, ci) =>
+              ri === row && ci === col
+                ? { ...c, bottles: c.bottles.filter((b) => b.id !== bottleId) }
+                : c
+            )
+          )
           totalMl.value -= bottle.ml
           bottles.value = bottles.value.filter((b) => b.id !== bottleId)
           persist()
@@ -139,8 +158,14 @@ export const useWaterStore = defineStore('water', () => {
   function restoreBottle(bottle: Bottle, position: CellPosition) {
     const cell = cells.value[position.row]?.[position.col]
     if (!cell) return
-    cell.bottles.push(bottle)
-    bottles.value.push(bottle)
+    cells.value = cells.value.map((row, r) =>
+      row.map((c, col) =>
+        r === position.row && col === position.col
+          ? { ...c, bottles: [...c.bottles, bottle] }
+          : c
+      )
+    )
+    bottles.value = [...bottles.value, bottle]
     totalMl.value += bottle.ml
     persist()
   }

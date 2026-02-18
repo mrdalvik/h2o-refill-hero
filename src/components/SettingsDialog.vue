@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
     <div v-if="visible" class="settings-overlay" @click.self="$emit('close')">
-      <div class="settings-dialog">
+      <div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settings-title">
         <div class="settings-header">
-          <span class="settings-title">{{ $t('settings.title') }}</span>
-          <button class="settings-close" @click="$emit('close')">&#x2715;</button>
+          <span id="settings-title" class="settings-title">{{ $t('settings.title') }}</span>
+          <button class="settings-close" aria-label="Close" @click="$emit('close')">&#x2715;</button>
         </div>
 
         <div class="settings-section">
@@ -114,68 +114,17 @@
         </div>
       </div>
 
-      <!-- Reset confirmation popup -->
-      <div v-if="showResetConfirm" class="calc-overlay" @click.self="showResetConfirm = false">
-        <div class="calc-popup reset-popup">
-          <div class="calc-header">
-            <span class="calc-title">{{ $t('settings.resetConfirmTitle') }}</span>
-            <button class="calc-close" @click="showResetConfirm = false">&#x2715;</button>
-          </div>
-          <p class="reset-message">{{ $t('settings.resetConfirmMessage') }}</p>
-          <div class="reset-actions">
-            <button class="reset-cancel-btn" @click="showResetConfirm = false">
-              {{ $t('settings.resetCancel') }}
-            </button>
-            <button class="reset-confirm-btn" @click="confirmReset">
-              {{ $t('settings.resetConfirm') }}
-            </button>
-          </div>
-        </div>
-      </div>
+      <SettingsResetConfirm
+        v-model="showResetConfirm"
+        @confirm="confirmReset"
+      />
 
-      <!-- Calculator popup -->
-      <div v-if="showCalcPopup" class="calc-overlay" @click.self="showCalcPopup = false">
-        <div class="calc-popup">
-          <div class="calc-header">
-            <span class="calc-title">{{ $t('settings.calcTitle') }}</span>
-            <button class="calc-close" @click="showCalcPopup = false">&#x2715;</button>
-          </div>
-          <div class="calc-body">
-            <div class="calc-field">
-              <label class="calc-label">{{ $t('settings.weight') }}</label>
-              <div class="calc-input-row">
-                <input
-                  v-model.number="calcWeight"
-                  type="number"
-                  min="30"
-                  max="200"
-                  class="calc-input"
-                  :placeholder="$t('settings.weightPlaceholder')"
-                />
-                <span class="calc-unit">{{ $t('settings.kg') }}</span>
-              </div>
-            </div>
-            <div class="calc-field">
-              <label class="calc-label">{{ $t('settings.activity') }}</label>
-              <div class="activity-options">
-                <button
-                  v-for="opt in ACTIVITY_OPTIONS"
-                  :key="opt.value"
-                  class="activity-btn"
-                  :class="{ 'activity-active': calcActivity === opt.value }"
-                  @click="calcActivity = opt.value"
-                >
-                  {{ $t(opt.label) }}
-                </button>
-              </div>
-            </div>
-            <p class="calc-disclaimer">{{ $t('settings.calcDisclaimer') }}</p>
-          </div>
-          <button class="calc-submit" @click="applyCalculatedGoal">
-            {{ $t('settings.calcApply') }}
-          </button>
-        </div>
-      </div>
+      <SettingsCalcPopup
+        v-model="showCalcPopup"
+        :initial-weight="calcWeight"
+        :initial-activity="calcActivity"
+        @apply="applyCalculatedGoal"
+      />
     </div>
   </Teleport>
 </template>
@@ -187,9 +136,10 @@ import { useWaterStore } from '@/stores/water'
 import { useTimeOfDaySetting, type TimeOfDayPreference } from '@/composables/useTimeOfDay'
 import { useWaterReminder, type ReminderFrequency } from '@/composables/useWaterReminder'
 import { SORTED_LOCALES, saveLocale, type SupportedLocale } from '@/i18n'
-import { calculateDailyGoal } from '@/utils/waterGoal'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
 import { GOAL_PRESETS } from '@/constants/timing'
+import SettingsResetConfirm from './settings/SettingsResetConfirm.vue'
+import SettingsCalcPopup from './settings/SettingsCalcPopup.vue'
 
 const props = defineProps<{
   visible: boolean
@@ -244,12 +194,6 @@ const prefs = loadCalcPrefs()
 const calcWeight = ref(prefs.weight)
 const calcActivity = ref<'low' | 'medium' | 'high'>(prefs.activity)
 
-const ACTIVITY_OPTIONS = [
-  { value: 'low' as const, label: 'settings.activityLow' },
-  { value: 'medium' as const, label: 'settings.activityMedium' },
-  { value: 'high' as const, label: 'settings.activityHigh' },
-]
-
 watch(() => props.visible, (visible) => {
   if (visible) goalInput.value = waterStore.dailyGoal
 })
@@ -279,15 +223,10 @@ function onGoalChange() {
   waterStore.persist()
 }
 
-function applyCalculatedGoal() {
-  const w = Math.min(200, Math.max(30, Number(calcWeight.value) || 70))
-  const goal = calculateDailyGoal(w, calcActivity.value)
-  const clamped = Math.min(10000, Math.max(100, goal))
-  waterStore.dailyGoal = clamped
-  goalInput.value = clamped
+function applyCalculatedGoal(goal: number) {
+  waterStore.dailyGoal = goal
+  goalInput.value = goal
   waterStore.persist()
-  localStorage.setItem(STORAGE_KEYS.CALC_PREFS, JSON.stringify({ weight: w, activity: calcActivity.value }))
-  showCalcPopup.value = false
 }
 
 const currentLocale = computed(() => locale.value)
@@ -653,52 +592,6 @@ function changeLocale(code: SupportedLocale) {
   color: #fecaca;
 }
 
-.reset-message {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  color: #d1d5db;
-  line-height: 1.5;
-  margin: 0 0 16px;
-}
-
-.reset-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-
-.reset-cancel-btn {
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  color: #d1d5db;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.reset-cancel-btn:hover {
-  background: #3a3a5e;
-  border-color: #6a6a9a;
-}
-
-.reset-confirm-btn {
-  background: #7f1d1d;
-  border: 2px solid #991b1b;
-  color: #fecaca;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.reset-confirm-btn:hover {
-  background: #991b1b;
-  border-color: #b91c1c;
-}
-
 .author-links {
   display: flex;
   gap: 12px;
@@ -743,154 +636,4 @@ function changeLocale(code: SupportedLocale) {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Calculator popup */
-.calc-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  animation: fadeIn 0.2s ease-out;
-}
-
-.calc-popup {
-  background: #1a1a2e;
-  border: 4px solid #4a4a6a;
-  border-radius: 8px;
-  padding: 16px;
-  width: 280px;
-  max-width: 90vw;
-  animation: slideUp 0.25s ease-out;
-}
-
-.calc-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.calc-title {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 14px;
-  color: #e5e7eb;
-  letter-spacing: 1px;
-}
-
-.calc-close {
-  background: none;
-  border: 2px solid #4a4a6a;
-  color: #9ca3af;
-  font-size: 12px;
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-
-.calc-close:hover {
-  background: #2a2a4e;
-  color: #fff;
-}
-
-.calc-body {
-  margin-bottom: 12px;
-}
-
-.calc-field {
-  margin-bottom: 12px;
-}
-
-.calc-label {
-  display: block;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 11px;
-  color: #9ca3af;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.calc-input-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.calc-input {
-  width: 80px;
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  color: #e5e7eb;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 14px;
-  padding: 8px 10px;
-  border-radius: 4px;
-}
-
-.calc-input:focus {
-  outline: none;
-  border-color: #3b82f6;
-}
-
-.calc-unit {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  color: #9ca3af;
-}
-
-.activity-options {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.activity-btn {
-  text-align: left;
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  color: #d1d5db;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 11px;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-.activity-btn:hover {
-  background: #3a3a5e;
-  border-color: #6a6a9a;
-}
-
-.activity-btn.activity-active {
-  background: #1d4ed8;
-  border-color: #3b82f6;
-  color: #fff;
-}
-
-.calc-disclaimer {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 9px;
-  color: #6b7280;
-  line-height: 1.4;
-  margin: 12px 0 0;
-}
-
-.calc-submit {
-  width: 100%;
-  background: linear-gradient(180deg, #3b82f6, #2563eb);
-  border: 3px solid #1d4ed8;
-  color: #fff;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  padding: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  letter-spacing: 1px;
-}
-
-.calc-submit:hover {
-  background: linear-gradient(180deg, #60a5fa, #3b82f6);
-}
 </style>

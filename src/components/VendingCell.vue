@@ -15,14 +15,14 @@
 
     <Teleport to="body">
       <div v-if="popupBottle" class="bottle-popup-overlay" @click.self="popupBottle = null">
-        <div class="bottle-popup">
-          <div class="bottle-popup-title">{{ $t('bottles.popupTitle') }}</div>
+        <div class="bottle-popup" role="dialog" aria-modal="true" aria-labelledby="bottle-popup-title">
+          <div id="bottle-popup-title" class="bottle-popup-title">{{ $t('bottles.popupTitle') }}</div>
           <div class="bottle-popup-ml">{{ popupBottle.ml }} {{ $t('unit.ml') }}</div>
           <div class="bottle-popup-time">{{ formatTime(popupBottle.addedAt) }}</div>
           <button class="bottle-popup-remove" @click="removeBottle(popupBottle, cell.position)">
             {{ $t('bottles.remove') }}
           </button>
-          <button class="bottle-popup-close" @click="popupBottle = null">&#x2715;</button>
+          <button class="bottle-popup-close" aria-label="Close" @click="popupBottle = null">&#x2715;</button>
         </div>
       </div>
     </Teleport>

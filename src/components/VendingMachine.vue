@@ -78,6 +78,7 @@ import { useToast } from '@/composables/useToast'
 import type { Bottle, CellPosition } from '@/types'
 import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
 import { CELEBRATION_DISPLAY_MS, BOTTLE_REMOVAL_ANIMATION_MS } from '@/constants/timing'
+import { shelfTop, shelfLeft } from '@/utils/shelfLayout'
 import WaterCounter from './WaterCounter.vue'
 import VendingGrid from './VendingGrid.vue'
 import ProgressIndicator from './ProgressIndicator.vue'
@@ -101,16 +102,6 @@ const showDevSettings = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
 const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large'; row: number; col: number } | null>(null)
-
-function shelfTop(row: number): string {
-  const tops = ['28%', '45%', '62%', '79%']
-  return tops[row] ?? '45%'
-}
-
-function shelfLeft(col: number): string {
-  const lefts = ['12.5%', '37.5%', '62.5%', '87.5%']
-  return lefts[col] ?? '50%'
-}
 
 provide(BOTTLE_REMOVAL_KEY, (bottle: Bottle, position: CellPosition, closePopup: () => void) => {
   closePopup()
