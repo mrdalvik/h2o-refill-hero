@@ -164,5 +164,7 @@ body {
   min-height: 100dvh;
   padding: 16px 16px 120px;
   touch-action: manipulation;
+  width: 100%;
+  max-width: 100%;
 }
 </style>

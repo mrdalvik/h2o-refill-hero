@@ -30,6 +30,8 @@ const waterStore = useWaterStore()
   background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   padding: 4px;
+  width: 100%;
+  min-width: 185px;
   height: 272px;
   min-height: 272px;
   flex-shrink: 0;

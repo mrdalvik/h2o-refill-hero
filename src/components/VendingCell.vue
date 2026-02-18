@@ -85,6 +85,7 @@ function formatTime(timestamp: number): string {
   align-items: flex-end;
   justify-content: center;
   min-height: 60px;
+  min-width: 44px;
   height: 100%;
   overflow: hidden;
   background: rgba(200, 220, 240, 0.08);

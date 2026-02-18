@@ -154,10 +154,12 @@ function onForceReset() {
   margin: 0 auto;
   padding: 12px;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .machine-body {
   width: 100%;
+  min-width: 296px;
   background: linear-gradient(180deg, #e8e8f0 0%, #d0d0dc 100%);
   border: 4px solid #a0a0b0;
   border-radius: 12px;
