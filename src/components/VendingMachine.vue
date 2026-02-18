@@ -214,8 +214,9 @@ function onForceReset() {
   border: 3px solid #8a8a9a;
   border-radius: 6px;
   padding: 8px;
-  min-height: 260px;
-  flex: 1;
+  height: 288px;
+  min-height: 288px;
+  flex-shrink: 0;
 }
 
 .machine-footer {

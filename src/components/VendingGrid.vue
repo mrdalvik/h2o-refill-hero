@@ -30,14 +30,21 @@ const waterStore = useWaterStore()
   background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   padding: 4px;
+  height: 272px;
+  min-height: 272px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .grid-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 68px;
   gap: 3px;
   position: relative;
   padding-bottom: 4px;
+  min-height: 68px;
+  flex-shrink: 0;
 }
 
 .grid-row:not(:last-child) {
