@@ -152,6 +152,27 @@ body {
   touch-action: manipulation;
   -ms-touch-action: manipulation;
 }
+
+/* Нативный мобильный опыт: только тап, без выделения текста/иконок */
+@media (hover: none) and (pointer: coarse) {
+  html,
+  body,
+  #app,
+  #app * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  textarea,
+  [contenteditable='true'] {
+    -webkit-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: default;
+  }
+}
 </style>
 
 <style scoped>

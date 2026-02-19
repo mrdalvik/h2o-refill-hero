@@ -43,8 +43,28 @@ function preventDoubleTapZoom() {
   }, { passive: true })
 }
 
+function preventContextMenuOnTouch() {
+  if (!('ontouchstart' in window)) return
+
+  document.addEventListener(
+    'contextmenu',
+    (e) => {
+      const target = e.target instanceof Element ? e.target : null
+      if (
+        target?.closest(
+          'button, [role="button"], .panel-clickable, .bottle-cell, .onboarding-backdrop, .onboarding-btn, .animation-skip, .celebration-overlay, .calc-overlay, .changelog-overlay, .numpad-overlay, .settings-overlay, .dev-overlay, .bottle-popup-overlay',
+        )
+      ) {
+        e.preventDefault()
+      }
+    },
+    { passive: false },
+  )
+}
+
 export function setupZoomPrevention() {
   preventGestureZoom()
   preventPinchZoom()
   preventDoubleTapZoom()
+  preventContextMenuOnTouch()
 }
