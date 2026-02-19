@@ -22,7 +22,6 @@
       </div>
       <div class="vending-silhouette"></div>
     </div>
-    <div class="animation-ground"></div>
   </div>
 </template>
 
@@ -55,19 +54,6 @@ onMounted(() => {
   justify-content: flex-end;
   width: 100%;
   padding: 20px 20px 0;
-}
-
-.animation-ground {
-  height: 120px;
-  min-height: 120px;
-  flex-shrink: 0;
-  width: 100%;
-  background: #4a4a4a;
-  background-image:
-    linear-gradient(90deg, transparent 0, transparent 11px, #3a3a3a 11px, #3a3a3a 12px),
-    linear-gradient(0deg, transparent 0, transparent 11px, #3a3a3a 11px, #3a3a3a 12px);
-  background-size: 24px 24px;
-  image-rendering: pixelated;
 }
 
 .animation-scene {

@@ -5,6 +5,12 @@ export interface ChangelogVersion {
 
 export const CHANGELOG: ChangelogVersion[] = [
   {
+    version: '0.1.37',
+    entries: [
+      '⚒️ Убрана лишняя платформа в анимации смены дня — человечки стоят на земле',
+    ],
+  },
+  {
     version: '0.1.36',
     entries: [
       '⚒️ Нативный мобильный опыт: отключено выделение текста и иконок, только тап',
