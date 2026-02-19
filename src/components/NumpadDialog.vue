@@ -62,16 +62,6 @@
             <span class="numpad-value">{{ inputValue || '0' }}</span>
             <span class="numpad-unit">{{ $t('unit.ml') }}</span>
           </div>
-          <div class="numpad-quick-buttons">
-            <button
-              v-for="amount in quickAmounts"
-              :key="amount"
-              class="numpad-quick-btn"
-              @pointerup="addQuick(amount)"
-            >
-              {{ amount }} {{ $t('unit.ml') }}
-            </button>
-          </div>
           <div class="numpad-keys">
             <button
               v-for="key in keys"
@@ -148,7 +138,6 @@ function toggleMode() {
   setMode(numpadMode.value === 'simple' ? 'extended' : 'simple')
 }
 
-const quickAmounts = [200, 250, 500]
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
 function addWaterWithFeedback(ml: number, drinkType: DrinkType = 'water') {
@@ -167,10 +156,6 @@ function addSimple(ml: number) {
   const drink = selectedDrink.value ?? 'water'
   addWaterWithFeedback(ml, drink)
   selectedDrink.value = null
-}
-
-function addQuick(ml: number) {
-  addWaterWithFeedback(ml, extendedDrink.value)
 }
 
 const canSubmit = computed(() => {
@@ -415,33 +400,6 @@ watch(() => numpadMode.value, (mode) => {
   font-family: 'Fusion Pixel', monospace;
   font-size: 14px;
   color: #6b9b6b;
-}
-
-.numpad-quick-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.numpad-quick-btn {
-  background: linear-gradient(180deg, #2d4a2d, #1a3a1a);
-  border: 3px solid #2a5a2a;
-  color: #4ade80;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 12px;
-  padding: 10px 6px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.1s, transform 0.1s;
-}
-
-.numpad-quick-btn:hover {
-  background: linear-gradient(180deg, #3d5a3d, #2a4a2a);
-}
-
-.numpad-quick-btn:active {
-  transform: translateY(2px);
 }
 
 .numpad-keys {
