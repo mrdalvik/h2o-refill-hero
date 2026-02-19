@@ -32,7 +32,7 @@ jobs:
           git fetch origin main
           git checkout main
           npm ci
-          OUT_DIR=dist-prod VITE_BASE=/h2o-refill-hero/ npm run build
+          VITE_BASE=/h2o-refill-hero/ npm run build -- --outDir dist-prod
 
       - name: Check if beta exists
         id: check_beta
@@ -49,7 +49,7 @@ jobs:
           git fetch origin beta
           git checkout beta
           npm ci
-          OUT_DIR=dist-beta VITE_BASE=/h2o-refill-hero/beta/ npm run build
+          OUT_DIR=dist-beta VITE_BASE=/h2o-refill-hero/beta/ npm run build -- --outDir dist-beta
 
       - name: Combine artifacts
         run: |
