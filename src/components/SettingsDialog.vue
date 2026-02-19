@@ -27,12 +27,10 @@
             />
             <span class="goal-unit">{{ $t('unit.ml') }}</span>
           </div>
-          <div class="goal-actions">
+          <div class="goal-row">
             <button class="goal-calc-btn" @click="showCalcPopup = true">
               {{ $t('settings.calculate') }}
             </button>
-          </div>
-          <div class="goal-presets">
             <button
               v-for="preset in GOAL_PRESETS"
               :key="preset"
@@ -386,8 +384,11 @@ function changeLocale(code: SupportedLocale) {
   color: #9ca3af;
 }
 
-.goal-actions {
-  margin-bottom: 8px;
+.goal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
 }
 
 .goal-calc-btn {
@@ -405,12 +406,6 @@ function changeLocale(code: SupportedLocale) {
 .goal-calc-btn:hover {
   background: #3a3a5e;
   border-color: #6a6a9a;
-}
-
-.goal-presets {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
 }
 
 .goal-preset-btn {
