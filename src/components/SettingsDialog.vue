@@ -282,7 +282,7 @@ function changeLocale(code: SupportedLocale) {
   border: 4px solid #4a4a6a;
   border-radius: 8px;
   padding: 16px;
-  width: 320px;
+  width: 360px;
   max-width: 90vw;
   max-height: 80vh;
   overflow-y: auto;
