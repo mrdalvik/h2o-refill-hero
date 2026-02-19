@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, beta]
   workflow_dispatch:
 
 permissions:
@@ -19,14 +19,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - run: npm ci
-      - run: npm run build
+      - name: Build production (main)
+        run: |
+          git fetch origin main
+          git checkout main
+          npm ci
+          OUT_DIR=dist-prod VITE_BASE=/h2o-refill-hero/ npm run build
+
+      - name: Check if beta exists
+        id: check_beta
+        run: |
+          if git ls-remote --exit-code origin beta 2>/dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build beta
+        if: steps.check_beta.outputs.exists == 'true'
+        run: |
+          git fetch origin beta
+          git checkout beta
+          npm ci
+          OUT_DIR=dist-beta VITE_BASE=/h2o-refill-hero/beta/ npm run build
+
+      - name: Combine artifacts
+        run: |
+          mkdir -p dist
+          cp -r dist-prod/* dist/
+          if [ -d dist-beta ]; then
+            mkdir -p dist/beta
+            cp -r dist-beta/* dist/beta/
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -7,6 +7,24 @@
           <button class="dev-close" aria-label="Close" @click="$emit('close')">&#x2715;</button>
         </div>
         <div class="dev-body">
+          <a
+            v-if="isBeta"
+            class="dev-btn dev-link"
+            :href="productionUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('devSettings.openProduction') }}
+          </a>
+          <a
+            v-else
+            class="dev-btn dev-link"
+            :href="betaUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('devSettings.openBeta') }}
+          </a>
           <button class="dev-btn" @click="restartDay">
             {{ $t('devSettings.restartDay') }}
           </button>
@@ -22,9 +40,16 @@
 <script setup lang="ts">
 import i18n from '@/i18n'
 
+const BETA_URL = 'https://mrdalvik.github.io/h2o-refill-hero/beta/'
+const PRODUCTION_URL = 'https://mrdalvik.github.io/h2o-refill-hero/'
+
 defineProps<{
   visible: boolean
 }>()
+
+const isBeta = import.meta.env.BASE_URL?.includes('/beta/')
+const betaUrl = BETA_URL
+const productionUrl = PRODUCTION_URL
 
 const emit = defineEmits<{
   close: []
@@ -122,6 +147,11 @@ function sendTestReminder() {
 .dev-btn:hover {
   background: #3a3a5e;
   border-color: #6a6a9a;
+}
+
+.dev-link {
+  text-decoration: none;
+  display: block;
 }
 
 @keyframes fadeIn {

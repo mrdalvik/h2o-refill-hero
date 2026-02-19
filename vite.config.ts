@@ -6,6 +6,8 @@ import { resolve } from 'node:path'
 
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf-8'))
 
+const outDir = process.env.OUT_DIR ?? 'dist'
+
 function manifestVersionPlugin() {
   return {
     name: 'manifest-version',
@@ -18,7 +20,7 @@ function manifestVersionPlugin() {
       const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'))
       manifest.version = pkg.version
       manifest.start_url = `./?v=${pkg.version}`
-      const outPath = resolve(dir, 'dist/manifest.webmanifest')
+      const outPath = resolve(dir, outDir, 'manifest.webmanifest')
       writeFileSync(outPath, JSON.stringify(manifest, null, 2))
     },
   }
@@ -26,6 +28,9 @@ function manifestVersionPlugin() {
 
 export default defineConfig({
   base: process.env.VITE_BASE ?? '/h2o-refill-hero/',
+  build: {
+    outDir,
+  },
   plugins: [vue(), manifestVersionPlugin()],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),

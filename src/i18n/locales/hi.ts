@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'डेवलपर सेटिंग्स',
+    openBeta: 'Beta खोलें',
+    openProduction: 'Production खोलें',
     restartDay: 'दिन पुनः आरंभ करें',
     testReminder: 'टेस्ट अनुस्मारक',
   },

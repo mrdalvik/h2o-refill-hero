@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Танзимоти барномасоз',
+    openBeta: 'Beta кушоед',
+    openProduction: 'Production кушоед',
     restartDay: 'Рӯзро аз нав оғоз кунед',
     testReminder: 'Ёддошти санҷишӣ',
   },

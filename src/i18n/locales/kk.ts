@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Әзірлеуші баптаулары',
+    openBeta: 'Beta ашу',
+    openProduction: 'Production ашу',
     restartDay: 'Күнді қайта іске қосу',
     testReminder: 'Тест еске салу',
   },

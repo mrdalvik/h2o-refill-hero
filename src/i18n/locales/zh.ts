@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: '开发者设置',
+    openBeta: '打开 Beta',
+    openProduction: '打开 Production',
     restartDay: '重启当天',
     testReminder: '测试提醒',
   },

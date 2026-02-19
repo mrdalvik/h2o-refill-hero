@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Өнүктүрүүчү тейлөөлөрү',
+    openBeta: 'Beta ачуу',
+    openProduction: 'Production ачуу',
     restartDay: 'Күндү кайра баштоо',
     testReminder: 'Сыноо эскертүүсү',
   },

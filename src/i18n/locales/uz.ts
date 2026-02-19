@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Dasturchi sozlamalari',
+    openBeta: 'Beta ochish',
+    openProduction: 'Production ochish',
     restartDay: 'Kunni qayta boshlash',
     testReminder: 'Test eslatmasi',
   },

@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Entwicklereinstellungen',
+    openBeta: 'Beta öffnen',
+    openProduction: 'Production öffnen',
     restartDay: 'Tag neu starten',
     testReminder: 'Test-Erinnerung',
   },

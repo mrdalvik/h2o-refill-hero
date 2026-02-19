@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Մշակողի կարգավորումներ',
+    openBeta: 'Բացել Beta',
+    openProduction: 'Բացել Production',
     restartDay: 'Օրը վերագործարկել',
     testReminder: 'Թեստային հիշեցում',
   },

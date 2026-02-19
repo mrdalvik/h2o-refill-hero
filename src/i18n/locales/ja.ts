@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: '開発者設定',
+    openBeta: 'Beta を開く',
+    openProduction: 'Production を開く',
     restartDay: '日を再開',
     testReminder: 'テストリマインダー',
   },

@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'დეველოპერის პარამეტრები',
+    openBeta: 'Beta-ის გახსნა',
+    openProduction: 'Production-ის გახსნა',
     restartDay: 'დღის გადატვირთვა',
     testReminder: 'ტესტის შეხსენება',
   },

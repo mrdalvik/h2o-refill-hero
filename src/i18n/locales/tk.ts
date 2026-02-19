@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Önümçi sazlamalary',
+    openBeta: 'Beta aç',
+    openProduction: 'Production aç',
     restartDay: 'Güni täzeden başlat',
     testReminder: 'Synag ýatlatmasy',
   },

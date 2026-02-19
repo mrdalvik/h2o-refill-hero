@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'Setări dezvoltator',
+    openBeta: 'Deschide Beta',
+    openProduction: 'Deschide Production',
     restartDay: 'Repornește ziua',
     testReminder: 'Memento de test',
   },

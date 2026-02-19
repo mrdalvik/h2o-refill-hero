@@ -59,6 +59,8 @@ export default {
   },
   devSettings: {
     title: 'İnkişafçı parametrləri',
+    openBeta: 'Beta aç',
+    openProduction: 'Production aç',
     restartDay: 'Günü yenidən başlat',
     testReminder: 'Test xatırlatması',
   },
