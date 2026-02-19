@@ -1,6 +1,6 @@
 import type { DrinkType } from '@/types'
 
-export const DRINK_TYPES: DrinkType[] = ['water', 'coffee', 'tea', 'juice', 'soda']
+export const DRINK_TYPES: DrinkType[] = ['coffee', 'tea', 'juice', 'soda', 'water']
 
 export const DRINK_EMOJI: Record<DrinkType, string> = {
   water: '💧',

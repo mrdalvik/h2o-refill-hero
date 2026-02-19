@@ -3,26 +3,18 @@
     <div v-if="visible" class="numpad-overlay" @click.self="close">
       <div class="numpad-dialog" role="dialog" aria-modal="true" aria-labelledby="numpad-title">
         <div class="numpad-header">
-          <span id="numpad-title" class="numpad-title">{{ $t('numpad.title') }}</span>
+          <span id="numpad-title" class="numpad-title">
+            {{ $t('numpad.title') }}
+            <button
+              class="mode-toggle-icon"
+              :title="numpadMode === 'simple' ? $t('numpad.modeExtended') : $t('numpad.modeSimple')"
+              aria-label="Toggle mode"
+              @click="toggleMode"
+            >
+              {{ numpadMode === 'simple' ? '🔢' : '⚡' }}
+            </button>
+          </span>
           <button class="numpad-close" aria-label="Close" @click="close">&#x2715;</button>
-        </div>
-
-        <!-- Mode toggle -->
-        <div class="numpad-mode-toggle">
-          <button
-            class="mode-btn"
-            :class="{ 'mode-btn-active': numpadMode === 'simple' }"
-            @click="setMode('simple')"
-          >
-            {{ $t('numpad.modeSimple') }}
-          </button>
-          <button
-            class="mode-btn"
-            :class="{ 'mode-btn-active': numpadMode === 'extended' }"
-            @click="setMode('extended')"
-          >
-            {{ $t('numpad.modeExtended') }}
-          </button>
         </div>
 
         <!-- Simple mode: drinks + volumes, add immediately -->
@@ -152,6 +144,10 @@ function setMode(mode: 'simple' | 'extended') {
   numpadMode.value = mode
   localStorage.setItem(STORAGE_KEYS.NUMPAD_MODE, mode)
   if (mode === 'simple') selectedDrink.value = null
+}
+
+function toggleMode() {
+  setMode(numpadMode.value === 'simple' ? 'extended' : 'simple')
 }
 
 const quickAmounts = [200, 250, 500]
@@ -286,34 +282,19 @@ watch(() => numpadMode.value, (mode) => {
   color: #fff;
 }
 
-.numpad-mode-toggle {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.mode-btn {
-  flex: 1;
-  background: #2a2a4e;
-  border: 2px solid #4a4a6a;
-  color: #d1d5db;
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 11px;
-  padding: 6px 8px;
+.mode-toggle-icon {
+  margin-left: 6px;
+  background: none;
+  border: none;
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.15s, border-color 0.15s;
+  padding: 2px;
+  opacity: 0.9;
+  vertical-align: middle;
 }
 
-.mode-btn:hover {
-  background: #3a3a5e;
-  border-color: #6a6a9a;
-}
-
-.mode-btn.mode-btn-active {
-  background: #1d4ed8;
-  border-color: #3b82f6;
-  color: #fff;
+.mode-toggle-icon:hover {
+  opacity: 1;
 }
 
 /* Simple mode */
