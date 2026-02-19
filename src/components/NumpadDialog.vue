@@ -314,7 +314,7 @@ watch(() => numpadMode.value, (mode) => {
   color: #d1d5db;
   font-family: 'Fusion Pixel', monospace;
   font-size: 12px;
-  padding: 10px 8px;
+  padding: 14px 8px;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.15s, border-color 0.15s;
@@ -343,7 +343,7 @@ watch(() => numpadMode.value, (mode) => {
   color: #4ade80;
   font-family: 'Fusion Pixel', monospace;
   font-size: 12px;
-  padding: 10px 6px;
+  padding: 14px 6px;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.1s, transform 0.1s;
@@ -533,10 +533,11 @@ watch(() => numpadMode.value, (mode) => {
 
   .simple-drink-btn {
     min-width: calc(50% - 3px);
+    padding: 16px 8px;
   }
 
   .simple-volume-btn {
-    padding: 12px 6px;
+    padding: 16px 6px;
   }
 }
 

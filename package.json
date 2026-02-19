@@ -1,3 +1,3 @@
 {"name": "h2o-refill-hero", "private": true,
-  "version": "0.1.32",
+  "version": "0.1.33",
   "type": "module", "scripts": {"dev": "vite", "build": "vue-tsc -b && vite build", "preview": "vite preview", "test": "vitest", "test:run": "vitest run", "test:coverage": "vitest run --coverage"}, "dependencies": {"@pixelium/web-vue": "^0.1.1", "pinia": "^2.3.0", "vue": "^3.5.17", "vue-i18n": "^11.2.8"}, "devDependencies": {"@types/node": "^25.2.3", "@vitejs/plugin-vue": "^5.2.0", "@vitest/coverage-v8": "^4.0.18", "@vue/test-utils": "^2.4.6", "jsdom": "^28.1.0", "typescript": "~5.7.0", "vite": "^6.1.0", "vitest": "^4.0.18", "vue-tsc": "^2.2.0"}}
