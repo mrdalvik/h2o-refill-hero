@@ -5,6 +5,12 @@ export interface ChangelogVersion {
 
 export const CHANGELOG: ChangelogVersion[] = [
   {
+    version: '0.1.38',
+    entries: [
+      '⚒️ Кнопка «Пропустить» перенесена в центр асфальта, не перекрывает человечков',
+    ],
+  },
+  {
     version: '0.1.37',
     entries: [
       '⚒️ Убрана лишняя платформа в анимации смены дня — человечки стоят на земле',

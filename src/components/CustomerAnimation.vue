@@ -159,7 +159,7 @@ onMounted(() => {
 
 .animation-skip {
   position: absolute;
-  bottom: 24px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.2);
