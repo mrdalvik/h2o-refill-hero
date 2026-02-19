@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'HƏCM DAXİL EDİN',
     submit: 'RƏFƏ QOYUN',
+    modeSimple: 'Sadə',
+    modeExtended: 'Genişləndirilmiş',
+  },
+  drinks: {
+    label: 'İçki',
+    water: 'Su',
+    coffee: 'Qəhvə',
+    tea: 'Çay',
+    juice: 'Şirə',
+    soda: 'Qazlı',
   },
   bottles: {
     small: '200 ml',

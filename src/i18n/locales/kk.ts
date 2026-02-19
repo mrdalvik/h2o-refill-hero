@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'КӨЛЕМ ЕНГІЗУ',
     submit: 'СӨРЕГЕ ҚОЮ',
+    modeSimple: 'Қарапайым',
+    modeExtended: 'Кеңейтілген',
+  },
+  drinks: {
+    label: 'Сусын',
+    water: 'Су',
+    coffee: 'Кофе',
+    tea: 'Шай',
+    juice: 'Шырын',
+    soda: 'Газдалған',
   },
   bottles: {
     small: '200 мл',

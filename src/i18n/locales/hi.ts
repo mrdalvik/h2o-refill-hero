@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'मात्रा दर्ज करें',
     submit: 'शेल्फ पर रखें',
+    modeSimple: 'सरल',
+    modeExtended: 'विस्तारित',
+  },
+  drinks: {
+    label: 'पेय',
+    water: 'पानी',
+    coffee: 'कॉफी',
+    tea: 'चाय',
+    juice: 'जूस',
+    soda: 'सोडा',
   },
   bottles: {
     small: '200 मिली',

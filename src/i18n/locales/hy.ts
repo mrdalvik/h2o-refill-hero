@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'ԾԱՎԱԼԻ ՄՈՒՏՔ',
     submit: 'ԴՐԵԼ ԴԱՐՁԱԿԻՆ',
+    modeSimple: 'Պարզ',
+    modeExtended: 'Ընդլայնված',
+  },
+  drinks: {
+    label: 'Խմիչք',
+    water: 'Ջուր',
+    coffee: 'Սուրճ',
+    tea: 'Թեյ',
+    juice: 'Հյութ',
+    soda: 'Գազավորված',
   },
   bottles: {
     small: '200 մլ',

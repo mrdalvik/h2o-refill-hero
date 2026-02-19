@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: '容量を入力',
     submit: '棚に置く',
+    modeSimple: 'シンプル',
+    modeExtended: '拡張',
+  },
+  drinks: {
+    label: '飲み物',
+    water: '水',
+    coffee: 'コーヒー',
+    tea: '茶',
+    juice: 'ジュース',
+    soda: '炭酸',
   },
   bottles: {
     small: '200 ml',

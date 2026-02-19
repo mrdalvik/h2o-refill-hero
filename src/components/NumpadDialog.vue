@@ -7,56 +7,118 @@
           <button class="numpad-close" aria-label="Close" @click="close">&#x2715;</button>
         </div>
 
-        <div class="numpad-screen">
-          <span class="numpad-value">{{ inputValue || '0' }}</span>
-          <span class="numpad-unit">{{ $t('unit.ml') }}</span>
-        </div>
-
-        <div class="numpad-quick-buttons">
+        <!-- Mode toggle -->
+        <div class="numpad-mode-toggle">
           <button
-            v-for="amount in quickAmounts"
-            :key="amount"
-            class="numpad-quick-btn"
-            @pointerup="addQuick(amount)"
+            class="mode-btn"
+            :class="{ 'mode-btn-active': numpadMode === 'simple' }"
+            @click="setMode('simple')"
           >
-            {{ amount }} {{ $t('unit.ml') }}
+            {{ $t('numpad.modeSimple') }}
+          </button>
+          <button
+            class="mode-btn"
+            :class="{ 'mode-btn-active': numpadMode === 'extended' }"
+            @click="setMode('extended')"
+          >
+            {{ $t('numpad.modeExtended') }}
           </button>
         </div>
 
-        <div class="numpad-keys">
-          <button
-            v-for="key in keys"
-            :key="key"
-            class="numpad-key"
-            :class="{
-              'key-wide': key === '0',
-              'key-action': key === '⌫' || key === 'C'
-            }"
-            @pointerup="handleKey(key)"
-          >
-            {{ key }}
-          </button>
-        </div>
+        <!-- Simple mode: drinks + volumes, add immediately -->
+        <template v-if="numpadMode === 'simple'">
+          <div class="simple-drinks">
+            <button
+              v-for="dt in DRINK_TYPES"
+              :key="dt"
+              class="simple-drink-btn"
+              :class="{ 'simple-drink-active': selectedDrink === dt }"
+              @pointerup="selectDrink(dt)"
+            >
+              {{ DRINK_EMOJI[dt] }} {{ $t(`drinks.${dt}`) }}
+            </button>
+          </div>
+          <div class="simple-volumes">
+            <button
+              v-for="vol in SIMPLE_VOLUMES"
+              :key="vol"
+              class="simple-volume-btn"
+              @pointerup="addSimple(vol)"
+            >
+              {{ vol }} {{ $t('unit.ml') }}
+            </button>
+          </div>
+        </template>
 
-        <button
-          class="numpad-submit"
-          :disabled="!canSubmit"
-          @pointerup="submit"
-        >
-          {{ $t('numpad.submit') }}
-        </button>
+        <!-- Extended mode: dropdown + numpad + submit -->
+        <template v-else>
+          <div class="extended-drink-row">
+            <label class="extended-drink-label">{{ $t('drinks.label') }}</label>
+            <select
+              v-model="extendedDrink"
+              class="extended-drink-select"
+              :title="$t('numpad.title')"
+            >
+              <option
+                v-for="dt in DRINK_TYPES"
+                :key="dt"
+                :value="dt"
+              >
+                {{ DRINK_EMOJI[dt] }} {{ $t(`drinks.${dt}`) }}
+              </option>
+            </select>
+          </div>
+          <div class="numpad-screen">
+            <span class="numpad-value">{{ inputValue || '0' }}</span>
+            <span class="numpad-unit">{{ $t('unit.ml') }}</span>
+          </div>
+          <div class="numpad-quick-buttons">
+            <button
+              v-for="amount in quickAmounts"
+              :key="amount"
+              class="numpad-quick-btn"
+              @pointerup="addQuick(amount)"
+            >
+              {{ amount }} {{ $t('unit.ml') }}
+            </button>
+          </div>
+          <div class="numpad-keys">
+            <button
+              v-for="key in keys"
+              :key="key"
+              class="numpad-key"
+              :class="{
+                'key-wide': key === '0',
+                'key-action': key === '⌫' || key === 'C'
+              }"
+              @pointerup="handleKey(key)"
+            >
+              {{ key }}
+            </button>
+          </div>
+          <button
+            class="numpad-submit"
+            :disabled="!canSubmit"
+            @pointerup="submit"
+          >
+            {{ $t('numpad.submit') }}
+          </button>
+        </template>
       </div>
     </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useToast } from '@/composables/useToast'
 import { triggerHaptic } from '@/utils/haptic'
 import { NUMPAD_MAX_DIGITS, DEV_SETTINGS_CODE } from '@/constants/timing'
+import { DRINK_TYPES, DRINK_EMOJI, SIMPLE_VOLUMES } from '@/constants/drinks'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import type { DrinkType } from '@/types'
 
 defineProps<{
   visible: boolean
@@ -73,20 +135,48 @@ const { t } = useI18n()
 const waterStore = useWaterStore()
 const toast = useToast()
 const inputValue = ref('')
+const selectedDrink = ref<DrinkType | null>(null)
+const extendedDrink = ref<DrinkType>('water')
+
+function loadNumpadMode(): 'simple' | 'extended' {
+  try {
+    const s = localStorage.getItem(STORAGE_KEYS.NUMPAD_MODE)
+    if (s === 'simple' || s === 'extended') return s
+  } catch { /* ignore */ }
+  return 'simple'
+}
+
+const numpadMode = ref<'simple' | 'extended'>(loadNumpadMode())
+
+function setMode(mode: 'simple' | 'extended') {
+  numpadMode.value = mode
+  localStorage.setItem(STORAGE_KEYS.NUMPAD_MODE, mode)
+  if (mode === 'simple') selectedDrink.value = null
+}
 
 const quickAmounts = [200, 250, 500]
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫']
 
-function addWaterWithFeedback(ml: number) {
-  waterStore.addWater(ml)
+function addWaterWithFeedback(ml: number, drinkType: DrinkType = 'water') {
+  waterStore.addWater(ml, drinkType)
   toast.show(t('toast.added', { ml }), { duration: 1000 })
   triggerHaptic(50)
   emit('submitted')
   close()
 }
 
+function selectDrink(dt: DrinkType) {
+  selectedDrink.value = dt
+}
+
+function addSimple(ml: number) {
+  const drink = selectedDrink.value ?? 'water'
+  addWaterWithFeedback(ml, drink)
+  selectedDrink.value = null
+}
+
 function addQuick(ml: number) {
-  addWaterWithFeedback(ml)
+  addWaterWithFeedback(ml, extendedDrink.value)
 }
 
 const canSubmit = computed(() => {
@@ -118,7 +208,7 @@ function submit() {
 
   const ml = parseInt(inputValue.value, 10)
   if (ml > 0) {
-    addWaterWithFeedback(ml)
+    addWaterWithFeedback(ml, extendedDrink.value)
   }
 
   inputValue.value = ''
@@ -127,8 +217,13 @@ function submit() {
 
 function close() {
   inputValue.value = ''
+  selectedDrink.value = null
   emit('close')
 }
+
+watch(() => numpadMode.value, (mode) => {
+  if (mode === 'extended') extendedDrink.value = 'water'
+})
 </script>
 
 <style scoped>
@@ -191,6 +286,127 @@ function close() {
   color: #fff;
 }
 
+.numpad-mode-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mode-btn {
+  flex: 1;
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 11px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.mode-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.mode-btn.mode-btn-active {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+/* Simple mode */
+.simple-drinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.simple-drink-btn {
+  flex: 1;
+  min-width: calc(50% - 3px);
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #d1d5db;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.simple-drink-btn:hover {
+  background: #3a3a5e;
+  border-color: #6a6a9a;
+}
+
+.simple-drink-btn.simple-drink-active {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.simple-volumes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.simple-volume-btn {
+  background: linear-gradient(180deg, #2d4a2d, #1a3a1a);
+  border: 3px solid #2a5a2a;
+  color: #4ade80;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  padding: 10px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s, transform 0.1s;
+}
+
+.simple-volume-btn:hover {
+  background: linear-gradient(180deg, #3d5a3d, #2a4a2a);
+}
+
+.simple-volume-btn:active {
+  transform: translateY(2px);
+}
+
+/* Extended mode */
+.extended-drink-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.extended-drink-label {
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 12px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.extended-drink-select {
+  flex: 1;
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #e5e7eb;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.extended-drink-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
 .numpad-screen {
   background: #0a2a0a;
   border: 3px solid #1a4a1a;
@@ -236,8 +452,6 @@ function close() {
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.1s, transform 0.1s;
-  image-rendering: pixelated;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.2);
 }
 
 .numpad-quick-btn:hover {
@@ -245,9 +459,7 @@ function close() {
 }
 
 .numpad-quick-btn:active {
-  background: linear-gradient(180deg, #1a3a1a, #0a2a0a);
   transform: translateY(2px);
-  box-shadow: none;
 }
 
 .numpad-keys {
@@ -267,8 +479,6 @@ function close() {
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.1s, transform 0.1s;
-  image-rendering: pixelated;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.2);
 }
 
 .numpad-key:hover {
@@ -278,7 +488,6 @@ function close() {
 .numpad-key:active {
   background: #4a4a6e;
   transform: translateY(2px);
-  box-shadow: none;
 }
 
 .numpad-key.key-action {
@@ -286,10 +495,6 @@ function close() {
   border-color: #6a4a4a;
   color: #f87171;
   font-size: 16px;
-}
-
-.numpad-key.key-action:hover {
-  background: #4a3a3a;
 }
 
 .numpad-submit {
@@ -304,17 +509,10 @@ function close() {
   border-radius: 4px;
   letter-spacing: 2px;
   transition: background 0.1s, transform 0.1s;
-  image-rendering: pixelated;
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
 }
 
 .numpad-submit:hover:not(:disabled) {
   background: linear-gradient(180deg, #60a5fa, #3b82f6);
-}
-
-.numpad-submit:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: none;
 }
 
 .numpad-submit:disabled {
@@ -338,7 +536,6 @@ function close() {
   }
 }
 
-/* Mobile: fullscreen numpad */
 @media (max-width: 479px) {
   .numpad-overlay {
     align-items: flex-end;
@@ -350,44 +547,20 @@ function close() {
     border-radius: 12px 12px 0 0;
     border-bottom: none;
     padding: 16px 12px calc(env(safe-area-inset-bottom, 12px) + 12px);
-    animation: slideUpMobile 0.25s ease-out;
   }
 
-  .numpad-quick-btn {
+  .simple-drink-btn {
+    min-width: calc(50% - 3px);
+  }
+
+  .simple-volume-btn {
     padding: 12px 6px;
-    font-size: 13px;
-  }
-
-  .numpad-key {
-    padding: 14px 8px;
-    font-size: 20px;
-  }
-
-  .numpad-submit {
-    padding: 14px;
-    font-size: 15px;
-  }
-
-  .numpad-value {
-    font-size: 32px;
   }
 }
 
-/* Tablet+ */
 @media (min-width: 480px) {
   .numpad-dialog {
     width: 320px;
-  }
-}
-
-@keyframes slideUpMobile {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'HAJM KIRITISH',
     submit: 'JAVONGA QO\'YISH',
+    modeSimple: 'Oddiy',
+    modeExtended: 'Kengaytirilgan',
+  },
+  drinks: {
+    label: 'Ichimlik',
+    water: 'Suv',
+    coffee: 'Qahva',
+    tea: 'Choy',
+    juice: 'Sharbat',
+    soda: 'Gazlangan',
   },
   bottles: {
     small: '200 ml',

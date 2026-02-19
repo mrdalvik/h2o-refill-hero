@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'MÖÇERINI GIRMEK',
     submit: 'ŞELFE GOÝMAK',
+    modeSimple: 'Ýönekeý',
+    modeExtended: 'Giňeldilen',
+  },
+  drinks: {
+    label: 'İçgi',
+    water: 'Suw',
+    coffee: 'Kofe',
+    tea: 'Çay',
+    juice: 'Şire',
+    soda: 'Gazly',
   },
   bottles: {
     small: '200 ml',

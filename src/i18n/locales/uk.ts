@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'ВВЕДЕННЯ ОБ\'ЄМУ',
     submit: 'ПОСТАВИТИ НА ПОЛИЦЮ',
+    modeSimple: 'Простий',
+    modeExtended: 'Розширений',
+  },
+  drinks: {
+    label: 'Напій',
+    water: 'Вода',
+    coffee: 'Кава',
+    tea: 'Чай',
+    juice: 'Сік',
+    soda: 'Газована',
   },
   bottles: {
     small: '200 мл',

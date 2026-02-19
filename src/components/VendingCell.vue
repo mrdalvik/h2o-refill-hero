@@ -9,7 +9,7 @@
         :class="{ 'second-row': index === 1 }"
         @click="showBottlePopup(bottle)"
       >
-        <BottleSprite :size="bottle.size" :ml="bottle.ml" />
+        <BottleSprite :size="bottle.size" :ml="bottle.ml" :drink-type="bottle.drinkType ?? 'water'" />
       </div>
     </div>
 

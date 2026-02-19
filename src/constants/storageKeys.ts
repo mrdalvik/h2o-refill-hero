@@ -7,4 +7,5 @@ export const STORAGE_KEYS = {
   LOCALE: 'h2o-locale',
   CALC_PREFS: 'h2o-calc-prefs',
   ONBOARDING_SEEN: 'h2o-onboarding-seen',
+  NUMPAD_MODE: 'h2o-numpad-mode',
 } as const

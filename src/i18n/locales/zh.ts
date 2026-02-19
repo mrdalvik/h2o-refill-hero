@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: '输入容量',
     submit: '放到货架上',
+    modeSimple: '简单',
+    modeExtended: '扩展',
+  },
+  drinks: {
+    label: '饮料',
+    water: '水',
+    coffee: '咖啡',
+    tea: '茶',
+    juice: '果汁',
+    soda: '汽水',
   },
   bottles: {
     small: '200 毫升',

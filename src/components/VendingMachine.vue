@@ -18,7 +18,7 @@
                   :class="`bottle-${removingBottle.size}`"
                   :style="{ '--start-top': shelfTop(removingBottle.row), '--start-left': shelfLeft(removingBottle.col) }"
                 >
-                  <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" />
+                  <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" :drink-type="removingBottle.drinkType ?? 'water'" />
                 </div>
               </div>
             </Transition>
@@ -75,7 +75,7 @@ import { ref, watch, provide } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useToast } from '@/composables/useToast'
-import type { Bottle, CellPosition } from '@/types'
+import type { Bottle, CellPosition, DrinkType } from '@/types'
 import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
 import { CELEBRATION_DISPLAY_MS, BOTTLE_REMOVAL_ANIMATION_MS } from '@/constants/timing'
 import { shelfTop, shelfLeft } from '@/utils/shelfLayout'
@@ -101,12 +101,12 @@ const showNumpad = ref(false)
 const showDevSettings = ref(false)
 const showCelebration = ref(false)
 const hasShownCelebration = ref(waterStore.goalReached)
-const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large'; row: number; col: number } | null>(null)
+const removingBottle = ref<{ id: string; ml: number; size: 'small' | 'medium' | 'large'; drinkType: DrinkType; row: number; col: number } | null>(null)
 
 provide(BOTTLE_REMOVAL_KEY, (bottle: Bottle, position: CellPosition, closePopup: () => void) => {
   closePopup()
   waterStore.removeBottle(bottle.id)
-  removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size, row: position.row, col: position.col }
+  removingBottle.value = { id: bottle.id, ml: bottle.ml, size: bottle.size, drinkType: bottle.drinkType ?? 'water', row: position.row, col: position.col }
   setTimeout(() => {
     removingBottle.value = null
   }, BOTTLE_REMOVAL_ANIMATION_MS)

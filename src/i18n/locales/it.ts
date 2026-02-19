@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'INSERISCI VOLUME',
     submit: 'METTI SULLO SCAFFALE',
+    modeSimple: 'Semplice',
+    modeExtended: 'Esteso',
+  },
+  drinks: {
+    label: 'Bevanda',
+    water: 'Acqua',
+    coffee: 'Caffè',
+    tea: 'Tè',
+    juice: 'Succo',
+    soda: 'Bibita',
   },
   bottles: {
     small: '200 ml',

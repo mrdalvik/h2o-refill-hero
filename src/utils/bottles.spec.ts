@@ -67,12 +67,18 @@ describe('mlToBottles', () => {
     expect(mlToBottles(1000)[0].size).toBe('large')
   })
 
-  it('creates bottles with id and addedAt', () => {
+  it('creates bottles with id, addedAt and drinkType', () => {
     const bottles = mlToBottles(500)
     expect(bottles[0].id).toBeDefined()
     expect(typeof bottles[0].id).toBe('string')
     expect(bottles[0].addedAt).toBeDefined()
     expect(typeof bottles[0].addedAt).toBe('number')
+    expect(bottles[0].drinkType).toBe('water')
+  })
+
+  it('creates bottles with custom drinkType', () => {
+    const bottles = mlToBottles(250, 'coffee')
+    expect(bottles[0].drinkType).toBe('coffee')
   })
 })
 

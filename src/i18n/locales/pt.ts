@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'INSERIR VOLUME',
     submit: 'COLOCAR NA PRATELEIRA',
+    modeSimple: 'Simples',
+    modeExtended: 'Estendido',
+  },
+  drinks: {
+    label: 'Bebida',
+    water: 'Água',
+    coffee: 'Café',
+    tea: 'Chá',
+    juice: 'Suco',
+    soda: 'Refrigerante',
   },
   bottles: {
     small: '200 ml',

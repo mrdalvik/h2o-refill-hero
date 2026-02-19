@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'VOLUMEN EINGEBEN',
     submit: 'INS REGAL STELLEN',
+    modeSimple: 'Einfach',
+    modeExtended: 'Erweitert',
+  },
+  drinks: {
+    label: 'Getränk',
+    water: 'Wasser',
+    coffee: 'Kaffee',
+    tea: 'Tee',
+    juice: 'Saft',
+    soda: 'Limonade',
   },
   bottles: {
     small: '200 ml',

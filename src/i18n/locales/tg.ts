@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'ВОРИД КАРДАНИ ҲАҶМ',
     submit: 'РОЙГОН НИГОХ ДОДАН',
+    modeSimple: 'Содда',
+    modeExtended: 'Расширенный',
+  },
+  drinks: {
+    label: 'Нӯшоки',
+    water: 'Об',
+    coffee: 'Қаҳва',
+    tea: 'Чой',
+    juice: 'Шарбат',
+    soda: 'Газдор',
   },
   bottles: {
     small: '200 мл',

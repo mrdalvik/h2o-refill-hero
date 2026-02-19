@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'ENTER VOLUME',
     submit: 'PUT ON SHELF',
+    modeSimple: 'Simple',
+    modeExtended: 'Extended',
+  },
+  drinks: {
+    label: 'Drink',
+    water: 'Water',
+    coffee: 'Coffee',
+    tea: 'Tea',
+    juice: 'Juice',
+    soda: 'Soda',
   },
   bottles: {
     small: '200 ml',

@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'УВОД АБ\'ЁМУ',
     submit: 'ПАСТАВІЦЬ НА ПОЛКУ',
+    modeSimple: 'Просты',
+    modeExtended: 'Пашыраны',
+  },
+  drinks: {
+    label: 'Напій',
+    water: 'Вада',
+    coffee: 'Кава',
+    tea: 'Гарбата',
+    juice: 'Сок',
+    soda: 'Газаваная',
   },
   bottles: {
     small: '200 мл',

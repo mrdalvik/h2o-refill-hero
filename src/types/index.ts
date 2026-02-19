@@ -1,9 +1,12 @@
 export type BottleSize = 'small' | 'medium' | 'large'
 
+export type DrinkType = 'water' | 'coffee' | 'tea' | 'juice' | 'soda'
+
 export interface Bottle {
   id: string
   ml: number
   size: BottleSize
+  drinkType: DrinkType
   addedAt: number
 }
 

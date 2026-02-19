@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'ВВОД ОБЪЁМА',
     submit: 'ПОСТАВИТЬ НА ПОЛКУ',
+    modeSimple: 'Простой',
+    modeExtended: 'Расширенный',
+  },
+  drinks: {
+    label: 'Напиток',
+    water: 'Вода',
+    coffee: 'Кофе',
+    tea: 'Чай',
+    juice: 'Сок',
+    soda: 'Газировка',
   },
   bottles: {
     small: '200 мл',

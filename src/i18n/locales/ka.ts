@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'მოცულობის შეყვანა',
     submit: 'შელფზე დადება',
+    modeSimple: 'მარტივი',
+    modeExtended: 'გაფართოებული',
+  },
+  drinks: {
+    label: 'სასმელი',
+    water: 'წყალი',
+    coffee: 'ყავა',
+    tea: 'ჩაი',
+    juice: 'წვენი',
+    soda: 'გაზიანი',
   },
   bottles: {
     small: '200 მლ',

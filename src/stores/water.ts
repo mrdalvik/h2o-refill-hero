@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Cell, Bottle, CellPosition } from '@/types'
+import type { Cell, Bottle, CellPosition, DrinkType } from '@/types'
 import { GRID_ROWS, GRID_COLS, DEFAULT_DAILY_GOAL } from '@/types'
-import { mlToBottles } from '@/utils/bottles'
+import { mlToBottles, ensureBottleDrinkType } from '@/utils/bottles'
 import { useHistoryStore } from './history'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
 
@@ -32,10 +32,28 @@ interface WaterState {
   bottles: Bottle[]
 }
 
+function migrateBottles(bottles: Bottle[]): Bottle[] {
+  return bottles.map(ensureBottleDrinkType)
+}
+
+function migrateCells(cells: Cell[][]): Cell[][] {
+  return cells.map((row) =>
+    row.map((cell) => ({
+      ...cell,
+      bottles: cell.bottles.map(ensureBottleDrinkType),
+    }))
+  )
+}
+
 function loadFromStorage(): WaterState | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) {
+      const data = JSON.parse(raw)
+      if (data.bottles) data.bottles = migrateBottles(data.bottles)
+      if (data.cells) data.cells = migrateCells(data.cells)
+      return data
+    }
   } catch {
     /* ignore corrupted data */
   }
@@ -118,10 +136,10 @@ export const useWaterStore = defineStore('water', () => {
     return false
   }
 
-  function addWater(ml: number) {
+  function addWater(ml: number, drinkType: DrinkType = 'water') {
     if (ml <= 0) return
 
-    const newBottles = mlToBottles(ml)
+    const newBottles = mlToBottles(ml, drinkType)
     for (const bottle of newBottles) {
       placeBottle(bottle)
       bottles.value.push(bottle)

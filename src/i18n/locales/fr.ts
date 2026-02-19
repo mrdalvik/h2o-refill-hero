@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'SAISIR LE VOLUME',
     submit: 'METTRE EN RAYON',
+    modeSimple: 'Simple',
+    modeExtended: 'Étendu',
+  },
+  drinks: {
+    label: 'Boisson',
+    water: 'Eau',
+    coffee: 'Café',
+    tea: 'Thé',
+    juice: 'Jus',
+    soda: 'Soda',
   },
   bottles: {
     small: '200 ml',

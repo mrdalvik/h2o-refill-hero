@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'INTRODUCEȚI VOLUMUL',
     submit: 'PUNEȚI PE RAFT',
+    modeSimple: 'Simplu',
+    modeExtended: 'Extins',
+  },
+  drinks: {
+    label: 'Băutură',
+    water: 'Apă',
+    coffee: 'Cafea',
+    tea: 'Ceai',
+    juice: 'Suc',
+    soda: 'Băutură carbogazoasă',
   },
   bottles: {
     small: '200 ml',

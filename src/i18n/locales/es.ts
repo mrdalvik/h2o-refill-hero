@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'INGRESAR VOLUMEN',
     submit: 'PONER EN EL ESTANTE',
+    modeSimple: 'Simple',
+    modeExtended: 'Extendido',
+  },
+  drinks: {
+    label: 'Bebida',
+    water: 'Agua',
+    coffee: 'Café',
+    tea: 'Té',
+    juice: 'Zumo',
+    soda: 'Refresco',
   },
   bottles: {
     small: '200 ml',

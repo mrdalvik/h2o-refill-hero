@@ -14,6 +14,16 @@ export default {
   numpad: {
     title: 'КОЛЕМДИ КИРГИЗҮҮ',
     submit: 'ТЕРЕЗЕГЕ КОЮУ',
+    modeSimple: 'Жөнөкөй',
+    modeExtended: 'Кеңейтилген',
+  },
+  drinks: {
+    label: 'Ичимдик',
+    water: 'Суу',
+    coffee: 'Кофе',
+    tea: 'Чай',
+    juice: 'Мөмө ширеси',
+    soda: 'Газдалган',
   },
   bottles: {
     small: '200 мл',
