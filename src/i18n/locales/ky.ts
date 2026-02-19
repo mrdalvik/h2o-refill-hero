@@ -16,6 +16,7 @@ export default {
     submit: 'ТЕРЕЗЕГЕ КОЮУ',
     modeSimple: 'Жөнөкөй',
     modeExtended: 'Кеңейтилген',
+    keyboard: 'Клавиатура',
   },
   drinks: {
     label: 'Ичимдик',

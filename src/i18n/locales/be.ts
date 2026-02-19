@@ -16,6 +16,7 @@ export default {
     submit: 'ПАСТАВІЦЬ НА ПОЛКУ',
     modeSimple: 'Просты',
     modeExtended: 'Пашыраны',
+    keyboard: 'Клавіятура',
   },
   drinks: {
     label: 'Напій',

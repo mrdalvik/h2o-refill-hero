@@ -16,6 +16,7 @@ export default {
     submit: 'PUT ON SHELF',
     modeSimple: 'Simple',
     modeExtended: 'Extended',
+    keyboard: 'Keyboard',
   },
   drinks: {
     label: 'Drink',

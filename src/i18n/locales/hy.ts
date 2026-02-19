@@ -16,6 +16,7 @@ export default {
     submit: 'ԴՐԵԼ ԴԱՐՁԱԿԻՆ',
     modeSimple: 'Պարզ',
     modeExtended: 'Ընդլայնված',
+    keyboard: 'Ստեղնաշար',
   },
   drinks: {
     label: 'Խմիչք',

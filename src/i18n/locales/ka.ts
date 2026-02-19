@@ -16,6 +16,7 @@ export default {
     submit: 'შელფზე დადება',
     modeSimple: 'მარტივი',
     modeExtended: 'გაფართოებული',
+    keyboard: 'კლავიატურა',
   },
   drinks: {
     label: 'სასმელი',

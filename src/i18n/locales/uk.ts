@@ -16,6 +16,7 @@ export default {
     submit: 'ПОСТАВИТИ НА ПОЛИЦЮ',
     modeSimple: 'Простий',
     modeExtended: 'Розширений',
+    keyboard: 'Клавіатура',
   },
   drinks: {
     label: 'Напій',

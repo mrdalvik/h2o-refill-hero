@@ -16,6 +16,7 @@ export default {
     submit: '棚に置く',
     modeSimple: 'シンプル',
     modeExtended: '拡張',
+    keyboard: 'キーボード',
   },
   drinks: {
     label: '飲み物',

@@ -16,6 +16,7 @@ export default {
     submit: '放到货架上',
     modeSimple: '简单',
     modeExtended: '扩展',
+    keyboard: '键盘',
   },
   drinks: {
     label: '饮料',

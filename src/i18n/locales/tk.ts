@@ -16,6 +16,7 @@ export default {
     submit: 'ŞELFE GOÝMAK',
     modeSimple: 'Ýönekeý',
     modeExtended: 'Giňeldilen',
+    keyboard: 'Klawiatura',
   },
   drinks: {
     label: 'İçgi',

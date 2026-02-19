@@ -16,6 +16,7 @@ export default {
     submit: 'COLOCAR NA PRATELEIRA',
     modeSimple: 'Simples',
     modeExtended: 'Estendido',
+    keyboard: 'Teclado',
   },
   drinks: {
     label: 'Bebida',

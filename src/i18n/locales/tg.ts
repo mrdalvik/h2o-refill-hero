@@ -16,6 +16,7 @@ export default {
     submit: 'РОЙГОН НИГОХ ДОДАН',
     modeSimple: 'Содда',
     modeExtended: 'Расширенный',
+    keyboard: 'Клавиатура',
   },
   drinks: {
     label: 'Нӯшоки',

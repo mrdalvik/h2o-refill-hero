@@ -16,6 +16,7 @@ export default {
     submit: 'JAVONGA QO\'YISH',
     modeSimple: 'Oddiy',
     modeExtended: 'Kengaytirilgan',
+    keyboard: 'Klaviatura',
   },
   drinks: {
     label: 'Ichimlik',

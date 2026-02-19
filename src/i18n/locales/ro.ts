@@ -16,6 +16,7 @@ export default {
     submit: 'PUNEȚI PE RAFT',
     modeSimple: 'Simplu',
     modeExtended: 'Extins',
+    keyboard: 'Tastatură',
   },
   drinks: {
     label: 'Băutură',

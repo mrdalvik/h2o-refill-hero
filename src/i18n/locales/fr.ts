@@ -16,6 +16,7 @@ export default {
     submit: 'METTRE EN RAYON',
     modeSimple: 'Simple',
     modeExtended: 'Étendu',
+    keyboard: 'Clavier',
   },
   drinks: {
     label: 'Boisson',

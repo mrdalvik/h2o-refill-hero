@@ -16,6 +16,7 @@ export default {
     submit: 'METTI SULLO SCAFFALE',
     modeSimple: 'Semplice',
     modeExtended: 'Esteso',
+    keyboard: 'Tastiera',
   },
   drinks: {
     label: 'Bevanda',

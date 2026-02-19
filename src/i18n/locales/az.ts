@@ -16,6 +16,7 @@ export default {
     submit: 'RƏFƏ QOYUN',
     modeSimple: 'Sadə',
     modeExtended: 'Genişləndirilmiş',
+    keyboard: 'Klaviatura',
   },
   drinks: {
     label: 'İçki',

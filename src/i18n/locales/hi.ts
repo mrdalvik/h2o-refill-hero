@@ -16,6 +16,7 @@ export default {
     submit: 'शेल्फ पर रखें',
     modeSimple: 'सरल',
     modeExtended: 'विस्तारित',
+    keyboard: 'कीबोर्ड',
   },
   drinks: {
     label: 'पेय',

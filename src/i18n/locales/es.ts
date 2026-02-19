@@ -16,6 +16,7 @@ export default {
     submit: 'PONER EN EL ESTANTE',
     modeSimple: 'Simple',
     modeExtended: 'Extendido',
+    keyboard: 'Teclado',
   },
   drinks: {
     label: 'Bebida',

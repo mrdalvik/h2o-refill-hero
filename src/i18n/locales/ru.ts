@@ -16,6 +16,7 @@ export default {
     submit: 'ПОСТАВИТЬ НА ПОЛКУ',
     modeSimple: 'Простой',
     modeExtended: 'Расширенный',
+    keyboard: 'Клавиатура',
   },
   drinks: {
     label: 'Напиток',

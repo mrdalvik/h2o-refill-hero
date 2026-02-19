@@ -16,6 +16,7 @@ export default {
     submit: 'INS REGAL STELLEN',
     modeSimple: 'Einfach',
     modeExtended: 'Erweitert',
+    keyboard: 'Tastatur',
   },
   drinks: {
     label: 'Getränk',

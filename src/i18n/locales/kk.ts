@@ -16,6 +16,7 @@ export default {
     submit: 'СӨРЕГЕ ҚОЮ',
     modeSimple: 'Қарапайым',
     modeExtended: 'Кеңейтілген',
+    keyboard: 'Пернетақта',
   },
   drinks: {
     label: 'Сусын',

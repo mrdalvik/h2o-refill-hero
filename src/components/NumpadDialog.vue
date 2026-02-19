@@ -6,12 +6,10 @@
           <span id="numpad-title" class="numpad-title">
             {{ $t('numpad.title') }}
             <button
-              class="mode-toggle-icon"
-              :title="numpadMode === 'simple' ? $t('numpad.modeExtended') : $t('numpad.modeSimple')"
-              aria-label="Toggle mode"
+              class="mode-toggle-btn"
               @click="toggleMode"
             >
-              {{ numpadMode === 'simple' ? '🔢' : '⚡' }}
+              {{ numpadMode === 'simple' ? $t('numpad.keyboard') : $t('numpad.modeSimple') }}
             </button>
           </span>
           <button class="numpad-close" aria-label="Close" @click="close">&#x2715;</button>
@@ -282,19 +280,22 @@ watch(() => numpadMode.value, (mode) => {
   color: #fff;
 }
 
-.mode-toggle-icon {
-  margin-left: 6px;
-  background: none;
-  border: none;
-  font-size: 16px;
+.mode-toggle-btn {
+  margin-left: 8px;
+  background: #2a2a4e;
+  border: 2px solid #4a4a6a;
+  color: #9ca3af;
+  font-family: 'Fusion Pixel', monospace;
+  font-size: 11px;
+  padding: 2px 6px;
   cursor: pointer;
-  padding: 2px;
-  opacity: 0.9;
+  border-radius: 4px;
   vertical-align: middle;
 }
 
-.mode-toggle-icon:hover {
-  opacity: 1;
+.mode-toggle-btn:hover {
+  background: #3a3a5e;
+  color: #e5e7eb;
 }
 
 /* Simple mode */
