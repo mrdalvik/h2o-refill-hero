@@ -52,7 +52,7 @@ function preventContextMenuOnTouch() {
       const target = e.target instanceof Element ? e.target : null
       if (
         target?.closest(
-          'button, [role="button"], .panel-clickable, .bottle-cell, .onboarding-backdrop, .onboarding-btn, .animation-skip, .celebration-overlay, .calc-overlay, .changelog-overlay, .numpad-overlay, .settings-overlay, .dev-overlay, .bottle-popup-overlay',
+          'button, [role="button"], .panel-clickable, .bottle-cell, .onboarding-backdrop, .onboarding-btn, .celebration-overlay, .calc-overlay, .changelog-overlay, .numpad-overlay, .settings-overlay, .dev-overlay, .bottle-popup-overlay',
         )
       ) {
         e.preventDefault()
