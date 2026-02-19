@@ -71,6 +71,7 @@ export default {
     timeEvening: 'शाम',
     timeNight: 'रात',
     howToUse: 'कैसे उपयोग करें?',
+    whatsNew: 'क्या नया है?',
     reminder: 'अनुस्मारक',
     reminderNever: 'कभी नहीं',
     reminder3: 'दिन में 3 बार',

@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Երեկո',
     timeNight: 'Գիշեր',
     howToUse: 'Ինչպես օգտագործել?',
+    whatsNew: 'Ի՞նչ նորություններ',
     reminder: 'Հիշեցումներ',
     reminderNever: 'Երբեք',
     reminder3: 'Օրական 3 անգամ',

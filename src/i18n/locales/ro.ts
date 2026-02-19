@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Seară',
     timeNight: 'Noapte',
     howToUse: 'Cum se folosește?',
+    whatsNew: 'Ce e nou?',
     reminder: 'Memento-uri',
     reminderNever: 'Niciodată',
     reminder3: 'De 3 ori pe zi',

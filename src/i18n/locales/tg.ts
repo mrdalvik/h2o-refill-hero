@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Шом',
     timeNight: 'Шаб',
     howToUse: 'Чӣ гуна истифода бурдан?',
+    whatsNew: 'Чӣ нав?',
     reminder: 'Ёддоштҳо',
     reminderNever: 'Ҳеҷ гоҳ',
     reminder3: 'Рӯзе 3 маротиба',

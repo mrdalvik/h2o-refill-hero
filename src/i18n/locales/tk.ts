@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Agşam',
     timeNight: 'Gije',
     howToUse: 'Nädip ulanylmagy?',
+    whatsNew: 'Täze näme?',
     reminder: 'Ýatlatmalar',
     reminderNever: 'Hiç wagt',
     reminder3: 'Günde 3 gezek',

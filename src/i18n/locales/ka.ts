@@ -71,6 +71,7 @@ export default {
     timeEvening: 'საღამო',
     timeNight: 'ღამე',
     howToUse: 'როგორ გამოვიყენო?',
+    whatsNew: 'რა არის ახალი?',
     reminder: 'შეხსენებები',
     reminderNever: 'არასოდეს',
     reminder3: 'დღეში 3-ჯერ',

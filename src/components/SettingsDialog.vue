@@ -8,9 +8,14 @@
         </div>
 
         <div class="settings-section">
-          <button class="how-to-use-btn" @click="showHowToUse">
-            {{ $t('settings.howToUse') }}
-          </button>
+          <div class="settings-buttons-row">
+            <button class="how-to-use-btn" @click="showHowToUse">
+              {{ $t('settings.howToUse') }}
+            </button>
+            <button class="how-to-use-btn" @click="showChangelogPopup = true">
+              {{ $t('settings.whatsNew') }}
+            </button>
+          </div>
         </div>
 
         <div class="settings-section">
@@ -123,6 +128,8 @@
         :initial-activity="calcActivity"
         @apply="applyCalculatedGoal"
       />
+
+      <SettingsChangelogPopup v-model="showChangelogPopup" />
     </div>
   </Teleport>
 </template>
@@ -138,6 +145,7 @@ import { STORAGE_KEYS } from '@/constants/storageKeys'
 import { GOAL_PRESETS } from '@/constants/timing'
 import SettingsResetConfirm from './settings/SettingsResetConfirm.vue'
 import SettingsCalcPopup from './settings/SettingsCalcPopup.vue'
+import SettingsChangelogPopup from './settings/SettingsChangelogPopup.vue'
 
 const props = defineProps<{
   visible: boolean
@@ -188,6 +196,7 @@ function loadCalcPrefs() {
 const goalInput = ref(waterStore.dailyGoal)
 const showCalcPopup = ref(false)
 const showResetConfirm = ref(false)
+const showChangelogPopup = ref(false)
 const prefs = loadCalcPrefs()
 const calcWeight = ref(prefs.weight)
 const calcActivity = ref<'low' | 'medium' | 'high'>(prefs.activity)
@@ -325,6 +334,15 @@ function changeLocale(code: SupportedLocale) {
 
 .settings-section {
   margin-bottom: 16px;
+}
+
+.settings-buttons-row {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-buttons-row .how-to-use-btn {
+  flex: 1;
 }
 
 .how-to-use-btn {

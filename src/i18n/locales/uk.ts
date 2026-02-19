@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Вечір',
     timeNight: 'Ніч',
     howToUse: 'Як користуватися?',
+    whatsNew: 'Що нового?',
     reminder: 'Нагадування',
     reminderNever: 'Ніколи',
     reminder3: '3 рази на день',

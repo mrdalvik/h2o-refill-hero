@@ -71,6 +71,7 @@ export default {
     timeEvening: '傍晚',
     timeNight: '夜晚',
     howToUse: '如何使用？',
+    whatsNew: '有什么新功能？',
     reminder: '提醒',
     reminderNever: '从不',
     reminder3: '每天3次',

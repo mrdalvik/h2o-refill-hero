@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Кеш',
     timeNight: 'Түн',
     howToUse: 'Қалай пайдалану?',
+    whatsNew: 'Жаңалықтар',
     reminder: 'Еске салулар',
     reminderNever: 'Ешқашан',
     reminder3: 'Күніне 3 рет',

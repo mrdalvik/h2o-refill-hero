@@ -71,6 +71,7 @@ export default {
     timeEvening: '夕方',
     timeNight: '夜',
     howToUse: '使い方',
+    whatsNew: '新機能',
     reminder: 'リマインダー',
     reminderNever: 'なし',
     reminder3: '1日3回',

@@ -71,6 +71,7 @@ export default {
     timeEvening: 'Evening',
     timeNight: 'Night',
     howToUse: 'How to use?',
+    whatsNew: "What's new?",
     reminder: 'Reminders',
     reminderNever: 'Never',
     reminder3: '3 times a day',
