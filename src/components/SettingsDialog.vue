@@ -271,8 +271,8 @@ function changeLocale(code: SupportedLocale) {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: max(16px, env(safe-area-inset-right));
+  justify-content: center;
+  padding: 16px;
   z-index: 1100;
   animation: fadeIn 0.2s ease-out;
 }
@@ -608,7 +608,7 @@ function changeLocale(code: SupportedLocale) {
   .settings-overlay {
     align-items: flex-end;
     justify-content: center;
-    padding-right: 0;
+    padding: 0;
   }
 
   .settings-dialog {
