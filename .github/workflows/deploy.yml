@@ -32,7 +32,9 @@ jobs:
           git fetch origin main
           git checkout main
           npm ci
+          mkdir -p dist
           VITE_BASE=/h2o-refill-hero/ npm run build -- --outDir dist-prod
+          cp dist/manifest.webmanifest dist-prod/
 
       - name: Check if beta exists
         id: check_beta
