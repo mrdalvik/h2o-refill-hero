@@ -97,13 +97,13 @@ function formatTime(timestamp: number): string {
 
 @media (max-width: 479px) {
   .vending-cell {
-    max-height: 62px;
+    max-height: 68px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
   .vending-cell {
-    max-height: 76px;
+    max-height: 90px;
   }
 }
 

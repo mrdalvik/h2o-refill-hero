@@ -255,9 +255,9 @@ function onForceReset() {
   border: 3px solid #8a8a9a;
   border-radius: 6px;
   padding: 8px;
-  height: 336px;
-  min-height: 336px;
-  max-height: 336px;
+  height: 364px;
+  min-height: 364px;
+  max-height: 364px;
   flex-shrink: 0;
   box-shadow:
     inset 0 0 20px rgba(0, 0, 0, 0.2),
@@ -383,13 +383,13 @@ function onForceReset() {
   }
 
   .machine-window {
-    height: 264px;
-    min-height: 264px;
-    max-height: 264px;
+    height: 296px;
+    min-height: 296px;
+    max-height: 296px;
   }
 
   .machine-right {
-    margin-top: 90px;
+    margin-top: 95px;
   }
 }
 
@@ -399,13 +399,13 @@ function onForceReset() {
   }
 
   .machine-window {
-    height: 320px;
-    min-height: 320px;
-    max-height: 320px;
+    height: 384px;
+    min-height: 384px;
+    max-height: 384px;
   }
 
   .machine-right {
-    margin-top: 120px;
+    margin-top: 140px;
   }
 }
 
@@ -423,13 +423,13 @@ function onForceReset() {
   }
 
   .machine-window {
-    height: 336px;
-    min-height: 336px;
-    max-height: 336px;
+    height: 364px;
+    min-height: 364px;
+    max-height: 364px;
   }
 
   .machine-right {
-    margin-top: 130px;
+    margin-top: 140px;
   }
 }
 </style>
