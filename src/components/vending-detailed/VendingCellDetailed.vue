@@ -105,6 +105,7 @@ function formatTime(timestamp: number): string {
   width: 100%;
   height: 100%;
   position: relative;
+  z-index: 3;
 }
 
 .cell-bottle-wrapper {

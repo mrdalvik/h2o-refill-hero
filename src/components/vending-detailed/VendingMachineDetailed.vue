@@ -30,7 +30,7 @@
         </div>
 
         <div class="machine-right">
-          <ControlPanelDetailed
+          <ControlPanel
             @open-settings="$emit('open-settings')"
             @open-numpad="$emit('open-numpad')"
           />
@@ -46,7 +46,7 @@ import WaterCounterDetailed from './WaterCounterDetailed.vue'
 import VendingGridDetailed from './VendingGridDetailed.vue'
 import ProgressIndicatorDetailed from './ProgressIndicatorDetailed.vue'
 import BottleSpriteDetailed from './BottleSpriteDetailed.vue'
-import ControlPanelDetailed from './ControlPanelDetailed.vue'
+import ControlPanel from '../ControlPanel.vue'
 
 defineProps<{
   removingBottle: { id: string; ml: number; size: 'small' | 'medium' | 'large'; drinkType: import('@/types').DrinkType; row: number; col: number } | null
