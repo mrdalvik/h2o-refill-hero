@@ -61,6 +61,7 @@ export default {
     title: 'Настройки разработчика',
     restartDay: 'Перезапустить день',
     testReminder: 'Тестовое напоминание',
+    detailedVending: 'Детализированный автомат',
   },
   settings: {
     title: 'Настройки',

@@ -1,89 +1,59 @@
 <template>
-  <div class="vending-machine">
-    <div class="machine-body">
-      <div class="machine-awning">
-        <h1 class="machine-title">{{ $t('app.title') }}</h1>
+  <div class="vending-machine-wrapper">
+    <VendingMachineClassic
+      v-if="!detailed"
+      :removing-bottle="removingBottle"
+      @open-settings="showSettings = true"
+      @open-numpad="showNumpad = true"
+    />
+    <VendingMachineDetailed
+      v-else
+      :removing-bottle="removingBottle"
+      @open-settings="showSettings = true"
+      @open-numpad="showNumpad = true"
+    />
+
+    <NumpadDialog
+      :visible="showNumpad"
+      @close="showNumpad = false"
+      @force-reset="onForceReset"
+      @open-dev-settings="showDevSettings = true"
+    />
+
+    <DevSettingsPopup
+      :visible="showDevSettings"
+      @close="showDevSettings = false"
+      @force-reset="onForceReset"
+    />
+
+    <Transition name="celebration">
+      <div v-if="showCelebration" class="celebration-overlay" @click="showCelebration = false">
+        <div class="celebration-content">
+          <div class="celebration-icon">&#127881;</div>
+          <div class="celebration-text">{{ $t('celebration.title') }}</div>
+          <div class="celebration-sub">{{ $t('celebration.subtitle', { current: waterStore.totalMl, goal: waterStore.dailyGoal }) }}</div>
+        </div>
       </div>
+    </Transition>
 
-      <div class="machine-main">
-        <div class="machine-left">
-          <WaterCounter />
-          <div class="machine-window">
-            <VendingGrid />
-            <!-- Bottle removal animation — внутри machine-window, чтобы проценты совпадали с сеткой -->
-            <Transition name="removal">
-              <div v-if="removingBottle" class="removal-overlay">
-                <div
-                  class="removal-bottle"
-                  :class="`bottle-${removingBottle.size}`"
-                  :style="{ '--start-top': shelfTop(removingBottle.row), '--start-left': shelfLeft(removingBottle.col) }"
-                >
-                  <BottleSprite :size="removingBottle.size" :ml="removingBottle.ml" :drink-type="removingBottle.drinkType ?? 'water'" />
-                </div>
-              </div>
-            </Transition>
-          </div>
-          <div class="machine-footer">
-            <ProgressIndicator />
-          </div>
-        </div>
-
-        <div class="machine-right">
-          <ControlPanel
-            @open-settings="showSettings = true"
-            @open-numpad="showNumpad = true"
-          />
-        </div>
-      </div>
-
-      <NumpadDialog
-        :visible="showNumpad"
-        @close="showNumpad = false"
-        @force-reset="onForceReset"
-        @open-dev-settings="showDevSettings = true"
-      />
-
-      <DevSettingsPopup
-        :visible="showDevSettings"
-        @close="showDevSettings = false"
-        @force-reset="onForceReset"
-      />
-
-      <!-- Celebration overlay -->
-      <Transition name="celebration">
-        <div v-if="showCelebration" class="celebration-overlay" @click="showCelebration = false">
-          <div class="celebration-content">
-            <div class="celebration-icon">&#127881;</div>
-            <div class="celebration-text">{{ $t('celebration.title') }}</div>
-            <div class="celebration-sub">{{ $t('celebration.subtitle', { current: waterStore.totalMl, goal: waterStore.dailyGoal }) }}</div>
-          </div>
-        </div>
-      </Transition>
-
-      <SettingsDialog
-        :visible="showSettings"
-        @close="showSettings = false"
-        @show-onboarding="emit('show-onboarding')"
-      />
-
-    </div>
+    <SettingsDialog
+      :visible="showSettings"
+      @close="showSettings = false"
+      @show-onboarding="emit('show-onboarding')"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, provide } from 'vue'
+import { ref, watch, provide, inject, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useWaterStore } from '@/stores/water'
 import { useToast } from '@/composables/useToast'
 import type { Bottle, CellPosition, DrinkType } from '@/types'
-import { BOTTLE_REMOVAL_KEY } from '@/types/injectionKeys'
+import { BOTTLE_REMOVAL_KEY, DETAILED_VENDING_KEY } from '@/types/injectionKeys'
 import { CELEBRATION_DISPLAY_MS, BOTTLE_REMOVAL_ANIMATION_MS } from '@/constants/timing'
-import { shelfTop, shelfLeft } from '@/utils/shelfLayout'
-import WaterCounter from './WaterCounter.vue'
-import VendingGrid from './VendingGrid.vue'
-import ProgressIndicator from './ProgressIndicator.vue'
-import BottleSprite from './BottleSprite.vue'
-import ControlPanel from './ControlPanel.vue'
+import VendingMachineClassic from './VendingMachineClassic.vue'
+import VendingMachineDetailed from './vending-detailed/VendingMachineDetailed.vue'
 import NumpadDialog from './NumpadDialog.vue'
 import SettingsDialog from './SettingsDialog.vue'
 import DevSettingsPopup from './DevSettingsPopup.vue'
@@ -96,6 +66,10 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const waterStore = useWaterStore()
 const toast = useToast()
+
+const detailedVending = inject(DETAILED_VENDING_KEY)
+const detailed = computed(() => detailedVending?.detailed?.value ?? false)
+
 const showSettings = ref(false)
 const showNumpad = ref(false)
 const showDevSettings = ref(false)
@@ -138,94 +112,19 @@ function onForceReset() {
 </script>
 
 <style scoped>
-.vending-machine {
+.vending-machine-wrapper {
   width: 100%;
-  min-width: 320px;
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 12px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-}
-
-.machine-body {
-  width: 100%;
-  min-width: 296px;
-  background: linear-gradient(180deg, #e8e8f0 0%, #d0d0dc 100%);
-  border: 4px solid #a0a0b0;
-  border-radius: 12px;
-  overflow: hidden;
-  image-rendering: pixelated;
-  box-shadow:
-    0 0 0 2px #c0c0d0,
-    8px 8px 0 0 rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   position: relative;
 }
 
-.machine-awning {
-  background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
-  padding: 10px 16px;
-  text-align: center;
-  border-bottom: 4px solid #991b1b;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
-}
-
-.machine-title {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 15px;
-  color: #fff;
-  letter-spacing: 2px;
-  margin: 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.machine-main {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  padding: 10px;
-}
-
-.machine-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-
-.machine-right {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-}
-
-.machine-window {
-  position: relative;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 100%);
-  border: 3px solid #8a8a9a;
-  border-radius: 6px;
-  padding: 8px;
-  height: 288px;
-  min-height: 288px;
-  flex-shrink: 0;
-}
-
-.machine-footer {
-  padding: 2px 0;
-}
-
-/* Celebration */
 .celebration-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -269,103 +168,5 @@ function onForceReset() {
   0% { transform: scale(0.5); opacity: 0; }
   60% { transform: scale(1.1); }
   100% { transform: scale(1); opacity: 1; }
-}
-
-/* Bottle removal animation */
-.removal-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 20px;
-}
-
-.removal-bottle {
-  position: absolute;
-  top: var(--start-top, 45%);
-  left: var(--start-left, 50%);
-  transform: translate(-50%, 0);
-  animation: bottleFallToWindow 1.2s ease-in forwards;
-}
-
-@keyframes bottleFallToWindow {
-  0% {
-    top: var(--start-top, 45%);
-    transform: translate(-50%, 0) rotate(0deg);
-    opacity: 1;
-  }
-  70% {
-    top: 88%;
-    transform: translate(-50%, 0) rotate(15deg);
-    opacity: 1;
-  }
-  100% {
-    top: 90%;
-    transform: translate(-50%, 0) rotate(20deg);
-    opacity: 0;
-  }
-}
-
-.removal-enter-active,
-.removal-leave-active {
-  transition: opacity 0.2s;
-}
-.removal-enter-from,
-.removal-leave-to {
-  opacity: 0;
-}
-
-/* Mobile */
-@media (max-width: 479px) {
-  .vending-machine {
-    max-width: 95vw;
-    padding: 8px;
-  }
-
-  .machine-main {
-    padding: 8px;
-  }
-
-  .machine-title {
-    font-size: 14px;
-  }
-
-  .machine-window {
-    min-height: 200px;
-  }
-}
-
-/* Tablet */
-@media (min-width: 480px) and (max-width: 768px) {
-  .vending-machine {
-    max-width: 520px;
-  }
-
-  .machine-window {
-    min-height: 280px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 769px) {
-  .vending-machine {
-    max-width: 540px;
-  }
-
-  .machine-main {
-    padding: 12px;
-  }
-
-  .machine-title {
-    font-size: 16px;
-  }
-
-  .machine-window {
-    min-height: 300px;
-  }
 }
 </style>

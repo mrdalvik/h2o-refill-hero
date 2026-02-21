@@ -4,7 +4,9 @@
     :visible="showOnboarding"
     @close="closeOnboarding"
   />
-  <DayBackground>
+  <component
+    :is="detailed ? DayBackgroundDetailed : DayBackground"
+  >
     <div class="app-content">
       <CustomerAnimation
         v-if="showAnimation"
@@ -16,20 +18,26 @@
         @show-onboarding="showOnboarding = true"
       />
     </div>
-  </DayBackground>
+  </component>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, provide } from 'vue'
 import ToastContainer from './components/ToastContainer.vue'
 import OnboardingOverlay from './components/OnboardingOverlay.vue'
 import DayBackground from './components/DayBackground.vue'
+import DayBackgroundDetailed from './components/DayBackgroundDetailed.vue'
 import CustomerAnimation from './components/CustomerAnimation.vue'
 import VendingMachine from './components/VendingMachine.vue'
 import { useDayReset } from './composables/useDayReset'
 import { useWaterReminder } from './composables/useWaterReminder'
 import { useTimeOfDay } from './composables/useTimeOfDay'
+import { useDetailedVending } from './composables/useDetailedVending'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
+import { DETAILED_VENDING_KEY } from '@/types/injectionKeys'
+
+const { detailed, toggle } = useDetailedVending()
+provide(DETAILED_VENDING_KEY, { detailed, toggle })
 
 const { showAnimation, forceReset } = useDayReset()
 const showOnboarding = ref(false)
