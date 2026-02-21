@@ -244,7 +244,7 @@ function onForceReset() {
   flex-shrink: 0;
   display: flex;
   align-self: flex-start;
-  margin-top: 138px;
+  margin-top: 125px;
 }
 
 .machine-window {
@@ -389,7 +389,7 @@ function onForceReset() {
   }
 
   .machine-right {
-    margin-top: 98px;
+    margin-top: 85px;
   }
 }
 
@@ -405,7 +405,7 @@ function onForceReset() {
   }
 
   .machine-right {
-    margin-top: 128px;
+    margin-top: 115px;
   }
 }
 

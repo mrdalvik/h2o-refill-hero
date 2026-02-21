@@ -24,7 +24,7 @@ const waterStore = useWaterStore()
 }
 
 .counter-frame {
-  padding: 10px 14px;
+  padding: 8px 10px;
   background: linear-gradient(180deg, #3a3a5e 0%, #2a2a4e 50%, #1a1a3e 100%);
   border: 3px solid #5a5a8a;
   border-radius: 6px;
@@ -37,17 +37,27 @@ const waterStore = useWaterStore()
 
 .counter-display {
   font-family: 'Courier New', 'Fusion Pixel', monospace;
-  font-size: 18px;
+  font-size: 16px;
   color: #4ade80;
   text-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-variant-numeric: tabular-nums;
-  min-width: 14ch;
+  white-space: nowrap;
 }
 
 .goal-reached .counter-display {
   color: #22c55e;
   text-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+}
+
+@media (max-width: 479px) {
+  .counter-frame {
+    padding: 6px 8px;
+  }
+
+  .counter-display {
+    font-size: 14px;
+  }
 }
 
 .counter-badge {
