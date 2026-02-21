@@ -184,9 +184,9 @@ function onForceReset() {
   background: linear-gradient(180deg, #e03535 0%, #dc2626 25%, #b91c1c 75%, #991b1b 100%);
   padding: 10px 16px;
   text-align: center;
-  border-bottom: 4px solid #7f1d1d;
+  border-bottom: 4px solid #8a2525;
   box-shadow:
-    0 4px 0 rgba(0, 0, 0, 0.25),
+    0 4px 0 rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
 }
@@ -198,8 +198,8 @@ function onForceReset() {
     180deg,
     transparent 0,
     transparent 4px,
-    rgba(0, 0, 0, 0.08) 4px,
-    rgba(0, 0, 0, 0.08) 8px
+    rgba(0, 0, 0, 0.05) 4px,
+    rgba(0, 0, 0, 0.05) 8px
   );
   pointer-events: none;
 }
@@ -210,7 +210,7 @@ function onForceReset() {
   left: 8px;
   right: 8px;
   height: 4px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.12) 20%, rgba(0,0,0,0.12) 80%, transparent 100%);
   pointer-events: none;
 }
 
@@ -243,7 +243,8 @@ function onForceReset() {
 .machine-right {
   flex-shrink: 0;
   display: flex;
-  align-items: center;
+  align-self: flex-start;
+  margin-top: 138px;
 }
 
 .machine-window {
@@ -386,6 +387,10 @@ function onForceReset() {
     min-height: 240px;
     max-height: 240px;
   }
+
+  .machine-right {
+    margin-top: 98px;
+  }
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
@@ -397,6 +402,10 @@ function onForceReset() {
     height: 300px;
     min-height: 300px;
     max-height: 300px;
+  }
+
+  .machine-right {
+    margin-top: 128px;
   }
 }
 
