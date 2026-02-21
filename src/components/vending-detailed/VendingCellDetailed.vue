@@ -84,15 +84,27 @@ function formatTime(timestamp: number): string {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 60px;
-  min-width: 44px;
+  min-height: 0;
+  min-width: 0;
   height: 100%;
-  max-height: 68px;
+  max-height: 76px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(160, 128, 96, 0.15) 0%, rgba(139, 115, 85, 0.08) 100%);
   border-radius: 2px;
   padding: 2px;
   border: 1px solid rgba(107, 83, 68, 0.3);
+}
+
+@media (max-width: 479px) {
+  .vending-cell-detailed {
+    max-height: 56px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .vending-cell-detailed {
+    max-height: 71px;
+  }
 }
 
 .cell-empty {
@@ -112,8 +124,8 @@ function formatTime(timestamp: number): string {
 .cell-bottle-wrapper {
   animation: bottleAppear 0.3s ease-out;
   cursor: pointer;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 0;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,7 +243,6 @@ function formatTime(timestamp: number): string {
 
 @media (min-width: 769px) {
   .vending-cell-detailed {
-    min-height: 70px;
     padding: 3px;
   }
 }

@@ -168,9 +168,9 @@ defineEmits<{
   border: 3px solid #8a8a9a;
   border-radius: 6px;
   padding: 8px;
-  height: 288px;
-  min-height: 288px;
-  max-height: 288px;
+  height: 320px;
+  min-height: 320px;
+  max-height: 320px;
   flex-shrink: 0;
   box-shadow:
     inset 0 0 20px rgba(0, 0, 0, 0.2),
@@ -243,9 +243,9 @@ defineEmits<{
   }
 
   .machine-window {
-    height: 200px;
-    min-height: 200px;
-    max-height: 200px;
+    height: 240px;
+    min-height: 240px;
+    max-height: 240px;
   }
 }
 
@@ -255,9 +255,9 @@ defineEmits<{
   }
 
   .machine-window {
-    height: 280px;
-    min-height: 280px;
-    max-height: 280px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
   }
 }
 
@@ -275,9 +275,9 @@ defineEmits<{
   }
 
   .machine-window {
-    height: 300px;
-    min-height: 300px;
-    max-height: 300px;
+    height: 320px;
+    min-height: 320px;
+    max-height: 320px;
   }
 }
 </style>

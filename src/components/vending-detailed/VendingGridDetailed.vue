@@ -30,24 +30,25 @@ const waterStore = useWaterStore()
   border-radius: 4px;
   padding: 6px;
   width: 100%;
-  min-width: 185px;
-  height: 272px;
-  max-height: 272px;
+  min-width: 0;
+  height: 304px;
+  max-height: 304px;
   flex-shrink: 0;
   overflow: hidden;
   image-rendering: pixelated;
+  box-sizing: border-box;
 }
 
 .grid-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 68px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 76px;
   gap: 4px;
   position: relative;
   padding-bottom: 6px;
-  height: 68px;
-  min-height: 68px;
-  max-height: 68px;
+  height: 76px;
+  min-height: 76px;
+  max-height: 76px;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -73,5 +74,33 @@ const waterStore = useWaterStore()
 
 .grid-row:last-child::after {
   display: none;
+}
+
+@media (max-width: 479px) {
+  .vending-grid-detailed {
+    height: 224px;
+    max-height: 224px;
+  }
+
+  .grid-row {
+    grid-template-rows: 56px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .vending-grid-detailed {
+    height: 284px;
+    max-height: 284px;
+  }
+
+  .grid-row {
+    grid-template-rows: 71px;
+    height: 71px;
+    min-height: 71px;
+    max-height: 71px;
+  }
 }
 </style>
