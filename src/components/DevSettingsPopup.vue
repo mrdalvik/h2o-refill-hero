@@ -7,14 +7,6 @@
           <button class="dev-close" aria-label="Close" @click="$emit('close')">&#x2715;</button>
         </div>
         <div class="dev-body">
-          <label class="dev-toggle">
-            <input
-              type="checkbox"
-              :checked="detailed"
-              @click.prevent="toggle"
-            >
-            <span class="dev-toggle-label">{{ $t('devSettings.detailedVending') }}</span>
-          </label>
           <button class="dev-btn" @click="restartDay">
             {{ $t('devSettings.restartDay') }}
           </button>
@@ -28,9 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from 'vue'
 import i18n from '@/i18n'
-import { DETAILED_VENDING_KEY } from '@/types/injectionKeys'
 
 defineProps<{
   visible: boolean
@@ -40,10 +30,6 @@ const emit = defineEmits<{
   close: []
   'force-reset': []
 }>()
-
-const detailedVending = inject(DETAILED_VENDING_KEY)
-const detailed = computed(() => detailedVending?.detailed?.value ?? false)
-const toggle = () => detailedVending?.toggle()
 
 function restartDay() {
   emit('force-reset')
@@ -118,27 +104,6 @@ function sendTestReminder() {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.dev-toggle {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  padding: 8px 0;
-}
-
-.dev-toggle input {
-  width: 18px;
-  height: 18px;
-  accent-color: #4ade80;
-  cursor: pointer;
-}
-
-.dev-toggle-label {
-  font-family: 'Fusion Pixel', monospace;
-  font-size: 13px;
-  color: #e5e7eb;
 }
 
 .dev-btn {

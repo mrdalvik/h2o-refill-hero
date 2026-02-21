@@ -8,5 +8,4 @@ export const STORAGE_KEYS = {
   CALC_PREFS: 'h2o-calc-prefs',
   ONBOARDING_SEEN: 'h2o-onboarding-seen',
   NUMPAD_MODE: 'h2o-numpad-mode',
-  DETAILED_VENDING: 'h2o-detailed-vending',
 } as const

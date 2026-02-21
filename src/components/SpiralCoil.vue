@@ -6,7 +6,6 @@
       preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
     >
-      <!-- Helix coil - side view (vending machine spiral, ~3 turns) -->
       <path
         class="spiral-path"
         d="M6 2 C18 2 22 10 22 16
@@ -37,22 +36,24 @@ defineProps<{
   transform: translateX(-50%);
   width: 20px;
   height: 32px;
-  color: #8b7355;
-  opacity: 0.9;
-  image-rendering: pixelated;
   z-index: 2;
   pointer-events: none;
+  image-rendering: pixelated;
 }
 
 .spiral-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
   transform-origin: center center;
+  filter:
+    drop-shadow(0 1px 0 #4a3828)
+    drop-shadow(0 2px 0 #3d2a22)
+    drop-shadow(1px 0 0 #a08060);
 }
 
 .spiral-path {
-  stroke: #a08060;
+  stroke: #8b7355;
+  stroke-width: 2.5;
 }
 
 .spiral-coil.spiral-rotating .spiral-svg {

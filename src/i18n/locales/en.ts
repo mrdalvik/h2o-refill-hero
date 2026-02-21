@@ -61,7 +61,6 @@ export default {
     title: 'Developer settings',
     restartDay: 'Restart day',
     testReminder: 'Test reminder',
-    detailedVending: 'Detailed vending machine',
   },
   settings: {
     title: 'Settings',
