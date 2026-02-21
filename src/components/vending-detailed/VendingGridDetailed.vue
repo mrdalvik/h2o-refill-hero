@@ -32,7 +32,7 @@ const waterStore = useWaterStore()
   width: 100%;
   min-width: 185px;
   height: 272px;
-  min-height: 272px;
+  max-height: 272px;
   flex-shrink: 0;
   overflow: hidden;
   image-rendering: pixelated;
@@ -45,8 +45,11 @@ const waterStore = useWaterStore()
   gap: 4px;
   position: relative;
   padding-bottom: 6px;
+  height: 68px;
   min-height: 68px;
+  max-height: 68px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .grid-row:not(:last-child) {

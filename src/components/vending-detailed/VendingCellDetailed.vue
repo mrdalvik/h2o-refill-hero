@@ -87,6 +87,7 @@ function formatTime(timestamp: number): string {
   min-height: 60px;
   min-width: 44px;
   height: 100%;
+  max-height: 68px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(160, 128, 96, 0.15) 0%, rgba(139, 115, 85, 0.08) 100%);
   border-radius: 2px;
