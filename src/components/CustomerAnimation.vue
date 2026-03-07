@@ -1,6 +1,6 @@
 <template>
   <div class="customer-animation">
-    <div class="animation-text">{{ $t('animation.customersText') }}</div>
+    <div class="animation-text" :class="`text-${timeOfDay}`">{{ $t('animation.customersText') }}</div>
     <div class="animation-scene">
       <div
         v-for="(customer, i) in customers"
@@ -24,7 +24,9 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useTimeOfDay } from '@/composables/useTimeOfDay'
 
+const timeOfDay = useTimeOfDay()
 const emit = defineEmits<{
   done: []
 }>()
@@ -149,9 +151,18 @@ onMounted(() => {
   margin-bottom: 16px;
   font-family: 'Fusion Pixel', monospace;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 1px;
   animation: textPulse 1.5s ease-in-out infinite;
+}
+
+.animation-text.text-morning,
+.animation-text.text-day {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.animation-text.text-evening,
+.animation-text.text-night {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @keyframes customerWalk {

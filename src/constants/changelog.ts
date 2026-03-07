@@ -5,6 +5,12 @@ export interface ChangelogVersion {
 
 export const CHANGELOG: ChangelogVersion[] = [
   {
+    version: '0.1.39',
+    entries: [
+      '⚒️ Текст «Покупатели забирают воду» адаптирован ко времени суток: чёрный утром и днём, светлый вечером и ночью',
+    ],
+  },
+  {
     version: '0.1.38',
     entries: [
       '🆕 Улучшен внешний вид вендингового автомата',
