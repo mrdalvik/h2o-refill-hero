@@ -17,3 +17,12 @@ app.use(pinia)
 app.use(Pixelium)
 app.use(i18n)
 app.mount('#app')
+
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {
+      // ignore service worker registration failures
+    })
+  })
+}

@@ -36,15 +36,27 @@ function restartDay() {
   emit('close')
 }
 
-function sendTestReminder() {
+async function sendTestReminder() {
   if ('Notification' in window) {
-    Notification.requestPermission().then(() => {
-      if (Notification.permission === 'granted') {
-        new Notification('H2O: Refill Hero', {
-          body: i18n.global.t('reminder.message'),
-        })
-      }
+    await Notification.requestPermission().catch(() => {
+      // ignore permission prompt failures
     })
+
+    if (Notification.permission === 'granted') {
+      const title = 'H2O: Refill Hero'
+      const body = i18n.global.t('reminder.message')
+
+      if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.getRegistration()
+        if (registration) {
+          await registration.showNotification(title, { body })
+          emit('close')
+          return
+        }
+      }
+
+      new Notification(title, { body })
+    }
   }
   emit('close')
 }

@@ -38,12 +38,21 @@ function markShown(slotHour: number) {
   }
 }
 
-function showNotification() {
-  if (!('Notification' in window)) return
+async function showNotification() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return
+
+  const title = 'H2O: Refill Hero'
   const msg = i18n.global.t('reminder.message')
-  if (Notification.permission === 'granted') {
-    new Notification('H2O: Refill Hero', { body: msg })
+
+  if ('serviceWorker' in navigator) {
+    const registration = await navigator.serviceWorker.getRegistration()
+    if (registration) {
+      await registration.showNotification(title, { body: msg })
+      return
+    }
   }
+
+  new Notification(title, { body: msg })
 }
 
 const frequency = ref<ReminderFrequency>(loadPreference())
@@ -55,8 +64,10 @@ export function useWaterReminder(options?: { setupInterval?: boolean }) {
   function setFrequency(f: ReminderFrequency) {
     frequency.value = f
     localStorage.setItem(STORAGE_KEY, f)
-    if (f !== 'never') {
-      Notification.requestPermission()
+    if (f !== 'never' && 'Notification' in window) {
+      Notification.requestPermission().catch(() => {
+        // ignore permission prompt failures
+      })
     }
   }
 
@@ -64,14 +75,17 @@ export function useWaterReminder(options?: { setupInterval?: boolean }) {
     const hour = new Date().getHours()
     const shown = getShownToday()
     if (!shouldShowReminder(frequency.value, hour, shown)) return
-    showNotification()
-    markShown(hour)
+    showNotification().finally(() => {
+      markShown(hour)
+    })
   }
 
   if (setupInterval) {
     onMounted(() => {
-      if (frequency.value !== 'never') {
-        Notification.requestPermission()
+      if (frequency.value !== 'never' && 'Notification' in window) {
+        Notification.requestPermission().catch(() => {
+          // ignore permission prompt failures
+        })
       }
       checkAndNotify()
       if (!interval) {
